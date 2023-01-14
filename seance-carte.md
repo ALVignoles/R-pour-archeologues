@@ -1,6 +1,6 @@
 ## 📖 Comment faire des cartes et ploter des points avec R
 
-### Créer des cartes avec ggplot2
+### ggplot2
 Nous allons utiliser les librairies suivantes
 ```{r}
 library(sf)
@@ -15,11 +15,11 @@ library(ggspatial)
 
 > voir https://maeltheuliere.github.io/rspatial/cr%C3%A9er-des-cartes-avec-ggplot2.html
 
-### utiliser basemap
+### basemap
 
-### utiliser maps
+### maps
 
-### utiliser leaflet
+### leaflet
 
-### utiliser osm
+### osm
 
