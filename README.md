@@ -1,6 +1,6 @@
 # R-pour-archeologues
 
-# Pour *débuter avec R*
+# Pour débuter avec R
 ## Installer  
 [R](https://cran.r-project.org/bin/macosx/)  
 [R studio](https://www.rstudio.com/products/rstudio/download/)
@@ -39,7 +39,7 @@ Pour prendre en main R, voir toute l'introduction de [R for Data Science](https:
 Pour s'aider à utiliser les principaux packages, il existe des fiches aide-mémoire (cheatsheets) mises en lignes sur le [site officiel de Rstudio](https://www.rstudio.com/resources/cheatsheets/).
 
 
-# R et archéologie : *les ressources en ligne*
+# R et archéologie : les ressources en ligne
 ## Ressources en ligne sur l'usage générique de R
 Voici quelques ressources pour découvrir le fonctionnement général de R et R studio :  
 - [le blog d'Allison Horst](https://blog.rstudio.com/2019/11/18/artist-in-residence/)  
@@ -70,8 +70,3 @@ Ainsi qu'[une liste des publications dans le domaine de l'archéologie qui inclu
 install.packages("swirl")
 library(swirl)
 ```
-
-1- Débuter avec [ces instructions](debuter-avec-R.md) pour installer les packages de base
-2- Se documenter avec [ces ressources en ligne](ressources-en-ligne.md)  
-6- [RRtools](https://github.com/benmarwick/rrtools)  
-7- [Bibliothèque](https://github.com/tupuni/karno-elliott-master-1/blob/main/biblio.md)
