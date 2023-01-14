@@ -1,5 +1,5 @@
-Documents et instructions pour prendre en main le logiciel R :nerd_face: :sunglasses:
-[Hugo Host on GitHub](https://gohugo.io/hosting-and-deployment/hosting-on-github/){:target="_blank"}
+Documents et instructions pour prendre en main le logiciel R :nerd_face: :sunglasses:  
+
 # Pour débuter avec R
 ## Installer  
 [R](https://cran.r-project.org/bin/macosx/)  
@@ -58,9 +58,9 @@ On y trouve une liste des packages (liés à leur description sur github ou [Com
 [5/ la réalisation de cartes](https://github.com/benmarwick/ctv-archaeology#making-maps-and-using-r-as-a-geographical-information-system)  
 [6/ la calibration de dates](https://github.com/benmarwick/ctv-archaeology#dating)  
 etc.
-Ainsi qu'[une liste des publications dans le domaine de l'archéologie qui incluent des scripts R](https://github.com/benmarwick/ctv-archaeology#publications-that-include-r-code).  
+Ainsi qu'une [liste des publications dans le domaine de l'archéologie qui incluent des scripts R](https://github.com/benmarwick/ctv-archaeology#publications-that-include-r-code).  
 
-- [ce powerpoint](https://hal.science/hal-03287121/file/plutniak2021rconference.pdf){:target="_blank"} par Sébastien Plutniak.   
+- [ce powerpoint](https://hal.science/hal-03287121/file/plutniak2021rconference.pdf) par Sébastien Plutniak.   
 - [open-archaeo.info](https://open-archaeo.info), un répertoire de ressources maintenu par [Zack Batist](https://github.com/zackbatist).
 - Le [site web Rchaeology](https://rchaeology.github.io/about/) a une [page dédiée aux débutants](https://rchaeology.github.io/resources/beginners/).
 - Le package [**swirl**](https://swirlstats.com/) a été créé pour aider l'apprentissage de R. Après l'avoir installé et ouvert avec les commandes suivantes il ne reste plus qu'à suivre les instructions directement dans la console de R studio!
