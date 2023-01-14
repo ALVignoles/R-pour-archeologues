@@ -1,4 +1,4 @@
-## :books: Ressources pédagogiques :books:
+## :books: Ressources en français :books:
 
 * [Introduction à R et au tidyverse](https://juba.github.io/tidyverse/) par @juba
 * [Logiciel R et programmation](http://egallic.fr/Enseignement/R/m1_stat_eco_logiciel_R.pdf) par @3wen
