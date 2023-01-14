@@ -5,17 +5,14 @@
 
 ## Pour commencer
 Toujours ouvrir R et Rstudio en même temps. La fenêtre de R peut juste rester en arrière plan, il n'est pas nécessaire d'interagir avec.  
-Pour commencer installons l'environnement de travail. Pour cela il faut installer un certain nombre de packages qui permettent d'utiliser des fonctionnalités particulières, comme cela est évoqué dans [l'introduction](https://r4ds.had.co.nz/introduction.html#the-tidyverse) du volume 'R for Data Science'.
+Pour commencer installons l'environnement de travail. Pour cela il faut installer un certain nombre de packages qui permettent d'utiliser des fonctionnalités particulières, comme cela est évoqué dans [l'introduction du volume 'R for Data Science'](https://r4ds.had.co.nz/introduction.html#the-tidyverse).
 
-Avant notre prochaine session de travail, il faudrait que tu aies installé les packages suivants:
+Avant notre première session de travail, il faudrait installer les packages suivants:
 ```{r}
 install.packages("tidyverse")
 install.packages("knitr")
 install.packages("rmarkdown")
 install.packages("bookdown")
-install.packages("DBI")
-install.packages("dbplyr")
-install.packages("RSQLite")
 ```
 Pour cela tu dois copier ces commandes telles quelles dans la fenetre haut gauche de R studio et les exécuter une par une en utilisant les touches  
 Command (or Cmd) &#8984; **+** Entrer ↵ Return
