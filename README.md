@@ -1,3 +1,5 @@
+**Documents et instructions pour prendre en main le logiciel R**
+
 # Pour débuter avec R
 ## Installer  
 [R](https://cran.r-project.org/bin/macosx/)  
