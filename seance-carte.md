@@ -14,3 +14,12 @@ library(ggspatial)
 ```
 
 > voir https://maeltheuliere.github.io/rspatial/cr%C3%A9er-des-cartes-avec-ggplot2.html
+
+### utiliser basemap
+
+### utiliser maps
+
+### utiliser leaflet
+
+### utiliser osm
+
