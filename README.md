@@ -14,8 +14,9 @@ install.packages("knitr")
 install.packages("rmarkdown")
 install.packages("bookdown")
 ```
-Pour cela tu dois copier ces commandes telles quelles dans la fenetre haut gauche de R studio et les exécuter une par une en utilisant les touches  
-Command (or Cmd) &#8984; **+** Entrer ↵ Return
+Pour cela tu dois copier ces commandes telles quelles dans la fenetre haut gauche de R studio et les exécuter une par une en utilisant les touches suivantes :  
+**???** sur PC  
+**Command (or Cmd) &#8984; + Entrer ↵ Return** sur mac  
 
 Les packages seront installés définitivement dans R studio.  
 Pour les utiliser il faudra exécuter les lignes de code suivantes:
@@ -25,7 +26,7 @@ library(knitr)
 
 # etc.
 ```
-Les packages devront être activés à chaque début de session R.  
+Les packages devront être activés à chaque début de session R avec ces mêmes commandes.   
 
 
 ## Premiers pas
