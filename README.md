@@ -1,4 +1,4 @@
-**Documents et instructions pour prendre en main le logiciel R**
+Documents et instructions pour prendre en main le logiciel R :nerd_face: :sunglasses:
 
 # Pour débuter avec R
 ## Installer  
