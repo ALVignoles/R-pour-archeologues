@@ -1,5 +1,3 @@
-# R-pour-archeologues
-
 # Pour débuter avec R
 ## Installer  
 [R](https://cran.r-project.org/bin/macosx/)  
