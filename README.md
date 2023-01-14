@@ -1,5 +1,5 @@
 Documents et instructions pour prendre en main le logiciel R :nerd_face: :sunglasses:
-
+[Hugo Host on GitHub](https://gohugo.io/hosting-and-deployment/hosting-on-github/){:target="_blank"}
 # Pour débuter avec R
 ## Installer  
 [R](https://cran.r-project.org/bin/macosx/)  
