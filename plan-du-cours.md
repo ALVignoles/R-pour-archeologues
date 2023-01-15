@@ -13,3 +13,5 @@
 - dates sur R
 
 - autonomie sur diverses choses : fusion pdf, faire un gif
+
+voir également: https://sslarch.github.io/MapofComputationalArchaeology/
