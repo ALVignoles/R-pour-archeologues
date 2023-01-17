@@ -64,11 +64,11 @@ Jeu de données : les Jambes
 Objectif :  
 
 Description succincte du contenu :
--sources de données spatiales : climatiques, topographiques, administratives, géomorpho
--packages de color palettes (petit point sur l’importance du code couleur) [viridis, wespalette]
--créer une carte simple
--visualisation plus qualitative : changer l’aspect des points en fonction d’un attribut 
--reclasser un raster (ex données topo en fonction du trait de côte ancien)  
+- sources de données spatiales : climatiques, topographiques, administratives, géomorpho
+- packages de color palettes (petit point sur l’importance du code couleur) [viridis, wespalette]
+- créer une carte simple
+- visualisation plus qualitative : changer l’aspect des points en fonction d’un attribut 
+- reclasser un raster (ex données topo en fonction du trait de côte ancien)  
 
 Jeu de données :  
 
