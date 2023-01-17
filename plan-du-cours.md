@@ -3,8 +3,8 @@
 ## Plan du workshop
 
 ### Séance 1 : Se familiariser avec le langage de programmation R
-Objectif : 
-Description succincte du contenu :
+Objectif :  
+Description succincte du contenu :  
 - apprendre les composantes du langage R : commentaires, fonctions, arguments, etc.
 - explorer un jeu de données simple (statistiques de base)
 - créer un graph avec R base
@@ -12,8 +12,8 @@ Description succincte du contenu :
 Jeu de données : tableau fictif (reprendre TP lithique) 
 
 ### Séance 2 : Quelques outils pour une plus grande autonomie 
-Objectif :
-Description succincte du contenu :
+Objectif :  
+Description succincte du contenu :  
 - fusionner pdf 
 - faire des gif
 - créer des dossiers 
@@ -21,8 +21,8 @@ Description succincte du contenu :
 Jeu de données : 
 
 ### Séance 3 : Analyser et visualiser un jeu de données semi-quantitatif avec le package ggplot
-Objectif : 
-Description succincte du contenu :
+Objectif :   
+Description succincte du contenu :  
 - créer un projet R
 - créer une figure avec ggplot 
 - modifier la figure : couleurs, formes, taille du texte, etc.
@@ -40,8 +40,8 @@ Description succincte du contenu :
 Jeu de données : le Flageolet I 
 
 ### Séance 5 : Projections spatiales automatisées et personnalisées 
-Objectif :
-Description succincte du contenu :
+Objectif :  
+Description succincte du contenu :  
 - projections spatiales
 - sélectionner des données dans un tableau 
 - créer une boucle pour répéter les mêmes étapes sur des données différentes de façon automatique
@@ -49,8 +49,8 @@ Description succincte du contenu :
 Jeu de données : les Jambes 
 
 ### Séance 6 : Les SIG sur R, visualisation et statistiques spatiales 
-Objectif :
-Description succincte du contenu :
+Objectif :  
+Description succincte du contenu :  
 -sources de données spatiales : climatiques, topographiques, administratives, géomorpho
 -packages de color palettes (petit point sur l’importance du code couleur) [viridis, wespalette]
 -créer une carte simple
@@ -59,8 +59,8 @@ Description succincte du contenu :
 Jeu de données :
 
 ### Séance 7 : Manipuler et calibrer des dates avec R 
-Objectif :
-Description succincte du contenu :
+Objectif :  
+Description succincte du contenu :  
 Jeu de données :
 
 voir également: https://sslarch.github.io/MapofComputationalArchaeology/
