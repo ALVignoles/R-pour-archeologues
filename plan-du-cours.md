@@ -46,6 +46,7 @@ Description succincte du contenu :
 - recoder des données qualitatives 
 - fusionner ou dissocier des colonnes 
 - créer de nouvelles colonnes (eg. Calculer un pourcentage)  
+
 Jeu de données : le Flageolet I 
 
 ### Séance 5 : Projections spatiales automatisées et personnalisées 
