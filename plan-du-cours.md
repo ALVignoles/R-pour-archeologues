@@ -18,7 +18,7 @@ Jeu de données : tableau fictif (reprendre TP lithique)
 Objectif :  
 
 Description succincte du contenu :
-- fusionner pdf 
+- manipuler des pdf (qpdf, pdf-tools)
 - faire des gif
 - créer des dossiers 
 - autres ?  
@@ -74,7 +74,7 @@ Jeu de données :
 
 ### Séance 7 : Manipuler et calibrer des dates avec R 
 Objectif :  
-Description succincte du contenu :  
+Description succincte du contenu :  rcarbon, oxcAAR, rbacon, geoChronR, Intcal
 Jeu de données :
 
 voir également: https://sslarch.github.io/MapofComputationalArchaeology/
