@@ -18,7 +18,7 @@ install.packages("bookdown")
 ```
 Pour cela tu dois copier ces commandes telles quelles dans la fenetre haut gauche de R studio et les exécuter une par une en utilisant les touches suivantes :  
 **CTRL + Entrée** sur PC  
-**Command (or Cmd) &#8984; + Enter ↵ Return** sur mac  
+**Command (or Cmd) &#8984; + ↵ Return** sur mac  
 
 Les packages seront installés définitivement dans R studio.  
 Pour les utiliser il faudra exécuter les lignes de code suivantes:
