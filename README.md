@@ -6,6 +6,6 @@ Ce dépôt contient les tutoriels, scripts et données nécessaires pour suivre 
 1- [Débuter avec R](Débuter avec R.md)
 
 
-### Licenses
+### License
 
 [CC BY-NC 4.0]([http://creativecommons.org/publicdomain/zero/1.0/](https://creativecommons.org/licenses/by-nc/4.0/))
