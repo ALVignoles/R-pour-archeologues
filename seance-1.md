@@ -36,6 +36,8 @@ Il est également possible d'ouvrir le jeu de données en cliquant sur la ligne 
 Afin de ne pas encombrer la console, il est aussi possible de n'afficher que les 6 premiéres lignes du tableau avec la commande `head()`
 ```{r}
 head(jdd)
+
+print("You will not see the text output.")
 ```
 `numero         type  x  y longueur largeur  silex raccord`
 `1      1     gravette  1  6        5     1.5  type1      NA`
