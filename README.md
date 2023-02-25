@@ -3,11 +3,13 @@
 
 Ce dépôt contient les tutoriels, scripts et données nécessaires pour suivre le workshop "R-pour-archeologues" organisé par A. Vignoles et A. Hermann au sein de l'UMR 8068 en Avril 2023.
 
-- [Débuter avec R et RStudio](https://github.com/ALVignoles/R-pour-archeologues/blob/main/seance-0_debuter_avec_R.md)
-- [R et archéologie : les ressources en ligne](https://github.com/ALVignoles/R-pour-archeologues/blob/main/seance-0_ressources-en-ligne.md)
+![image](workshop_preparation/poster.pdf)
 
-- [Séance 1 : ](https://github.com/ALVignoles/R-pour-archeologues/blob/main/seance-1.md)
-- [Séance 2 : ](https://github.com/ALVignoles/R-pour-archeologues/blob/main/seance-2.md)
+- [Débuter avec R et RStudio](seance-0_debuter_avec_R.md)
+- [R et archéologie : les ressources en ligne](seance-0_ressources-en-ligne.md)
+
+- [Séance 1 : ](seance-1.md)
+- [Séance 2 : ](seance-2.md)
 
 
 ### License
