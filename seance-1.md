@@ -110,7 +110,7 @@ De façon générale, les arguments sont rentrés dans l'ordre chronologique dan
 ?plot
 ```
 Dans la fiche d'aide, nous pouvons voir que cette fonction nécessite deux arguments au minimum :  
-`x` (l'abcisse) et `y` (l'ordonnée).  
+`x` (abscisse) et `y` (ordonnée).  
 Il est possible de préciser ou non dans le code quels objets vont dans quels arguments, mais ce n'est pas nécessaire si l'on respecte l'ordre `x` puis `y`.  
 Ainsi, la commande suivante aura le même résultat que précédemment 
 ```{r}
