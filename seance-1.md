@@ -1,4 +1,4 @@
-#### Introduction
+#### 1-Introduction
 
 Dans cette introduction, nous allons decouvrir les bases du langage de programmation R.  
 Tout d'abord, tout le texte précédé par le signe dièse est ce qu'on appelle un commentaire. 
@@ -14,7 +14,7 @@ Nous allons travailler ici avec un jeu de données fictif appelé `Data_clean`.
 Il s'agit d'un tableau décrivant plusieurs données qualitatives, quantitatives et spatiales de l'industrie lithique d'une collection.
 
 
-#### Ouvrir un jeu de données
+#### 2-Ouvrir un jeu de données
 
 Nous allons commencer par ouvrir le jeu de données `Data_exemple` en utilisant le bouton `Import dataset` dans l'onglet `Environnement` en haut à droite:  
 
@@ -40,24 +40,16 @@ head(jdd)
 ![image](figures/screenshot-1.png)
 
 
+#### 3-Explorer un jeu de données
 
-#################################
-# Explorer un jeu de données ####
-#################################
-
-#####
-# On peut vérifier la classe d'objet de jdd par la commande suivante :
+On peut vérifier la classe d'objet de `jdd` avec la commande suivante
+```{r}
 class(jdd)
+```
 
-## un data frame est un type d'objet R correspondant é un tableau. Il existe
-## plusieurs classes que nous découvrirons au fur et é mesure.
+Un data frame est un type d'objet R correspondant à un tableau. Il existe plusieurs classes que nous découvrirons au fur et à mesure.  
 
-## class() est ce qu'on appelle une fonction. C'est une opération qui sera
-## appliquée é un objet. La fonction class() permet d'afficher la classe de 
-## l'objet auquel on applique cette fonction. Lorsque l'on ne comprends pas 
-## l'objectif d'une fonction ou que l'on a oublié, on peut demander de l'aide
-## par la fonction help() ou plus simplement é
-?class
+`class()` est **une fonction**. C'est une opération qui sera appliquée à un objet. La fonction `class()` permet d'afficher la classe de l'objet auquel on applique cette fonction. Lorsque l'on ne comprends pas l'objectif d'une fonction ou que l'on a oublié, on peut demander de l'aide par la fonction `help()` ou plus simplement à `?class`
 help(class) # notez que ces deux commandes ont le méme résultat.
 
 #####
@@ -101,13 +93,13 @@ jdd$type_fac <- as.factor(jdd$type)
 
 class(jdd$type_fac) # méme résultat !
 
-## Nous pouvons é présent vérifier les différentes valeurs que peut prendre une 
+## Nous pouvons à présent vérifier les différentes valeurs que peut prendre une 
 ## variable catégorielle, par la fonction levels()
 levels(jdd$type)
 
 #####
 # Ces quelques fonctions sont utiles pour explorer les données et se rendre 
-# d'erreurs é un stade préliminaire.
+# d'erreurs à un stade préliminaire.
 
 
 ################################
@@ -119,8 +111,8 @@ levels(jdd$type)
 # des piéces. Dans le R de base, on utilise la fonction plot()
 plot(x = jdd$longueur, y = jdd$largeur)
 
-## ici, é l'intérieur de la fonction, on a précisé quels arguments étaient 
-## concernés. Un argument est un objet que l'on passera é la fonction
+## ici, à l'intérieur de la fonction, on a précisé quels arguments étaient 
+## concernés. Un argument est un objet que l'on passera à la fonction
 ## pour qu'elle s'éxécute. Les fonctions comme class(), levels() n'ont qu'un 
 ## argument, c'est pourquoi nous n'avons pas eu besoin de le préciser. De faéon
 ## générale, les arguments sont rentrés dans l'ordre chronologique dans lequel
