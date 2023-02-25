@@ -5,10 +5,10 @@
 # Dans cette introduction, nous allons decouvrir les bases du langage de 
 # programmation R
 
-# Tout d'abord, tout le texte précédé par un "#" est ce qu'on appelle un 
+# Tout d'abord, tout le texte précèdé par un "#" est ce qu'on appelle un 
 # commentaire. Ce sont des lignes qui ne seront pas exécutées par le code et qui
 # nous permettrons de décrire les étapes du script. Bien commenter son code est 
-# trés important car cela nous permet de le comprendre facilement méme aprés des
+# très important car cela nous permet de le comprendre facilement même après des
 # mois et des années sans y avoir travaillé (en théorie !). Cela nous permet 
 # aussi de le partager avec d'autres personnes, pour qu'elles comprennent tout 
 # de suite notre démarche.
@@ -24,10 +24,10 @@
 
 #####
 # Nous allons commencer par ouvrir le jeu de données "Data_exemple" en utilisant 
-# le bouton "Import dataset" dans l'onglet "Environnement" en haut é droite. Ce
+# le bouton "Import dataset" dans l'onglet "Environnement" en haut a droite. Ce
 # bouton permet d'écrire automatiquement le code pour importer un tableau excel.
 
-## Nous verrons é la fin de la séance comment importer des données avec une ligne
+## Nous verrons a la fin de la séance comment importer des données avec une ligne
 ## de code directement (plus reproductible !).
 
 #####
@@ -36,11 +36,11 @@
 # permettant de l'explorer. 
 jdd
 
-## il est également possible, dans l'onglet "Environment" en haut é droite, d'ouvrir
+## il est également possible, dans l'onglet "Environment" en haut a droite, d'ouvrir
 ## le jeu de données en cliquant sur le petit tableau situé sur la ligne "jdd".
 
 ## Afin de ne pas encombrer la console, il est aussi possible de n'afficher que 
-## les 6 premiéres lignes du tableau avec head()
+## les 6 premières lignes du tableau avec head()
 head(jdd)
 
 
@@ -52,16 +52,16 @@ head(jdd)
 # On peut vérifier la classe d'objet de jdd par la commande suivante :
 class(jdd)
 
-## un data frame est un type d'objet R correspondant é un tableau. Il existe
-## plusieurs classes que nous découvrirons au fur et é mesure.
+## un data frame est un type d'objet R correspondant a un tableau. Il existe
+## plusieurs classes que nous découvrirons au fur et a mesure.
 
 ## class() est ce qu'on appelle une fonction. C'est une opération qui sera
-## appliquée é un objet. La fonction class() permet d'afficher la classe de 
+## appliquée a un objet. La fonction class() permet d'afficher la classe de 
 ## l'objet auquel on applique cette fonction. Lorsque l'on ne comprends pas 
 ## l'objectif d'une fonction ou que l'on a oublié, on peut demander de l'aide
-## par la fonction help() ou plus simplement é
+## par la fonction help() ou plus simplement a
 ?class
-help(class) # notez que ces deux commandes ont le méme résultat.
+help(class) # notez que ces deux commandes ont le même résultat.
 
 #####
 # A présent je souhaite obtenir des informations statistiques générales sur 
@@ -104,13 +104,13 @@ jdd$type_fac <- as.factor(jdd$type)
 
 class(jdd$type_fac) # méme résultat !
 
-## Nous pouvons é présent vérifier les différentes valeurs que peut prendre une 
+## Nous pouvons à présent vérifier les différentes valeurs que peut prendre une 
 ## variable catégorielle, par la fonction levels()
 levels(jdd$type)
 
 #####
 # Ces quelques fonctions sont utiles pour explorer les données et se rendre 
-# d'erreurs é un stade préliminaire.
+# d'erreurs à un stade préliminaire.
 
 
 ################################
@@ -122,12 +122,12 @@ levels(jdd$type)
 # des piéces. Dans le R de base, on utilise la fonction plot()
 plot(x = jdd$longueur, y = jdd$largeur)
 
-## ici, é l'intérieur de la fonction, on a précisé quels arguments étaient 
-## concernés. Un argument est un objet que l'on passera é la fonction
+## ici, à l'intérieur de la fonction, on a précisé quels arguments étaient 
+## concernés. Un argument est un objet que l'on passera à la fonction
 ## pour qu'elle s'éxécute. Les fonctions comme class(), levels() n'ont qu'un 
-## argument, c'est pourquoi nous n'avons pas eu besoin de le préciser. De faéon
+## argument, c'est pourquoi nous n'avons pas eu besoin de le préciser. De facon
 ## générale, les arguments sont rentrés dans l'ordre chronologique dans lequel
-## ils sont programmés dans la fonction. Voyons voir cela de plus prés. 
+## ils sont programmés dans la fonction. Voyons voir cela de plus près. 
 ?plot
 
 ## dans la fiche d'aide, nous pouvons voir que cette fonction nécessite deux
@@ -149,10 +149,10 @@ plot(x = jdd$longueur, y = jdd$largeur,
      xlab = "Longueur (cm)", ylab = "Largeur (cm)") # afin d'éclaircir le code, 
                                                     # il est possible de sauter 
                                                     # une ligne avant de fermer 
-                                                    # la parenthése !
+                                                    # la parenthèse !
 
 ## précisons ici que les textes entre guillemets ("") seront automatiquement
-## considérés comme des objets de type caractére. Il est d'ailleurs possible de 
+## considérés comme des objets de type caractère. Il est d'ailleurs possible de 
 ## les définir avant de les inclure dans la fonction :
 xlabel <- "Longueur (cm)"
 ylabel <- "Largeur (cm)"
@@ -194,7 +194,7 @@ plot(x = jdd$longueur, y = jdd$largeur,
 
 #####
 # Personnellement, je trouve que les points de ce graphe sont beaucoup trop petits
-# pour étre bien visibles. Heureusement, R nous permet de modifier leur taille
+# pour être bien visibles. Heureusement, R nous permet de modifier leur taille
 # au sein de la fonction plot(). 
 plot(x = jdd$longueur, y = jdd$largeur,
      col = jdd$type_fac, 
@@ -204,15 +204,15 @@ plot(x = jdd$longueur, y = jdd$largeur,
      main = title)
 
 #####
-# Enfin, derniére étape de notre TD : enregistrer notre figure ! 
+# Enfin, dernière étape de notre TD : enregistrer notre figure ! 
 # Il existe plusieurs solutions :
-## La premiére est de cliquer sur le bouton "export" dans l'onglet "plot". Vous
+## La première est de cliquer sur le bouton "export" dans l'onglet "plot". Vous
 ## pouvez alors choisir le dossier dans lequel sauvegarder la figure, dont vous 
 ## pouvez modifier les dimensions manuellement. 
 
 ## Toutefois, il est parfois utile de sauvegarder directement la figure avec une
 ## ligne de code, notamment dans le but de réaliser plusieurs figures similaires
-## de la méme taille exactement ! Cette faéon de faire est plus reproductible et 
+## de la même taille exactement ! Cette facon de faire est plus reproductible et 
 ## ne complique par le code outre mesure.
 
 
@@ -220,7 +220,7 @@ plot(x = jdd$longueur, y = jdd$largeur,
 ### Il faut tout d'abord créer un fichier pdf vide de la taille voulue :
 pdf("E:/Enseignement/R pour archéologues/Séance 1/Figure1.pdf", # ici on écrit le
                                                                 # chemin vers la figure
-     width = 4.5, height = 4.5) # et lé les dimensions de la figure en cm. 
+     width = 4.5, height = 4.5) # et ici les dimensions de la figure en cm. 
 
 ### On écrit la figure dans le pdf
 plot(x = jdd$longueur, y = jdd$largeur,
@@ -230,7 +230,7 @@ plot(x = jdd$longueur, y = jdd$largeur,
      xlab = xlabel, ylab = ylabel, 
      main = title)
 
-### et on cléture l'écriture de la figure dans le pdf
+### et on cloture l'écriture de la figure dans le pdf
 dev.off()
 
 
