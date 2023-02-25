@@ -22,7 +22,7 @@ Nous allons commencer par ouvrir le jeu de données `Data_exemple` en utilisant 
 
 <code>.../GitHub/R-pour-archeologues/data/Data_exemple.xlsx</code>
 
-2- Dans cette même fenêtre dans la section `import options` il est possible de spécifier le nom du jeu de données qui sera stocké dans R: appelez le `jdd`  
+2- Dans cette même fenêtre dans la section `import options` il est possible de spécifier le nom du jeu de données qui sera stocké dans R: appelez le "jdd".  
 
 Cette procédure permet d'écrire automatiquement le code pour importer un tableau excel.  
 Nous verrons ensuite comment importer des données avec une ligne de code directement, ce qui est plus reproductible.  
@@ -32,7 +32,7 @@ Vous venez d'ouvrir le tableau dans R ! Il a été stocké dans un objet que l'o
 jdd
 ```
 
-Il est également possible, dans l'onglet `Environment` en haut à droite, d'ouvrir le jeu de données en cliquant sur le petit tableau situé sur la ligne `jdd`.
+Il est également possible d'ouvrir le jeu de données en cliquant sur la ligne `jdd`, située la section `Data` du panneau en haut à droite (onglet `Environment`).
 
 ## Afin de ne pas encombrer la console, il est aussi possible de n'afficher que 
 ## les 6 premiéres lignes du tableau avec head()
