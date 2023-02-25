@@ -18,7 +18,9 @@ Il s'agit d'un tableau décrivant plusieurs données qualitatives, quantitatives
 
 Nous allons commencer par ouvrir le jeu de données `Data_exemple` en utilisant le bouton `Import dataset` dans l'onglet `Environnement` en haut à droite:  
 
-1- Choisir le fichier dans le répertoire avec le bouton `browse`:   <code>.../GitHub/R-pour-archeologues/data/Data_exemple.xlsx</code>
+1- Choisir le fichier dans le répertoire avec le bouton `browse`:  
+
+<code>.../GitHub/R-pour-archeologues/data/Data_exemple.xlsx</code>
 
 2- Dans cette même fenêtre dans la section `import options` il est possible de spécifier le nom du jeu de données qui sera stocké dans R: appelez le `jdd`  
 
