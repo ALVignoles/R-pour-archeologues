@@ -36,16 +36,14 @@ Il est également possible d'ouvrir le jeu de données en cliquant sur la ligne 
 Afin de ne pas encombrer la console, il est aussi possible de n'afficher que les 6 premiéres lignes du tableau avec la commande `head()`
 ```{r}
 head(jdd)
-
-print("You will not see the text output.")
 ```
-`numero         type  x  y longueur largeur  silex raccord`
-`1      1     gravette  1  6        5     1.5  type1      NA`
-`2      2     gravette  3  5      5.9     1.8 type 3      NA`
-`3      3     picardie  5  8      3.2     1.2 type 2       1`
-`4      4      percoir 26 10      4.7     2.1 type 2      NA`
-`5      5        burin 24 12        6     2.4 type 2       2`
-`6      6 burin diedre 28 15        8     3.5  type1      NA`
+`numero         type  x  y longueur largeur  silex raccord`  
+`1      1     gravette  1  6        5     1.5  type1      NA`  
+`2      2     gravette  3  5      5.9     1.8 type 3      NA`  
+`3      3     picardie  5  8      3.2     1.2 type 2       1`  
+`4      4      percoir 26 10      4.7     2.1 type 2      NA`  
+`5      5        burin 24 12        6     2.4 type 2       2`  
+`6      6 burin diedre 28 15        8     3.5  type1      NA`  
 
 
 #################################
