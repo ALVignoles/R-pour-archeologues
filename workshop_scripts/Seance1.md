@@ -1,4 +1,4 @@
-### Introduction
+#### Introduction
 
 Dans cette introduction, nous allons decouvrir les bases du langage de programmation R.  
 Tout d'abord, tout le texte précédé par le signe dièse est ce qu'on appelle un commentaire. 
@@ -10,29 +10,34 @@ Bien commenter son code est très important car cela nous permet de le comprendr
 Cela nous permet aussi de le partager avec d'autres personnes, pour qu'elles comprennent tout de suite notre démarche.  
 
 
-Nous allons travailler ici avec un jeu de données fictif appelé "Data_clean".  
+Nous allons travailler ici avec un jeu de données fictif appelé `Data_clean`.  
 Il s'agit d'un tableau décrivant plusieurs données qualitatives, quantitatives et spatiales de l'industrie lithique d'une collection.
 
 
-### Ouvrir un jeu de données
+#### Ouvrir un jeu de données
 
-Nous allons commencer par ouvrir le jeu de données `Data_exemple` en utilisant le bouton `Import dataset` dans l'onglet `Environnement` en haut à droite. Ce bouton permet d'écrire automatiquement le code pour importer un tableau excel.
+Nous allons commencer par ouvrir le jeu de données `Data_exemple` en utilisant le bouton `Import dataset` dans l'onglet `Environnement` en haut à droite: 
+1- Choisir le fichier dans le répertoire avec le bouton `browse`:
+``` js
+~/Documents/GitHub/R-pour-archeologues/data/Data_exemple.xlsx;
+```
+2- Dans cette même fenêtre dans la section `import options` il est possible de spécifier le nom du jeu de données qui sera stocké dans R: appelez le `jdd`  
 
-## Nous verrons é la fin de la séance comment importer des données avec une ligne
-## de code directement (plus reproductible !).
+Cette procédure permet d'écrire automatiquement le code pour importer un tableau excel.  
+Nous verrons ensuite comment importer des données avec une ligne de code directement, ce qui est plus reproductible.  
 
-#####
-# Vous venez d'ouvrir le tableau dans R ! Il a été stocké dans un objet que l'on 
-# a appelé "jdd". Si vous l'appelez dans la console, il s'affichera, vous 
-# permettant de l'explorer. 
+Vous venez d'ouvrir le tableau dans R ! Il a été stocké dans un objet que l'on a appelé `jdd`. Si vous l'appelez dans la console, il s'affichera et vous pourrez l'explorer.
+```{r}
 jdd
+```
 
-## il est également possible, dans l'onglet "Environment" en haut é droite, d'ouvrir
-## le jeu de données en cliquant sur le petit tableau situé sur la ligne "jdd".
+Il est également possible, dans l'onglet `Environment` en haut à droite, d'ouvrir le jeu de données en cliquant sur le petit tableau situé sur la ligne `jdd`.
 
 ## Afin de ne pas encombrer la console, il est aussi possible de n'afficher que 
 ## les 6 premiéres lignes du tableau avec head()
+```{r}
 head(jdd)
+```
 
 
 #################################
