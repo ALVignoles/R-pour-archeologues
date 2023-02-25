@@ -1,14 +1,14 @@
 ### Introduction
 
 Dans cette introduction, nous allons decouvrir les bases du langage de programmation R.  
-Tout d'abord, tout le texte précédé par un "#" est ce qu'on appelle un commentaire. 
+Tout d'abord, tout le texte précédé par le signe dièse est ce qu'on appelle un commentaire. 
+```{r}
+# commentaire
+```
 Ce sont des lignes qui ne seront pas exécutées par le code et qui nous permettrons de décrire les étapes du script.
 Bien commenter son code est très important car cela nous permet de le comprendre facilement méme après des mois et des années sans y avoir travaillé (en théorie !).
 Cela nous permet aussi de le partager avec d'autres personnes, pour qu'elles comprennent tout de suite notre démarche.  
 
-```{r}
-random command # <- ça c'est du code
-```
 
 Nous allons travailler ici avec un jeu de données fictif appelé "Data_clean".  
 Il s'agit d'un tableau décrivant plusieurs données qualitatives, quantitatives et spatiales de l'industrie lithique d'une collection.
