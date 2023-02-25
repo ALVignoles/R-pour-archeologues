@@ -183,15 +183,15 @@ plot(x = jdd$longueur, y = jdd$largeur,
 ```
 ![image](figures/Rplot6.png)
 
-Il existe plusieurs moyens d'enregistrer notre figure:  
+Il existe plusieurs moyens pour enregistrer une figure:  
 - Le premier est de cliquer sur le bouton `Export` dans l'onglet `Plots`. Vous pouvez alors choisir le dossier dans lequel sauvegarder la figure, dont vous pouvez modifier les dimensions manuellement.  
-- Toutefois, il est parfois utile de sauvegarder directement la figure avec une ligne de code, notamment dans le but de réaliser plusieurs figures similaires de la même taille exactement ! Cette façon de faire est plus reproductible et ne complique par le code outre mesure.  
+- Toutefois, il est parfois utile de sauvegarder directement la figure avec une ligne de code, notamment dans le but de réaliser plusieurs figures similaires de la même taille exactement ! Utiliser la fonction `pdf()` est plus reproductible et ne complique par le code outre mesure.  
 
-Enregistrons notre figure en format pdf.  
+Enregistrons notre figure au format pdf de cette manière:
 ```{r}
 #Il faut tout d'abord créer un fichier pdf vide de la taille voulue
-pdf("figures/Figure1.pdf", # ici on écrit le chemin vers la figure
-     width = 4.5, height = 4.5) # et ici les dimensions de la figure en cm. 
+pdf("figures/Figure1.pdf",        # ici on écrit le chemin vers la figure
+     width = 4.5, height = 4.5)   # et ici les dimensions de la figure en cm. 
 
 ### On écrit la figure dans le pdf
 plot(x = jdd$longueur, y = jdd$largeur,
@@ -202,6 +202,7 @@ plot(x = jdd$longueur, y = jdd$largeur,
      main = title)
 
 ### et on clôture l'écriture de la figure dans le pdf
+
 dev.off()
 ```
 
