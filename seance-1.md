@@ -1,4 +1,6 @@
-#### 1-Introduction
+## Séance 1 : Se familiariser avec R
+
+### 1-Introduction
 
 Dans cette introduction, nous allons decouvrir les bases du langage de programmation R.  
 Tout d'abord, tout le texte précédé par le signe dièse est ce qu'on appelle un commentaire. 
@@ -14,7 +16,7 @@ Nous allons travailler ici avec un jeu de données fictif appelé `Data_clean`.
 Il s'agit d'un tableau décrivant plusieurs données qualitatives, quantitatives et spatiales de l'industrie lithique d'une collection.
 
 
-#### 2-Ouvrir un jeu de données
+### 2-Ouvrir un jeu de données
 
 Nous allons commencer par ouvrir le jeu de données `Data_exemple` en utilisant le bouton `Import dataset` dans l'onglet `Environnement` en haut à droite:  
 
@@ -40,7 +42,7 @@ head(jdd)
 ![image](figures/screenshot-1.png)
 
 
-#### 3-Explorer un jeu de données
+### 3-Explorer un jeu de données
 
 On peut vérifier la classe d'objet de `jdd` avec la commande suivante
 ```{r}
