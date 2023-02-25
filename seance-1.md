@@ -1,4 +1,4 @@
-## Séance 1 : Se familiariser avec R
+# Séance 1 : Se familiariser avec R
 
 ### 1-Introduction
 
