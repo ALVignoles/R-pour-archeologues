@@ -10,7 +10,7 @@ Ce dépôt contient les tutoriels, scripts et données nécessaires pour suivre 
 - [Séance 2 : ](seance-2.md)
 
 
-![image](workshop_preparation/poster.png)
+![image](figures/poster.png)
 
 ### License
 
