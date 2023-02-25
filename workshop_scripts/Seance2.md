@@ -1,19 +1,22 @@
 #### Introduction ####
-# Au cours de cette seance nous utiliserons l'extension (package) tidyverse.
-# Le terme tidyverse est une contraction de 'tidy' (qu’on pourrait traduire par “bien rangé”) et de 'universe'.
-# Il s’agit en fait d’une collection d’extensions conçues pour travailler ensemble et basées sur une philosophie commune.
-# Elles abordent un très grand nombre d’opérations courantes dans R (la liste n’est pas exhaustive) :
-  
-  visualisation
-manipulation des tableaux de données
-import/export de données
-manipulation de variables
-extraction de données du Web
-programmation
+Au cours de cette seance nous utiliserons l'extension (*package*) **tidyverse**.
+Le terme tidyverse est une contraction de '*tidy*' (qu’on pourrait traduire par “bien rangé”) et de '*universe*'.
+Il s’agit en fait d’une collection d’extensions conçues pour travailler ensemble et basées sur une philosophie commune.
+Elles abordent un très grand nombre d’opérations courantes dans R (la liste n’est pas exhaustive) :
+- visualisation
+- manipulation des tableaux de données
+- import/export de données
+- manipulation de variables
+- extraction de données du Web
+- programmation
 
 Un des objectifs de ces extensions est de fournir des fonctions avec une syntaxe cohérente, qui fonctionnent bien ensemble, et qui retournent des résultats prévisibles. Elles sont en grande partie issues du travail d’Hadley Wickham, qui travaille désormais pour RStudio.
 
+Télécharger et charger le *package* **tidyverse**:
+```{r}
+install.packages("tidyverse")
 library(tidyverse)
+```
 
 
 # creation d'un dataframe hypothetique 
