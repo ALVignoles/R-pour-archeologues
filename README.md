@@ -3,7 +3,7 @@
 
 Ce dépôt contient les tutoriels, scripts et données nécessaires pour suivre le workshop "R-pour-archeologues" organisé par A. Vignoles et A. Hermann au sein de l'UMR 8068 en Avril 2023.
 
-1- (Débuter avec R)[Débuter avec R.md]
+1- [Débuter avec R](https://github.com/ALVignoles/R-pour-archeologues/blob/main/Debuter_avec_R.md)
 
 
 ### License
