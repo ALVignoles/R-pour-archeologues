@@ -87,7 +87,7 @@ NB : généralement quand on modifie les données primaires, il vaut toujours mi
 ```{r}
 jdd$type_fac <- as.factor(jdd$type)
 
-class(jdd$type_fac) # méme résultat !
+class(jdd$type_fac) # même résultat !
 ```
 
 Nous pouvons à présent vérifier les différentes valeurs que peut prendre une variable catégorielle, par la fonction `levels()`
@@ -116,47 +116,52 @@ Ainsi, la commande suivante aura le même résultat que précédemment
 ```{r}
 plot(jdd$longueur, jdd$largeur)
 ```
+![image](figures/Rplot1.png)
+
 Notez ici l'importance de bien séparer chaque argument par une virgule `,` pour ne pas créer d'erreur.  
 
 Si la fonction `plot()` nécessite ces deux arguments pour fonctionner, nous pouvons lui transmettre d'autres arguments annexes permettant d'améliorer la qualité graphique. Par exemple, modifions un peu le titre des axes pour que ce soit plus clair:
 ```{r}
 plot(x = jdd$longueur, y = jdd$largeur,
-     xlab = "Longueur (cm)", ylab = "Largeur (cm)") # oui, il est possible de sauter une ligne avant de fermer la parenthèse !
+     xlab = "Longueur (cm)", ylab = "Largeur (cm)") 
+# oui, il est possible de sauter une ligne avant de fermer la parenthèse !
 ```
+![image](figures/Rplot2.png)
 
-## précisons ici que les textes entre guillemets ("") seront automatiquement
-## considérés comme des objets de type caractére. Il est d'ailleurs possible de 
-## les définir avant de les inclure dans la fonction :
+Précisons ici que les textes entre guillemets ("" ou '') seront automatiquement considérés comme des objets de type caractère. Il est d'ailleurs possible de les définir avant de les inclure dans la fonction:
+```{r}
 xlabel <- "Longueur (cm)"
 ylabel <- "Largeur (cm)"
-
-## et de les afficher
+```
+et de les afficher
+```{r}
 xlabel
 ylabel
 
 plot(x = jdd$longueur, y = jdd$largeur,
      xlab = xlabel, ylab = ylabel)
 
-## Ajoutons également un titre !
+# Ajoutons également un titre
 title <- "Dimension des objets en silex"
 
 plot(x = jdd$longueur, y = jdd$largeur,
      xlab = xlabel, ylab = ylabel, 
      main = title)
+```
+![image](figures/Rplot3.png)
 
-#####
-# pour aller plus loin dans l'analyse, il est possible de colorer les points 
-# en fonction d'une catégorie. Voyons par exemple ce que cela donne avec la 
-# catégorie "type_fac"
+Pour aller plus loin dans l'analyse, il est possible de colorer les points en fonction d'une catégorie.  Voyons par exemple ce que cela donne avec la catégorie `type_fac`
+```{r}
 plot(x = jdd$longueur, y = jdd$largeur,
      col = jdd$type_fac, 
      xlab = xlabel, ylab = ylabel,
      main = title)
+```
+![image](figures/Rplot4.png)
 
-#####
-# On peut également changer la forme des points avec l'argument "pch". Essayons
-# de faire un graphique avec des formes différentes en fonction du type de silex.
-## NB : N'oublions pas de convertir notre colonne silex en facteur !
+On peut également changer la forme des points avec l'argument `pch`. Essayons de faire un graphique avec des formes différentes en fonction du type de silex.
+NB : N'oublions pas de convertir notre colonne silex en facteur !
+```{r}
 jdd$silex_fac <- as.factor(jdd$silex)
 
 plot(x = jdd$longueur, y = jdd$largeur,
@@ -164,36 +169,29 @@ plot(x = jdd$longueur, y = jdd$largeur,
      pch = c(16, 17, 18)[as.numeric(jdd$silex_fac)], # ici, on 
      xlab = xlabel, ylab = ylabel, 
      main = title)
+```
+![image](figures/Rplot5.png)
 
-#####
-# Personnellement, je trouve que les points de ce graphe sont beaucoup trop petits
-# pour étre bien visibles. Heureusement, R nous permet de modifier leur taille
-# au sein de la fonction plot(). 
+Les points de ce graphe sont trop petits pour être bien visibles. Mais bien sûr il est possible de modifier leur taille au sein de la fonction `plot()`. 
+```{r}
 plot(x = jdd$longueur, y = jdd$largeur,
      col = jdd$type_fac, 
      pch = c(16, 17, 18)[as.numeric(jdd$silex_fac)], # ici, on 
      cex = 1.5,
      xlab = xlabel, ylab = ylabel, 
      main = title)
+```
+![image](figures/Rplot6.png)
 
-#####
-# Enfin, derniére étape de notre TD : enregistrer notre figure ! 
-# Il existe plusieurs solutions :
-## La premiére est de cliquer sur le bouton "export" dans l'onglet "plot". Vous
-## pouvez alors choisir le dossier dans lequel sauvegarder la figure, dont vous 
-## pouvez modifier les dimensions manuellement. 
+Il existe plusieurs moyens d'enregistrer notre figure:  
+- Le premier est de cliquer sur le bouton `Export` dans l'onglet `Plots`. Vous pouvez alors choisir le dossier dans lequel sauvegarder la figure, dont vous pouvez modifier les dimensions manuellement.  
+- Toutefois, il est parfois utile de sauvegarder directement la figure avec une ligne de code, notamment dans le but de réaliser plusieurs figures similaires de la même taille exactement ! Cette façon de faire est plus reproductible et ne complique par le code outre mesure.  
 
-## Toutefois, il est parfois utile de sauvegarder directement la figure avec une
-## ligne de code, notamment dans le but de réaliser plusieurs figures similaires
-## de la méme taille exactement ! Cette faéon de faire est plus reproductible et 
-## ne complique par le code outre mesure.
-
-
-## Enregistrons notre figure en format pdf. 
-### Il faut tout d'abord créer un fichier pdf vide de la taille voulue :
-pdf("E:/Enseignement/R pour archéologues/Séance 1/Figure1.pdf", # ici on écrit le
-                                                                # chemin vers la figure
-     width = 4.5, height = 4.5) # et lé les dimensions de la figure en cm. 
+Enregistrons notre figure en format pdf.  
+```{r}
+#Il faut tout d'abord créer un fichier pdf vide de la taille voulue
+pdf("figures/Figure1.pdf", # ici on écrit le chemin vers la figure
+     width = 4.5, height = 4.5) # et ici les dimensions de la figure en cm. 
 
 ### On écrit la figure dans le pdf
 plot(x = jdd$longueur, y = jdd$largeur,
@@ -203,10 +201,8 @@ plot(x = jdd$longueur, y = jdd$largeur,
      xlab = xlabel, ylab = ylabel, 
      main = title)
 
-### et on cléture l'écriture de la figure dans le pdf
+### et on clôture l'écriture de la figure dans le pdf
 dev.off()
+```
 
-
-##############################################################
-# FELICITATIONS ! Vous avez fait vos premiers pas sur R !!####
-##############################################################
+**FELICITATIONS ! Vous avez fait vos premiers pas sur R !!**
