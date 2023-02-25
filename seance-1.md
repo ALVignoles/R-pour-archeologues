@@ -121,7 +121,7 @@ Notez ici l'importance de bien séparer chaque argument par une virgule `,` pour
 Si la fonction `plot()` nécessite ces deux arguments pour fonctionner, nous pouvons lui transmettre d'autres arguments annexes permettant d'améliorer la qualité graphique. Par exemple, modifions un peu le titre des axes pour que ce soit plus clair:
 ```{r}
 plot(x = jdd$longueur, y = jdd$largeur,
-     xlab = "Longueur (cm)", ylab = "Largeur (cm)") # oui il est possible de sauter une ligne avant de fermer la parenthèse !
+     xlab = "Longueur (cm)", ylab = "Largeur (cm)") # oui, il est possible de sauter une ligne avant de fermer la parenthèse !
 ```
 
 ## précisons ici que les textes entre guillemets ("") seront automatiquement
