@@ -48,97 +48,81 @@ class(jdd)
 ```
 
 Un data frame est un type d'objet R correspondant à un tableau. Il existe plusieurs classes que nous découvrirons au fur et à mesure.  
+`class()` est **une fonction**. C'est une opération qui sera appliquée à un objet. La fonction `class()` permet d'afficher la classe de l'objet auquel on applique cette fonction. Lorsque l'on ne comprends pas l'objectif d'une fonction ou que l'on a oublié, on peut demander de l'aide par la fonction `help()` ou plus simplement à `?class` ou encore `help(class)`. Notez que ces deux commandes ont le méme résultat.
 
-`class()` est **une fonction**. C'est une opération qui sera appliquée à un objet. La fonction `class()` permet d'afficher la classe de l'objet auquel on applique cette fonction. Lorsque l'on ne comprends pas l'objectif d'une fonction ou que l'on a oublié, on peut demander de l'aide par la fonction `help()` ou plus simplement à `?class`
-help(class) # notez que ces deux commandes ont le méme résultat.
-
-#####
-# A présent je souhaite obtenir des informations statistiques générales sur 
-# les différentes dimensions du tableau. On utilise la fonction summary()
+A présent on souhaite obtenir des informations statistiques générales sur les différentes dimensions du tableau. On utilise la fonction `summary()`
+```{r}
 summary(jdd)
+```
 
-## On obtient des informations telles que le min/max/moyenne etc de chaque
-## variable numérique. 
-
-#####
-# On peut aussi afficher certaines informations sur les dimensions du tableau, 
-# comme le nombre de colonnes, de lignes
+On peut obtenir des informations basiques telles que le min/max/moyenne etc de chaque variable de classe numérique.  
+On peut aussi afficher certaines informations sur les dimensions du tableau, comme le nombre de colonnes et de lignes
+```{r}
 nrow(jdd) # nb de lignes
 ncol(jdd) # nb de colonnes 
+```
 
-#####
-# Pour vérifier le type de variable dans un tableau (ce sera important car 
-# certaines fonctions nécessitent un type de variable particulier), on 
-# peut appliquer la fonction class() sur chaque variable séparément par 
-# l'opérateur $
+Pour vérifier le type de variable dans un tableau (ce sera important car certaines fonctions nécessitent un type de variable particulier), on peut appliquer la fonction `class()` sur chaque variable séparément par l'opérateur `$`
+```{r}
 class(jdd$type)
 class(jdd$longueur)
+```
 
-## la variable "longueur" est de classe numérique tandis que la variable
-## "type" est de classe character. Or, pour traiter des variables catégorielles
-## avec R il vaut mieux utiliser le format "factor". Nous allons donc convertir
-## la variable "type" en facteur avec la fonction factor :
-jdd$type <- factor(jdd$type) ### cette commande signifie au pied de la lettre : 
-                             ### dans la colonne "type" du data frame "jdd", je  
-                             ### mets la colonne "type" du data frame "jdd" 
-                             ### converti en facteur
+La variable `longueur` est de classe numérique tandis que la variable `type` est de classe `character`. Or, pour traiter des variables catégorielles avec R il vaut mieux utiliser le format `factor`. Nous allons donc convertir la variable `type` en facteur avec la fonction `factor()`.
+```{r}
+jdd$type <- factor(jdd$type) 
+# cette commande signifie au pied de la lettre : 
+# dans la colonne "type" du data frame "jdd", je  
+# mets la colonne "type" du data frame "jdd" 
+# converti en facteur
+```
 
-## On vérifie que le code a bien fonctionné avec class()
+On vérifie que le code a bien fonctionné avec class()
+```{r}
 class(jdd$type)
-
-### NB : généralement quand on modifie les données primaires, il vaut toujours mieux
-### créer une nouvelle colonne afin de garder une trace des données brutes. On aurait
-### pu faire quelque chose comme cela :
+```
+NB : généralement quand on modifie les données primaires, il vaut toujours mieux créer une nouvelle colonne afin de garder une trace des données brutes. On aurait pu faire quelque chose comme cela :
+```{r}
 jdd$type_fac <- as.factor(jdd$type)
 
 class(jdd$type_fac) # méme résultat !
+```
 
-## Nous pouvons à présent vérifier les différentes valeurs que peut prendre une 
-## variable catégorielle, par la fonction levels()
+Nous pouvons à présent vérifier les différentes valeurs que peut prendre une variable catégorielle, par la fonction `levels()`
+```{r}
 levels(jdd$type)
+```
 
-#####
-# Ces quelques fonctions sont utiles pour explorer les données et se rendre 
-# d'erreurs à un stade préliminaire.
+Ces quelques fonctions sont utiles pour explorer les données et se rendre compte d'erreurs à un stade préliminaire.
 
 
-################################
-# Créer un graphique simple ####
-################################
+#### 4-Créer un graphique simple 
 
-#####
-# A présent, essayons de visualiser un graphique de la longueur vs la largeur 
-# des piéces. Dans le R de base, on utilise la fonction plot()
+A présent, essayons de visualiser un graphique de la longueur vs la largeur des pièces. Dans le R de base, on utilise la fonction `plot()`
+```{r}
 plot(x = jdd$longueur, y = jdd$largeur)
-
-## ici, à l'intérieur de la fonction, on a précisé quels arguments étaient 
-## concernés. Un argument est un objet que l'on passera à la fonction
-## pour qu'elle s'éxécute. Les fonctions comme class(), levels() n'ont qu'un 
-## argument, c'est pourquoi nous n'avons pas eu besoin de le préciser. De faéon
-## générale, les arguments sont rentrés dans l'ordre chronologique dans lequel
-## ils sont programmés dans la fonction. Voyons voir cela de plus prés. 
+```
+Ici, à l'intérieur de la fonction, on a précisé quels arguments étaient concernés. Un argument est un objet que l'on passera à la fonction pour qu'elle s'éxecute. Les fonctions comme `class()`, `levels()` n'ont qu'un argument, c'est pourquoi nous n'avons pas eu besoin de le préciser.  
+De façon générale, les arguments sont rentrés dans l'ordre chronologique dans lequel ils sont programmés dans la fonction. Voyons voir cela de plus près. 
+```{r}
 ?plot
-
-## dans la fiche d'aide, nous pouvons voir que cette fonction nécessite deux
-## arguments au minimum : x (l'abcisse) et y (l'ordonnée). Il est possible
-## de préciser ou non dans le code quels objets vont dans quels arguments, mais
-## ce n'est pas nécessaire. Ainsi, la commande suivante aura le méme résultat
-## que précédemment 
+```
+Dans la fiche d'aide, nous pouvons voir que cette fonction nécessite deux arguments au minimum :  
+`x` (l'abcisse) et `y` (l'ordonnée).  
+Il est possible de préciser ou non dans le code quels objets vont dans quels arguments, mais ce n'est pas nécessaire si l'on respecte l'ordre `x` puis `y`.  
+Ainsi, la commande suivante aura le même résultat que précédemment 
+```{r}
 plot(jdd$longueur, jdd$largeur)
+```
+Notez ici l'importance de bien séparer chaque argument par une virgule `,` pour ne pas créer d'erreur.  
 
-## Notez ici l'importance de bien séparer chaque argument par une ',' pour ne 
-## pas créer une erreur
-
-#####
-# Si la fonction plot() nécessite ces deux arguments pour fonctionner, nous 
-# pouvons lui transmettre d'autres arguments annexes permettant notamment
-# d'améliorer la qualité graphique. Par exemple, modifions un peu le titre des 
-# axes pour que ce soit plus clair
+Si la fonction `plot()` nécessite ces deux arguments pour fonctionner, nous pouvons lui transmettre d'autres arguments annexes permettant d'améliorer la qualité graphique. Par exemple, modifions un peu le titre des axes pour que ce soit plus clair:
+```{r}
 plot(x = jdd$longueur, y = jdd$largeur,
-     xlab = "Longueur (cm)", ylab = "Largeur (cm)") # afin d'éclaircir le code, 
-                                                    # il est possible de sauter 
-                                                    # une ligne avant de fermer 
-                                                    # la parenthése !
+     xlab = "Longueur (cm)", ylab = "Largeur (cm)") 
+# afin d'éclaircir le code: il est possible de sauter 
+# une ligne avant de fermer la parenthèse !
+```
 
 ## précisons ici que les textes entre guillemets ("") seront automatiquement
 ## considérés comme des objets de type caractére. Il est d'ailleurs possible de 
