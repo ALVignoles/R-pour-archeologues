@@ -2,7 +2,7 @@ Documents et instructions pour prendre en main le logiciel R :nerd_face: :sungla
 
 # Pour débuter avec R
 ## Installer  
-[R pour Mac](https://cran.r-project.org/bin/macosx/) ou [R pour Windows](https://cran.r-project.org/bin/windows/base/) ou [R pour Linux](https://cran.r-project.org/bin/linux/)  
+[R pour Mac](https://external.ink?to=/https://cran.r-project.org/bin/macosx/) ou [R pour Windows](https://cran.r-project.org/bin/windows/base/) ou [R pour Linux](https://cran.r-project.org/bin/linux/)  
 [R studio](https://www.rstudio.com/products/rstudio/download/)
 
 ## Pour commencer
