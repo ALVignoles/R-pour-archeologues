@@ -1,4 +1,7 @@
-#### Introduction ####
+# Séance 2 : Analyser et visualiser un jeu de données semi-quantitatif
+
+### 1- Introduction
+
 Au cours de cette seance nous utiliserons l'extension (*package*) **tidyverse**.
 Le terme tidyverse est une contraction de '*tidy*' (qu’on pourrait traduire par “bien rangé”) et de '*universe*'.
 Il s’agit en fait d’une collection d’extensions conçues pour travailler ensemble et basées sur une philosophie commune.
