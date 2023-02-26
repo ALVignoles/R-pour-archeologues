@@ -56,6 +56,7 @@ A présent on souhaite obtenir des informations statistiques générales sur les
 ```{r}
 summary(jdd)
 ```
+![image](figures/screenshot-2.png)
 
 On peut obtenir des informations basiques telles que le min/max/moyenne etc de chaque variable de classe numérique.  
 On peut aussi afficher certaines informations sur les dimensions du tableau, comme le nombre de colonnes et de lignes
@@ -94,9 +95,10 @@ Nous pouvons à présent vérifier les différentes valeurs que peut prendre une
 ```{r}
 levels(jdd$type)
 ```
+![image](figures/screenshot-3.png)
+
 
 Ces quelques fonctions sont utiles pour explorer les données et se rendre compte d'erreurs à un stade préliminaire.
-
 
 #### 4-Créer un graphique simple 
 
