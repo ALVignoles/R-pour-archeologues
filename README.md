@@ -1,5 +1,5 @@
 
-#  R-pour-archeologues
+#  R pour aRchéologues
 
 Ce dépôt contient les tutoriels, scripts et données nécessaires pour suivre le workshop "R pour les archeologues" organisé par A. Vignoles et A. Hermann au sein de l'UMR 8068 en Avril 2023.
 
