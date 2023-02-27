@@ -3,7 +3,7 @@
 ### 1-Introduction
 
 Dans cette introduction, nous allons decouvrir les bases du langage de programmation R.  
-Tout d'abord, tout le texte précédé par le signe dièse est ce qu'on appelle un commentaire. 
+Tout d'abord, tout le texte précédé par le signe # est ce qu'on appelle un commentaire. 
 ```{r}
 # commentaire
 ```
@@ -22,7 +22,7 @@ Nous allons commencer par ouvrir le jeu de données `Data_exemple` en utilisant 
 
 1- Choisir le fichier dans le répertoire avec le bouton `browse`:  
 
-<code>.../GitHub/R-pour-archeologues/data/Data_exemple.xlsx</code>
+<code>.../R-pour-archeologues/data/Data_exemple.xlsx</code>
 
 2- Dans cette même fenêtre dans la section `import options` il est possible de spécifier le nom du jeu de données qui sera stocké dans R: appelez le "jdd".  
 
