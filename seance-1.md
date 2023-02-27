@@ -168,7 +168,8 @@ jdd$silex_fac <- as.factor(jdd$silex)
 
 plot(x = jdd$longueur, y = jdd$largeur,
      col = jdd$type_fac, 
-     pch = c(16, 17, 18)[as.numeric(jdd$silex_fac)], # ici, on 
+     pch = c(16, 17, 18)[as.numeric(jdd$silex_fac)], # ici, on assigne les formes
+                                                     # 16, 17 et 18 aux levels  
      xlab = xlabel, ylab = ylabel, 
      main = title)
 ```
@@ -178,7 +179,7 @@ Les points de ce graphe sont trop petits pour être bien visibles. Mais bien sû
 ```{r}
 plot(x = jdd$longueur, y = jdd$largeur,
      col = jdd$type_fac, 
-     pch = c(16, 17, 18)[as.numeric(jdd$silex_fac)], # ici, on 
+     pch = c(16, 17, 18)[as.numeric(jdd$silex_fac)],  
      cex = 1.5,
      xlab = xlabel, ylab = ylabel, 
      main = title)
@@ -198,7 +199,7 @@ pdf("figures/Figure1.pdf",        # ici on écrit le chemin vers la figure
 ### On écrit la figure dans le pdf
 plot(x = jdd$longueur, y = jdd$largeur,
      col = jdd$type_fac, 
-     pch = c(16, 17, 18)[as.numeric(jdd$silex_fac)], # ici, on 
+     pch = c(16, 17, 18)[as.numeric(jdd$silex_fac)], 
      cex = 1.5,
      xlab = xlabel, ylab = ylabel, 
      main = title)
