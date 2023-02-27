@@ -14,4 +14,4 @@ Ce dépôt contient les tutoriels, scripts et données nécessaires pour suivre 
 
 ### License
 
-[CC BY-NC 4.0](http://creativecommons.org/publicdomain/zero/1.0/](https://creativecommons.org/licenses/by-nc/4.0/)
+[CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)
