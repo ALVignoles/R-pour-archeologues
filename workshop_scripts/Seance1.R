@@ -188,7 +188,8 @@ jdd$silex_fac <- as.factor(jdd$silex)
 
 plot(x = jdd$longueur, y = jdd$largeur,
      col = jdd$type_fac, 
-     pch = c(16, 17, 18)[as.numeric(jdd$silex_fac)], # ici, on 
+     pch = c(16, 17, 18)[as.numeric(jdd$silex_fac)], # ici, on assigne les formes
+                                                     # 16, 17 et 18 aux levels 
      xlab = xlabel, ylab = ylabel, 
      main = title)
 
@@ -198,7 +199,7 @@ plot(x = jdd$longueur, y = jdd$largeur,
 # au sein de la fonction plot(). 
 plot(x = jdd$longueur, y = jdd$largeur,
      col = jdd$type_fac, 
-     pch = c(16, 17, 18)[as.numeric(jdd$silex_fac)], # ici, on 
+     pch = c(16, 17, 18)[as.numeric(jdd$silex_fac)], 
      cex = 1.5,
      xlab = xlabel, ylab = ylabel, 
      main = title)
@@ -225,7 +226,7 @@ pdf("E:/Enseignement/R pour archéologues/Séance 1/Figure1.pdf", # ici on écri
 ### On écrit la figure dans le pdf
 plot(x = jdd$longueur, y = jdd$largeur,
      col = jdd$type_fac, 
-     pch = c(16, 17, 18)[as.numeric(jdd$silex_fac)], # ici, on 
+     pch = c(16, 17, 18)[as.numeric(jdd$silex_fac)], 
      cex = 1.5,
      xlab = xlabel, ylab = ylabel, 
      main = title)
