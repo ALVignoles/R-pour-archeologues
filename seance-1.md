@@ -12,7 +12,7 @@ Bien commenter son code est très important car cela nous permet de le comprendr
 Cela nous permet aussi de le partager avec d'autres personnes, pour qu'elles comprennent tout de suite notre démarche.  
 
 
-Nous allons travailler ici avec un jeu de données fictif appelé `Data_clean`.  
+Nous allons travailler ici avec un jeu de données fictif appelé `Data_exemple`.  
 Il s'agit d'un tableau décrivant plusieurs données qualitatives, quantitatives et spatiales de l'industrie lithique d'une collection.
 
 
