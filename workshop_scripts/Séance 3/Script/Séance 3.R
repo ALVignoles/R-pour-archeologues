@@ -6,49 +6,49 @@
 # Introduction ####
 ###################
 
-# Au cours de cette séance, nous allons continuer à nous familiariser avec les 
-# packages du tidyverse et ggplot pour explorer des données spatiales à 
-# l'échelle d'un site. Nous utiliserons le même jeu de données que dans la 
-# séance 1.
+# Au cours de cette sÃ©ance, nous allons continuer Ã  nous familiariser avec les 
+# packages du tidyverse et ggplot pour explorer des donnÃ©es spatiales Ã  
+# l'Ã©chelle d'un site. Nous utiliserons le mÃªme jeu de donnÃ©es que dans la 
+# sÃ©ance 1.
 
 #####
-# Pour faciliter notre travail, on va créer un projet R. Cela va nous permettre 
-# 1) de rassembler tous les éléments liés à notre séance au sein d'un même 
+# Pour faciliter notre travail, on va crÃ©er un projet R. Cela va nous permettre 
+# 1) de rassembler tous les Ã©lÃ©ments liÃ©s Ã  notre sÃ©ance au sein d'un mÃªme 
 # dossier
 # 2) de simplifier notre code, car nos commandes "path" seront toujours 
-# précédées par le path du projet ;
-# 3) de partager plus facilement notre travail (toutes les données nécessaires
-# au fonctionnement du script seront partagées avec lui) ou de le transférer à 
-# un autre ordinateur (puisque le path sera automatiquement modifié !)
+# prÃ©cÃ©dÃ©es par le path du projet ;
+# 3) de partager plus facilement notre travail (toutes les donnÃ©es nÃ©cessaires
+# au fonctionnement du script seront partagÃ©es avec lui) ou de le transfÃ©rer Ã  
+# un autre ordinateur (puisque le path sera automatiquement modifiÃ© !)
 
-## Pour créer un projet, nous pouvons cliquer sur le bouton en haut à droite de
-## RStudio > New project... Puis sélectionnez ou créez le dossier dans lequel 
-## vous allez mettre votre script et vos données. 
-## Remarquez bien que dans l'onglet "Files" dans le panneau en bas à droite, 
+## Pour crÃ©er un projet, nous pouvons cliquer sur le bouton en haut Ã  droite de
+## RStudio > New project... Puis sÃ©lectionnez ou crÃ©ez le dossier dans lequel 
+## vous allez mettre votre script et vos donnÃ©es. 
+## Remarquez bien que dans l'onglet "Files" dans le panneau en bas Ã  droite, 
 ## nous sommes directement dans le dossier du projet !
 
-### Personnellement, j'organise tous mes projets de la même façon : trois 
-### sous-dossiers : "Data" qui contiendra toutes les données brutes utilisées
-### dans ce projet ; "Script" qui contiendra tous les scripts utilisés ;
-### "Output" dans lequel on sauvegardera les résultats de nos codes (tableaux, 
-### figures etc). On peut créer ces dossiers manuellement dans Explorer mais 
-### il existe aussi une commande R pour cela ! Elle peut être très utile quand
+### Personnellement, j'organise tous mes projets de la mÃªme faÃ§on : trois 
+### sous-dossiers : "Data" qui contiendra toutes les donnÃ©es brutes utilisÃ©es
+### dans ce projet ; "Script" qui contiendra tous les scripts utilisÃ©s ;
+### "Output" dans lequel on sauvegardera les rÃ©sultats de nos codes (tableaux, 
+### figures etc). On peut crÃ©er ces dossiers manuellement dans Explorer mais 
+### il existe aussi une commande R pour cela ! Elle peut Ãªtre trÃ¨s utile quand
 ### on souhaite automatiser la sauvegarde de fichiers au sein de dossiers 
-### différents. 
+### diffÃ©rents. 
 dir.create("Data")
 dir.create("Script")
 dir.create("Output")
 
-### En consultant l'onglet "Files" du panneau en bas à droite, on voit que nos 
-### dossiers ont bien été créés ! 
+### En consultant l'onglet "Files" du panneau en bas Ã  droite, on voit que nos 
+### dossiers ont bien Ã©tÃ© crÃ©Ã©s ! 
 
 
 #####
-# Préparons un peu notre script en ouvrant des librairies 
+# PrÃ©parons un peu notre script en ouvrant des librairies 
 library(dplyr)
 library(ggplot2)
 
-# A présent, ouvrons le jeu de données 
+# A prÃ©sent, ouvrons le jeu de donnÃ©es 
 jdd <- as_tibble(read.csv("Data/Data_exemple.csv", header = TRUE, sep = ","))
 head(jdd)
 
@@ -56,55 +56,55 @@ head(jdd)
 
 
 ####################################
-# Créer un plan et un carroyage ####
+# CrÃ©er un plan et un carroyage ####
 ####################################
 
 #####
 # Dans un premier temps, nous allons essayer de reproduire un plan de 
-# répartition spatiale X, Y, déjà réalisé avec QGIS et Powerpoint. Vous pouvez 
+# rÃ©partition spatiale X, Y, dÃ©jÃ  rÃ©alisÃ© avec QGIS et Powerpoint. Vous pouvez 
 # consulter ce plan dans le dossier du projet, sous le nom de "plan_exemple.pdf"
 
-# L'objectif de cet exercice est de créer un code que vous pourrez ensuite 
-# adapter à d'autres données. Cela vous permettra : 
-# 1) de gagner un temps précieux, le code ne prenant que quelques secondes pour
-# générer une figure ;
-# 2) d'avoir une unité graphique dans votre document en utilisant toujours le 
-# même layout ; 
-# 3) d'organiser les différents éléments de vos figures toujours de la même 
-# façon. 
+# L'objectif de cet exercice est de crÃ©er un code que vous pourrez ensuite 
+# adapter Ã  d'autres donnÃ©es. Cela vous permettra : 
+# 1) de gagner un temps prÃ©cieux, le code ne prenant que quelques secondes pour
+# gÃ©nÃ©rer une figure ;
+# 2) d'avoir une unitÃ© graphique dans votre document en utilisant toujours le 
+# mÃªme layout ; 
+# 3) d'organiser les diffÃ©rents Ã©lÃ©ments de vos figures toujours de la mÃªme 
+# faÃ§on. 
 
-## Nous allons commencer par créer le carroyage du plan. D'après 
-## "plan_exemple.pdf", la zone d'étude s'étend sur 16 carrés de 1 m de côté, 
-## organisés en 4 colonnes et 4 rangées. 
-## Vérifions tout d'abord les unités pour les coordonnées des points. 
+## Nous allons commencer par crÃ©er le carroyage du plan. D'aprÃ¨s 
+## "plan_exemple.pdf", la zone d'Ã©tude s'Ã©tend sur 16 carrÃ©s de 1 m de cÃ´tÃ©, 
+## organisÃ©s en 4 colonnes et 4 rangÃ©es. 
+## VÃ©rifions tout d'abord les unitÃ©s pour les coordonnÃ©es des points. 
 summary(jdd)
 
-## Il semble que les coordonnées soient en cm. En x, elles se situent entre 10
-## et 290 cm, et en y, entre 50 et 390 cm. Avec un carroyage basé sur des carrés
-## de 1 m de côtés, les noeuds auront pour coordonnées (0;0), (0;100), (0;200),
+## Il semble que les coordonnÃ©es soient en cm. En x, elles se situent entre 10
+## et 290 cm, et en y, entre 50 et 390 cm. Avec un carroyage basÃ© sur des carrÃ©s
+## de 1 m de cÃ´tÃ©s, les noeuds auront pour coordonnÃ©es (0;0), (0;100), (0;200),
 ## etc. Allons-y avec ggplot2 ! 
 
-### Tout d'abord, définissons les labels des axes :
+### Tout d'abord, dÃ©finissons les labels des axes :
 carres.x <- c("A", "B", "C", "D")
 carres.y <- c("1", "2", "3", "4")
 
-### Créons à présent un objet ggplot avec des lignes tous les 100 cm en x et en
+### CrÃ©ons Ã  prÃ©sent un objet ggplot avec des lignes tous les 100 cm en x et en
 ### y. 
 plan <- ggplot2::ggplot() +
-    # ces deux premières lignes définissent le thème graphique de la figure
+    # ces deux premiÃ¨res lignes dÃ©finissent le thÃ¨me graphique de la figure
   theme_linedraw() +
   theme(axis.ticks = element_blank(), 
         axis.text.x = element_blank(), 
         axis.text.y = element_blank(), 
         panel.grid.major = element_line(),
         panel.grid.minor = element_blank()) + 
-    # ici, on définit les dimensions des axes : de 0 à 4 cm, avec la même échelle
+    # ici, on dÃ©finit les dimensions des axes : de 0 Ã  4 cm, avec la mÃªme Ã©chelle
     # en x et en y (ratio = 1)
   coord_fixed(ratio = 1, xlim = c(0, 400), ylim = c(0, 400)) +
     # les deux lignes suivantes permettent de subdiviser les axes tous les 1 m 
   scale_x_continuous(breaks = seq(0, 400, by = 100)) +
   scale_y_continuous(breaks = seq(0, 400, by = 100)) +
-    # enfin, ici on définit les labels des axes 
+    # enfin, ici on dÃ©finit les labels des axes 
   ylab(element_blank()) +
   xlab(element_blank()) +
   annotate (geom = "text", x = c(seq(from = 50, to = 400, by = 100)), y = -10, label = carres.x) +
@@ -113,43 +113,45 @@ plan
 
 
 ##### 
-# Nous pouvons à présent rajouter les points correspondant aux objets ainsi qu'un
+# Nous pouvons Ã  prÃ©sent rajouter les points correspondant aux objets ainsi qu'un
 # titre.
 plan +
   geom_point(data = jdd, mapping = aes(x = x..cm., y = y..cm.)) +
-  labs(title = "Répartition spatiale des artéfacts - site de la Forêt")
+  labs(title = "RÃ©partition spatiale des artÃ©facts - site de la ForÃªt")
 
-## La figure s'affiche dans l'onglet "plot", nous pouvons donc suivre son évolution
-## au fur et à mesure des modifications que l'on souhaite y apporter par la suite !
+## La figure s'affiche dans l'onglet "plot", nous pouvons donc suivre son Ã©volution
+## au fur et Ã  mesure des modifications que l'on souhaite y apporter par la suite !
 
+
+#####
 # Ce plan reste toutefois peu informatif sur l'organisation des objets dans le
-# site. Il est possible d'améliorer la figure en faisant varier la forme et la 
-# couleur des points en fonction des données qualitatives associées à chaque 
-# pièce. 
+# site. Il est possible d'amÃ©liorer la figure en faisant varier la forme et la 
+# couleur des points en fonction des donnÃ©es qualitatives associÃ©es Ã  chaque 
+# piÃ¨ce. 
 plan +
   geom_point(data = jdd, mapping = aes(x = x..cm., y = y..cm., 
                                        color = silex, shape = type, 
                                        size = 1)) + # on augmente un peu la 
                                                     # taille des points pour plus 
-                                                    # de lisibilité !
-  labs(title = "Répartition spatiale des artéfacts - site de la Forêt")
+                                                    # de lisibilitÃ© !
+  labs(title = "RÃ©partition spatiale des artÃ©facts - site de la ForÃªt")
 
 ## Malheureusement... la palette automatique ne contient pas assez de formes !
-## Nous allons donc devoir les définir manuellement dans les esthétiques de la
-## figure. Pour cela nous allons attribuer à chaque valeur de "type" une forme.
+## Nous allons donc devoir les dÃ©finir manuellement dans les esthÃ©tiques de la
+## figure. Pour cela nous allons attribuer Ã  chaque valeur de "type" une forme.
 
-### Affichons pour commencer les levels de "type" (après l'avoir converti en 
+### Affichons pour commencer les levels de "type" (aprÃ¨s l'avoir converti en 
 ### factor).
 jdd$type_fac <- factor(jdd$type, 
-                        ### Généralement, les levels sont dans l'ordre 
-                        ### alphabétique ; il est possible de changer leur ordre 
+                        ### GÃ©nÃ©ralement, les levels sont dans l'ordre 
+                        ### alphabÃ©tique ; il est possible de changer leur ordre 
                         ### si vous le voulez !
                        levels = c("nucleus a eclats laminaires", "burin du Raysse", 
                                   "eclat", "lame", "chute de burin", "burin", 
                                   "burin diedre", "percoir", "picardie", "gravette"))
 levels(jdd$type_fac)
 
-### On créé ensuite manuellement la palette de formes avec "scale_shape_manual"
+### On crÃ©Ã© ensuite manuellement la palette de formes avec "scale_shape_manual"
 plan +
   geom_point(data = jdd, mapping = aes(x = x..cm., y = y..cm., color = silex,
                                        fill = silex, shape = type_fac, size = 1)) +
@@ -158,9 +160,9 @@ plan +
                                 "chute de burin" = 21, "burin" = 8, 
                                 "burin diedre" = 24, "percoir" = 10,
                                 "picardie" = 14, "gravette" = 3)) +
-  labs(title = "Répartition spatiale des artéfacts - site de la Forêt")
+  labs(title = "RÃ©partition spatiale des artÃ©facts - site de la ForÃªt")
 
-## On peut aussi faire la même chose pour la palette de couleurs. 
+## On peut aussi faire la mÃªme chose pour la palette de couleurs. 
 ## Ici je vais utiliser les couleurs de la palette viridis.
 
 #### Ne pas oublier de convertir en factor !
@@ -179,72 +181,153 @@ plan +
                                 "type C" = "#440154FF")) +
   scale_fill_manual(values = c("type A" = "#7AD151FF", "type B" = "#2A788EFF", 
                                "type C" = "#440154FF")) +
-  labs(title = "Répartition spatiale des artéfacts - site de la Forêt")
+  labs(title = "RÃ©partition spatiale des artÃ©facts - site de la ForÃªt")
 
-### La figure est un peu plus facile à comprendre, mais le code pour la produire
-### n'est pas très efficace... remarquez qu'il y a des répétitions (entre les 
-### l.178 et 180) et le fait de définir les palettes dans les fonctions complique 
+### La figure est un peu plus facile Ã  comprendre, mais le code pour la produire
+### n'est pas trÃ¨s efficace... remarquez qu'il y a des rÃ©pÃ©titions (entre les 
+### l.178 et 180) et le fait de dÃ©finir les palettes dans les fonctions complique 
 ### la lecture.
 
-## Pour clarifier tout ça, nous pouvons créer des objets qui contiennent nos 
-## palettes. Nous n'aurons ensuite qu'à les appeler dans la fonction. 
+## Pour clarifier tout Ã§a, nous pouvons crÃ©er des objets qui contiennent nos 
+## palettes. Nous n'aurons ensuite qu'Ã  les appeler dans la fonction. 
 shape.pal <- c("nucleus a eclats laminaires" = 7, "burin du Raysse" = 12, 
                "eclat" = 22, "lame" = 23, "chute de burin" = 21, "burin" = 8, 
                "burin diedre" = 24, "percoir" = 10, "picardie" = 14, 
                "gravette" = 3)
 color.pal <- c("type A" = "#7AD151FF", "type B" = "#2A788EFF", "type C" = "#440154FF")
 
-plan +
-  geom_point(data = jdd, mapping = aes(x = x..cm., y = y..cm., color = silex,
-                                       fill = silex, shape = type_fac, size = 1)) +
+#### pour allÃ©ger encore, on place les palettes et le titre dans l'objet plan de 
+#### base. 
+plan.modif <- plan +
   scale_shape_manual(values = shape.pal) +
   scale_color_manual(values = color.pal) +
   scale_fill_manual(values = color.pal) +
-  labs(title = "Répartition spatiale des artéfacts - site de la Forêt")
+  labs(title = "RÃ©partition spatiale des artÃ©facts - site de la ForÃªt")
 
-### même résultat !
+plan.modif +
+geom_point(data = jdd, mapping = aes(x = x..cm., y = y..cm., color = silex,
+                                     fill = silex, shape = type_fac, size = 1))
+
+### mÃªme rÃ©sultat !
+
+#####
+# Modifions Ã  prÃ©sent la lÃ©gende pour la rendre plus lisible 
+plan.modif +
+  geom_point(data = jdd, mapping = aes(x = x..cm., y = y..cm., color = silex,
+                                       fill = silex, shape = type_fac, size = 1)) +
+    # ici on va changer le titre des lÃ©gendes 
+  labs(color = "MatiÃ¨re premiÃ¨re", shape = "CatÃ©gorie d'objet") +
+    # et lÃ , nous pouvons supprimer les lÃ©gendes que nous ne souhaitons pas voir
+    # apparaÃ®tre dans la figure finale. 
+  guides(fill = "none", size = "none")
 
 
-######## EXERCICES SUR LA SELECTION DE PARTIES DE DATA SET
-######## A REDIGER
-##### 
-# rajouter raccord
+##########################################
+# SELECTIONNER DES DONNEES A AFFICHER #### je ne sais pas comment titrer Ã§a autrement, Aymeric si tu as une idÃ©e !
+##########################################
+
+# Dans cette nouvelle partie, nous allons apprendre comment sÃ©lectionner une partie
+# des donnÃ©es, dans l'idÃ©e d'un requÃªtage permettant ensuite d'afficher une portion
+# seulement des donnÃ©es initiales. Cette opÃ©ration est trÃ¨s pratique par exemple 
+# pour rÃ©aliser des projections localisÃ©es sans avoir Ã  modifier le tableau
+# excel de base, ce qui est plus transparent et permet de limiter les erreurs 
+# possibles. 
+
+#####
+# DÃ©couvrons comment mettre en oeuvre cette opÃ©ration. Dans les quelques lignes
+# suivantes, nous allons sÃ©lectionner les piÃ¨ces qui ont fait l'objet d'un raccord
+# ou d'un remontage afin de reprÃ©senter la relation entre les piÃ¨ces sur le plan. 
+
+## Pour cela, nous allons crÃ©er un nouveau dataframe dans lequel
+## nous allons "ranger" uniquement les lignes qui contiennent des donnÃ©es pour la
+## variable "raccord"
 rac <- jdd[complete.cases(jdd$raccord), ]
 
-plan +
-  geom_point(data = jdd, mapping = aes(x = x, y = y, shape = type, color = silex)) +
-  geom_line(data = rac, mapping = aes(x = x, y = y), size = 0.5)
+## Les crochets permettent de dire Ã  R que l'on va sÃ©lectionner des lignes (premier
+## argument) ou des colonnes (deuxiÃ¨me argument) dans le data frame "jdd". La
+## fonction complete.cases() permet ensuite de repÃ©rer les cases qui ne sont pas
+## vides. Cette ligne de code 244 nous permet donc de sÃ©lectionner dans "jdd" 
+## les lignes pour lesquelles la valeur de raccord est renseignÃ©e. 
 
-# inverser pour plus de lisibilité 
-plan +
-  geom_line(data = rac, mapping = aes(x = x, y = y), size = 0.5) +
-    geom_point(data = jdd, mapping = aes(x = x, y = y, shape = type, color = silex)) 
+## Observons ce que cela donne :
+head(jdd)
+head(rac)
 
-## A FAIRE une légende plus clean 
+## Dans la data frame "jdd", notez bien la prÃ©sence de cases vides ("NA") dans la
+## colonne "raccord". En revanche dans "rac", seules les lignes pour lesquelles 
+## la valeur de "raccord" est renseignÃ©e (1 ou 2 en l'occurrence) sont prÃ©sentes.
+## Il n'y a donc que 4 piÃ¨ces concernÃ©es.
 
+# Nous pouvons maintenant rajouter un lien entre les piÃ¨ces en utilisant cette
+# nouvelle data frame.
+
+plan.modif +
+  geom_line(data = rac, mapping = aes(x = x..cm., y = y..cm., group = raccord), 
+            linewidth = 0.5) + # l'argument 'group' permet de relier les piÃ¨ces
+                               # par groupe de mÃªmes valeurs
+  geom_point(data = jdd, mapping = aes(x = x..cm., y = y..cm., color = silex, 
+                                       fill = silex, shape = type_fac, size = 1)) +
+    # lÃ©gende
+  labs(color = "MatiÃ¨re premiÃ¨re", shape = "CatÃ©gorie d'objet") +
+  guides(fill = "none", size = "none")
 
 ##### 
-# faire des sélections 
-## eg les pièces situées entre300 et 500 cm en y, et entre 200 et 400 cm en x
-jdd.zoom <- subset(jdd, x >= 200 & x <= 400 
-                      & y >= 300 & y <= 500)
+# Une autre faÃ§on de faire des sÃ©lections au sein d'une data frame est d'utiliser
+# la fonction subset(). Cette fonction permet d'introduire des conditions plus
+# complexes pour la sÃ©lection de lignes ou de colonnes, en utilisant des 
+# connecteurs logiques.
+
+## Par exemple, essayons de sÃ©lectionner les piÃ¨ces situÃ©es entre 200 et 400 cm
+## en x, et entre 300 et 500 cm en y.
+jdd.zoom <- subset(jdd, x..cm. >= 200 & x..cm. <= 400 
+                      & y..cm. >= 300 & y..cm. <= 500)
+
+## Pour crÃ©er "jdd zoom", nous demandons R de renvoyer les lignes du data frame 
+## dont le x est supÃ©rieur ou Ã©gal (>=) Ã  200 ET (&) infÃ©rieur ou Ã©gal (<=) Ã  
+## 400 ET (&) dont le xy est supÃ©rieur ou Ã©gal (>=) Ã  300 ET (&) infÃ©rieur ou 
+## Ã©gal (<=) Ã  500.
+
+### Voyons le rÃ©sultat sur le plan 
+plan.modif +
+  geom_point(data = jdd.zoom, mapping = aes(x = x..cm., y = y..cm., color = silex, 
+                                            fill = silex, shape = type_fac, size = 1)) +
+    # lÃ©gende
+  labs(color = "MatiÃ¨re premiÃ¨re", shape = "CatÃ©gorie d'objet") +
+  guides(fill = "none", size = "none")
+
+## Les connecteurs logiques permettent de personnaliser vos sÃ©lections trÃ¨s 
+## facilement. Voici les diffÃ©rentes possibilitÃ©s : 
+
+###  < : "strictement infÃ©rieur Ã "       ### <= : "infÃ©rieur ou Ã©gal Ã "
+###  > : "strictement supÃ©rieur Ã "       ### >= : "supÃ©rieur ou Ã©gal Ã "     
+###  & : "et"                            ###  | : "ou"
+### == : "strictement Ã©gal Ã "            ### != : "non Ã©gal Ã "
+### !x : "diffÃ©rent de x"                ### isTRUE(x) : teste si x est TRUE
+
+## Essayons quelques exemples !
+
+### On sÃ©lectionne les piÃ¨ces qui ne sont pas en silex de type A
+jdd.silexBC <- subset(jdd, silex != "type A",)
 
 plan +
-  geom_point(data = jdd.zoom, mapping = aes(x = x, y = y, shape = type, color = silex))
+  geom_point(data = jdd.silexBC, mapping = aes(x = x..cm., y = y..cm., color = silex, 
+                                               fill = silex, shape = type_fac, size = 1)) +
+  # lÃ©gende
+  labs(color = "MatiÃ¨re premiÃ¨re", shape = "CatÃ©gorie d'objet") +
+  guides(fill = "none", size = "none")
 
-## sélectionner les pièces en silex type A 
-jdd.silexA <- subset(jdd, silex == "type A",)
-
-plan +
-  geom_point(data = jdd.silexA, mapping = aes(x = x, y = y, shape = type, color = silex))
-
-## sélectionner les produits non retouchés et nucléus à éclats laminaires
+## On sÃ©lectionne les lames et Ã©clats non retouchÃ©s et nuclÃ©us Ã  Ã©clats laminaires
 jdd.lamn <- subset(jdd, type == "eclat" | type == "lame" | type == "nucleus a eclats laminaires",)
 
 plan +
-  geom_point(data = jdd.lamn, mapping = aes(x = x, y = y, shape = type, color = silex))
+  geom_point(data = jdd.lamn, mapping = aes(x = x..cm., y = y..cm., color = silex, 
+                                             fill = silex, shape = type_fac, size = 1)) +
+  # lÃ©gende
+  labs(color = "MatiÃ¨re premiÃ¨re", shape = "CatÃ©gorie d'objet") +
+  guides(fill = "none", size = "none")
 
 
-##### A REDIGER AUSSI 
-# découverte du loop !
+
+##### A REDIGER 
+# dÃ©couverte du loop !
 
