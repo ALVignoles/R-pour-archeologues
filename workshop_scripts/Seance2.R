@@ -20,23 +20,47 @@
 install.packages("tidyverse")
 library(tidyverse)
 
-# Creons un tableau (dataframe) hypothetique que l'on appelera df
-df <- data.frame(                 # fonction data.frame()
-  artefact_id =                   # colonne 1, nommée artefact_id
-    c(                            # 
+# L'objet de base dans R est le vecteur, aussi appelé une vairable: une liste de valeurs
+# Créons une variable nommée 'var1' correspondant a une liste de A a E
+var1 <- c(1,2,3,4,5)
+# Creons une variable nommée 'var2' correspondant a une liste continue de 1 a 5
+var2 <- c("A","B","C","D","E")  # notons que le contenu des variables de caractères
+                                # doivent être notés avec des ""
+# Avec ces variables on peut faire un tableau (data frame) - ici nommé 'd'
+# et ce en utilisant la fonction de base data.frame() 
+d <- data.frame(var1, var2)
+  
+# Dans R il est toujours possible de combiner des fonctions. On peut donc créer 
+# un dataframe en insérant la création de variables au sein de la fonction data.frame()
+# Créons un dataframe hypothétique que l'on appelera df
+df <- data.frame(                 # objet 'df' créé par la fonction data.frame()
+  artefact_id =                   # colonne 1, nommée 'artefact_id'
+    c(                            # fonction c() combine des arguments pour former un vecteur
     seq(from=1,to=87, by=1)       # contenu de col 1: sequence continue 1-87
-    ),                     
-  longueur = c(
-    rnorm(n=87, mean=50, sd=10)),
-  largeur = c(
-    rnorm(n=87, mean=30, sd=5)),
-  epaisseur = c(
-    rnorm(n=87, mean=5, sd=2)),
-  categorie = 
-    c(sample(c("éclat brut","éclat retouché"), 
-                     nrow(df), replace = TRUE)),
-  c(matiere_premiere = sample(c("A","B"), 
-                            nrow(df), replace = TRUE))
+    ),
+  longueur =                      # colonne 2, nommée 'longueur'
+    c(                            # fonction c()
+    rnorm(n=87,                   # fonction rnorm() génère 87 réalisations de la loi N(0,1)
+          mean=50,                # avec une valeur moyenne de 50
+          sd=10)                  # et un écart-type de 10
+    ),
+  largeur = c(                    # colonne 3, nommée 'largeur'
+    rnorm(n=87, mean=30, sd=5)),  # fonction rnorm()...
+  epaisseur = c(                  # colonne 4, nommée epaisseur
+    rnorm(n=87, mean=5, sd=2)     # fonction rnorm()...
+    ),
+  categorie = c(                  # colonne 5, nommée 'categorie'
+    sample(                       # fonction sample() permet de réaliser le tirage d'une
+      c(                          # suite non consécutive de valeurs, en l'occurence
+        "éclat brut",             # 'éclat brut'
+        "éclat retouché"),        # et 'éclat retouché'
+      nrow(df),                   # pour un nombre d'entrée correspondant à la taille de 'df'
+      replace = TRUE)             # détail mathématique: tirage "avec remise"
+    ),
+  matiere_premiere = c(           # colonne 6, nommée 'matiere_premiere'
+    sample(                       # fonction sample()...
+      c("A","B"),                 # tirage de valeurs 'A' et 'B'
+      nrow(df), replace = TRUE))  # nombre d'entrée correspondant à 'df' et tirage "avec remise"
   )
                                                     
 # Creons un premier plot L/l
