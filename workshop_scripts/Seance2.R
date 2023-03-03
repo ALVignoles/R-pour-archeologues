@@ -1,3 +1,4 @@
+# Séance 2 : Analyser et visualiser un jeu de données semi-quantitatif
 
 ### 1- Introduction
 
@@ -62,17 +63,38 @@ df <- data.frame(                 # objet 'df' créé par la fonction data.frame
       c("A","B"),                 # tirage de valeurs 'A' et 'B'
       nrow(df), replace = TRUE))  # nombre d'entrée correspondant à 'df' et tirage "avec remise"
   )
-                                                    
-# Creons un premier plot L/l
-df %>% 
-  ggplot(aes(x = longueur, y = largeur)) +
+
+
+# Créons un premier plot L/l avec l'extension ggplot()
+ggplot(df,                # 'df' = nom du dataframe traité
+       aes(x = longueur,  # 'longueur' = nom de la variable pour l'axe x
+           y = largeur)) +# 'largeur' = nom de la variable pour l'axe y
+  geom_point() +          # geom_point() = fonction de ggplot pour projeter des nuages de points 
+  theme_classic() +       # ajout de l'un des thèmes prédéfinis de ggplot
+  theme(                  # ajout d'une esthétique personnalisée avec la fonction theme()
+    axis.line = element_blank(),
+    panel.border = element_rect(
+      colour = "black", fill = NA, size = .75),
+    legend.position = "none", 
+    aspect.ratio = 1
+    )                     # peu importe l'ordre des arguments dans la fonction theme()
+
+# Il est aussi possible de faire de notre esthétique personnelle un objet...
+my_theme <- theme_classic() + 
+  theme(axis.line=element_blank()) +
+  theme(panel.border = element_rect(colour="black", fill = NA, size = .75),
+        legend.position="none", aspect.ratio=1)
+
+# ... Et d'utiliser cet objet dans des plots futurs
+ggplot(df, aes(x=longueur, y=largeur)) +
   geom_point() +
   my_theme
 
 
-On peut aussi decliner ce plot par categorie :  
-  - par eclats bruts et retouches  
-- par matiere premiere A et B
+#On peut aussi decliner ce plot par categorie :  
+# par eclats bruts et retouches  
+# par matiere premiere A et B
+
 ```{r}
 dataframe %>% 
   ggplot(aes(x = longueur, y = largeur)) +
