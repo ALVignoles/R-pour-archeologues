@@ -95,29 +95,16 @@ ggplot(df, aes(x=longueur, y=largeur)) +
 # par eclats bruts et retouches  
 # par matiere premiere A et B
 
-```{r}
-dataframe %>% 
-  ggplot(aes(x = longueur, y = largeur)) +
+ggplot(df, aes(x = longueur, y = largeur)) +
   geom_point() +
   my_theme +
   facet_grid(cols = vars(categorie), 
              rows = vars(matiere_premiere))
 
-dataframe %>% 
-  ggplot(aes(x = longueur, y = largeur)) +
+ggplot(df, aes(x = longueur, y = largeur)) +
   geom_point() +
   my_theme +
   facet_grid(cols = vars(categorie), 
              rows = vars(matiere_premiere), 
              scales = "fixed", drop = T)
-```
 
-Changer l'esthetique du plot peut se faire de deux maniere:  
-- en ajoutant une ligne de commande pour chaque plot
-Enregistrons le theme que l'on veut utiliser dans ggplot
-```{r}
-my_theme <- theme_classic() + 
-  theme(axis.line=element_blank()) +
-  theme(panel.border = element_rect(colour="black", fill = NA, size = .75),
-        legend.position="none", aspect.ratio=1)
-```
