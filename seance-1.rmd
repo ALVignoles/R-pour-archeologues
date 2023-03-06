@@ -32,17 +32,14 @@ Il existe deux manières d'ouvrir un jeu de données:
 
 ## - Méthode pointer-cliquer
 Nous allons commencer par ouvrir le jeu de données `Data_exemple` en utilisant le bouton `Import dataset` dans l'onglet `Environnement` en haut à droite:  
-
 1- Choisir le fichier dans le répertoire avec le bouton `browse`:  
 <code>.../R-pour-archeologues/data/Data_exemple.xlsx</code>
 2- Dans cette même fenêtre dans la section `import options` il est possible de spécifier le nom du jeu de données qui sera stocké dans R: appelez le "jdd".  
-
 Cette procédure permet d'importer un tableau excel.  
-
 
 ## - Méthode par le code
 Préférez l'utilisation du code afin de rendre l'ensemble de la procédure reproductible.  
-Pour cela on utilisera la fonction `read.csv` ou `read_excel`.
+Pour cela on utilisera la fonction `read.csv` ou `read_excel`.  
 
 ```{r dataset, echo=T}
 jdd <- read.csv("data/data_exemple.csv")
@@ -67,6 +64,7 @@ Mais préférez là aussi le code: soit avec la commande `view(jdd)` (même rés
 ```{r dataset view, echo=T}
 view(jdd)
 ```
+
 ou simplement en utilisant la commande `jdd` (nom du jeu de données) pour afficher le contenu du tableau dans la console
 ```{r dataset console, echo=T}
 jdd
