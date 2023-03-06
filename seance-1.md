@@ -11,38 +11,54 @@ Ce sont des lignes qui ne seront pas exécutées par le code et qui nous permett
 Bien commenter son code est très important car cela nous permet de le comprendre facilement méme après des mois et des années sans y avoir travaillé (en théorie !).
 Cela nous permet aussi de le partager avec d'autres personnes, pour qu'elles comprennent tout de suite notre démarche.  
 
-
 Nous allons travailler ici avec un jeu de données fictif appelé `Data_exemple`.  
-Il s'agit d'un tableau décrivant plusieurs données qualitatives, quantitatives et spatiales de l'industrie lithique d'une collection.
+Il s'agit d'un tableau décrivant plusieurs données qualitatives, quantitatives et spatiales de l'industrie lithique d'une collection.  
+
+Les jeux de données utilisés dans le cadre de ce workshop sont stockés dans le dossier `data` du répertoire cloné ("téléchargé") depuis github `R-pour-archeologues`. Nous avons ouvert le fichier `R-pour-archeologues.Rproj` afin de travailler au sein d'un environnement commun à tou-te-s, ce qui nous permet d'avoir un même dossier actif au démarrage de R. Cela sera utile pour charger les jeux de données et sauvegarder les résultats de nos productions dans cet espace.
 
 
 ### 2-Ouvrir un jeu de données
 
+Il existe deux manières d'ouvrir un jeu de données:  
+- en utilisant le pointer-cliquer.  
+- en utilisant du code.  
+
+#### 2-1-Méthode pointer-cliquer
+
 Nous allons commencer par ouvrir le jeu de données `Data_exemple` en utilisant le bouton `Import dataset` dans l'onglet `Environnement` en haut à droite:  
 
 1- Choisir le fichier dans le répertoire avec le bouton `browse`:  
-
 <code>.../R-pour-archeologues/data/Data_exemple.xlsx</code>
-
 2- Dans cette même fenêtre dans la section `import options` il est possible de spécifier le nom du jeu de données qui sera stocké dans R: appelez le "jdd".  
 
-Cette procédure permet d'écrire automatiquement le code pour importer un tableau excel.  
-Nous verrons ensuite comment importer des données avec une ligne de code directement, ce qui est plus reproductible.  
+Cette procédure permet d'importer un tableau excel.  
 
-Vous venez d'ouvrir le tableau dans R ! Il a été stocké dans un objet que l'on a appelé `jdd`. Si vous l'appelez dans la console, il s'affichera et vous pourrez l'explorer.
+
+#### 2-1-Méthode par le code
+Préférez l'utilisation du code afin de rendre l'ensemble de la procédure reproductible.  
+Pour cela on utilisera la fonction `read.csv` ou `read_excel`
+
+> Data_exemple <- read_excel("data/Data_exemple.xlsx")
+
+
+### 3-Explorer un jeu de données
+Vous venez d'ouvrir le tableau dans R ! Il a été stocké dans un objet que l'on a appelé `jdd`.  
+
+Pour explorer ce jeu de données il est possible d'utiliser le pointer-cliquer en cliquant sur la ligne `jdd`, située la section `Data` du panneau en haut à droite (onglet `Environment`).  
+Préférez là aussi le code: soit avec la commande `view(jdd)` (même résultat que précédemment avec le pointer-cliquer)
+```{r}
+view(jdd)
+```
+ou simplement en utilisant la commande `jdd` (nom du jeu de données) pour afficher le contenu du tableau dans la console
 ```{r}
 jdd
 ```
 
-Il est également possible d'ouvrir le jeu de données en cliquant sur la ligne `jdd`, située la section `Data` du panneau en haut à droite (onglet `Environment`).  
-Afin de ne pas encombrer la console, il est aussi possible de n'afficher que les 6 premiéres lignes du tableau avec la commande `head()`
+Afin de ne pas encombrer la console, il est aussi possible de n'afficher que les 6 premières lignes du tableau avec la commande `head()`
 ```{r}
 head(jdd)
 ```
 ![image](figures/screenshot-1.png)
-
-
-### 3-Explorer un jeu de données
 
 On peut vérifier la classe d'objet de `jdd` avec la commande suivante
 ```{r}
