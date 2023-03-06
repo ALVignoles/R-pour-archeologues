@@ -1,16 +1,18 @@
-# Pré-requis au workshop 'R pour les archéologues'
+---
+title: "Pré-requis au workshop 'R pour les archéologues'"
+output: bookdown::html_document2
+---
 
-### Récupérer les documents nécessaires sur github
+# Récupérer les documents nécessaires sur github
 Rendez-vous sur le dépôt [https://github.com/ALVignoles/R-pour-archeologues](https://github.com/ALVignoles/R-pour-archeologues) et téléchargez l'ensemble au format zip.  
 
 ![](figures/github.png)
 
 
-### Installer R et RStudio
+# Installer R et RStudio
 [R pour Mac](https://external.ink?to=/cran.r-project.org/bin/macosx/) ou [R pour Windows](https://external.ink?to=/cran.r-project.org/bin/windows/base/) ou [R pour Linux](https://external.ink?to=/cran.r-project.org/bin/linux/)  
 
 [RStudio](https://external.ink?to=/rstudio.com/products/rstudio/download/).  
-
 
 RStudio est constitué de 4 panneaux:  
 - en haut à gauche: **l'éditeur** où est édité le code enregistré dans fichiers.  
@@ -21,7 +23,7 @@ RStudio est constitué de 4 panneaux:
 ![](figures/rstudio.png)  
 
 
-### Répertoire de travail
+# Répertoire de travail
 Pour pouvoir récupérer des données, maîtriser la sauvegarde des scripts, des résultats, etc. il est important d'indiquer au logiciel le répertoire de travail, c’est-à-dire le répertoire à partir duquel les jeux de données seront chargés, et où les résultats de nos productions seront sauvegardés.  
 
 Trois moyens de préciser le répertoire de travail:  
