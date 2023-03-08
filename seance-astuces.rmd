@@ -1,0 +1,94 @@
+---
+title: "Séance bonus : trucs et astuces au quotidien"
+output: bookdown::html_document2
+---
+
+# - qpdf(): Split, Combine and Compress PDF Files
+https://cran.r-project.org/web/packages/qpdf/qpdf.pdf
+
+```{r load qpdf, echo=T}
+#install.packages("qpdf")
+#library(qpdf)
+```
+
+```{r showcase qpdf, echo=T}
+qpdf::pdf_compress(                             # compresse le pdf
+  input = "data/exemple.pdf",                   # fichier à traiter
+  output = "figures/qpdf/exemple-compress.pdf") # fichier obtenu
+
+qpdf::pdf_subset(                       # échantillonne le pdf
+  input = "data/exemple.pdf",           # fichier à traiter
+  pages = c(1:4),                       # choisir un ensemble de pages
+  #pages = c(1,2,3,4),                  # vs choisir des pages individuellement
+  output = "figures/qpdf/exemple-subset.pdf")
+
+qpdf::pdf_split(                               # sépare toutes les pages
+  input = "figures/qpdf/exemple-subset.pdf",   # fichier à traiter
+  output = "figures/qpdf/page")                # préfixe   
+
+qpdf::pdf_combine(                              # combine deux pdf
+  input = c("data/exemple.pdf",                 # fichiers à traiter
+            "figures/qpdf/exemple-subset.pdf"),
+  output = "figures/qpdf/exemple-combined.pdf") # fichier obtenu
+
+qpdf::pdf_rotate_pages(       # change l'orientation des pages
+  input = "data/exemple.pdf", # fichier à traiter
+  pages = c(2:3),             # choisir un ensemble de pages
+  #pages = c(2,3),            # vs choisir des pages individuellement
+  angle = 90,                 # choisir l'angle de rotation
+  relative = FALSE,           # si TRUE, les pages tournent par rapport à l'orientation actuelle
+                              # si FALSE, la rotation se fait sur des valeurs absolues: 0 = portrait, 
+                              # 90 = landscape rotation à 90 degrés dans le sens des aiguilles
+  output = "figures/qpdf/exemple-rotated.pdf" # fichier obtenu
+  )
+  
+qpdf::pdf_length(             # indique le nombre de pages dans un pdf
+  input = "data/exemple.pdf"  # fichier à traiter
+  )
+```
+
+# - pals() and scales(): A comprehensive collection of color palettes, colormaps, and tools to evaluate them
+https://cran.r-project.org/web/packages/pals/pals.pdf
+https://kwstat.github.io/pals/
+
+```{r load pals+scales, echo=T}
+#install.packages("pals")
+#install.packages("scales")
+#library(pals)
+#library(scales)
+```
+
+```{r showcase pals, echo=TRUE}
+pals::pal.bands(pals::coolwarm,
+                pals::parula, 
+                pals::ocean.phase,
+                pals::ocean.matter, 
+                pals::ocean.oxy,
+                pals::ocean.deep,
+                pals::ocean.haline,
+                pals::ocean.algae, 
+                pals::ocean.solar, 
+                pals::ocean.thermal, 
+                pals::ocean.matter, 
+                pals::ocean.oxy, 
+                pals::magma,
+                pals::inferno,
+                pals::plasma,
+                pals::plasma, 
+                pals::magma,
+                pals::inferno, 
+                pals::viridis, 
+                pals::cividis)
+```
+```{r showcase pals2, echo=TRUE}
+scales::show_col(pals::viridis(24))
+#scales::show_col(pals::magma(13))
+#scales::show_col(pals::inferno(16))
+#scales::show_col(pals::plasma(6))
+#scales::show_col(pals::cubicl(6))
+#scales::show_col(pals::parula(9))
+#show_col(pals::ocean.haline(20))
+```
+
+# - : 
+

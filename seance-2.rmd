@@ -1,18 +1,25 @@
 ---
-title: "Séance 1 : Se familiariser avec R"
+title: "Séance 2 : Analyser et visualiser un jeu de données semi-quantitatif"
 output: bookdown::html_document2
 ---
 
-```{r setup, include=F, echo=F}
-library(here)
-library(tidyverse)
-```
-
 # - Introduction
-Dans cette introduction, nous allons découvrir les bases du langage de programmation R.  
-Tout d'abord, tout le texte précédé par le signe # est ce qu'on appelle un commentaire. 
-```{r comment, echo=T}
-# commentaire
+Nous avons vu à la séance précédente comment parcourir un jeu de données et faire un graphique simple avec le language R de base.  
+Au cours de cette séance nous utiliserons les extensions du *package* **tidyverse**. Le terme tidyverse est une contraction de *tidy* (qu’on pourrait traduire par “bien rangé”) et de *universe*. Il s’agit d’une collection d’extensions conçues à partir d'une philosophie commune.
+Elles abordent un très grand nombre d’opérations courantes dans R (la liste n’est pas exhaustive):  
+- la visualisation  
+- la manipulation des tableaux de données  
+- l'import/export de données  
+- la manipulation de variables  
+- l'extraction de données du web  
+- la programmation  
+
+L'un des objectifs de ces extensions est de fournir des fonctions avec une syntaxe cohérente, qui fonctionnent bien ensemble, et qui retournent des résultats prévisibles. Elles sont en grande partie issues du travail d’Hadley Wickham.  
+
+Téléchargons et chargons le package tidyverse avec les commandes suivantes
+```{r tidyverse, echo=T}
+install.packages("tidyverse")
+library(tidyverse)
 ```
 
 Ce sont des lignes qui ne seront pas exécutées par le code et qui nous permettrons de décrire les étapes du script.
