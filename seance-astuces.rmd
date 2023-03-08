@@ -6,12 +6,12 @@ output: bookdown::html_document2
 # - qpdf(): Split, Combine and Compress PDF Files
 https://cran.r-project.org/web/packages/qpdf/qpdf.pdf
 
-```{r load qpdf, echo=T}
+```{r load qpdf, echo = TRUE}
 #install.packages("qpdf")
 #library(qpdf)
 ```
 
-```{r showcase qpdf, echo=T}
+```{r showcase qpdf, echo = TRUE}
 qpdf::pdf_compress(                             # compresse le pdf
   input = "data/exemple.pdf",                   # fichier à traiter
   output = "figures/qpdf/exemple-compress.pdf") # fichier obtenu
@@ -51,14 +51,14 @@ qpdf::pdf_length(             # indique le nombre de pages dans un pdf
 https://cran.r-project.org/web/packages/pals/pals.pdf
 https://kwstat.github.io/pals/
 
-```{r load pals+scales, echo=T}
+```{r load pals+scales, echo = TRUE}
 #install.packages("pals")
 #install.packages("scales")
 #library(pals)
 #library(scales)
 ```
 
-```{r showcase pals, echo=TRUE}
+```{r showcase pals, echo = TRUE}
 pals::pal.bands(pals::coolwarm,
                 pals::parula, 
                 pals::ocean.phase,
@@ -80,7 +80,7 @@ pals::pal.bands(pals::coolwarm,
                 pals::viridis, 
                 pals::cividis)
 ```
-```{r showcase pals2, echo=TRUE}
+```{r showcase pals2, echo = TRUE}
 scales::show_col(pals::viridis(24))
 #scales::show_col(pals::magma(13))
 #scales::show_col(pals::inferno(16))
@@ -91,4 +91,17 @@ scales::show_col(pals::viridis(24))
 ```
 
 # - : 
+```{r load, echo = TRUE}
+#install.packages("readtext")
+#install.packages("quanteda")
+#library(readtext)
+#library(quanteda)
+```
+
+```{r text, echo = TRUE}
+#kononenko <- readtext::readtext("data/kononenko2007.pdf")
+#x <- corpus(kononenko, text_field = "text")
+#summary(x)
+#texts(x)
+```
 
