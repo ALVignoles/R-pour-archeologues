@@ -7,7 +7,7 @@ Ce dépôt contient les tutoriels, scripts et données nécessaires pour suivre 
 
 - [seance 0 : Pré-requis](seance-0_pre-requis.rmd)
 - [Séance 1 : Se familiariser avec R](seance-1.rmd)
-- [Séance 2 : Analyser et visualiser un jeu de données semi-quantitatif](seance-1.rmd)
+- [Séance 2 : Analyser et visualiser un jeu de données semi-quantitatif](seance-2.rmd)
 
 ![image](figures/poster.png)
 
