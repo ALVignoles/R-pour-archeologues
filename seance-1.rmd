@@ -16,7 +16,7 @@ Tout d'abord, tout le texte précédé par le signe # est ce qu'on appelle un co
 ```
 
 Ce sont des lignes qui ne seront pas exécutées par le code et qui nous permettrons de décrire les étapes du script.
-Bien commenter son code est très important car cela nous permet de le comprendre facilement méme après des mois et des années sans y avoir travaillé (en théorie !).
+Bien commenter son code est très important car cela nous permet de le comprendre facilement même après des mois et des années sans y avoir travaillé (en théorie !).
 Cela nous permet aussi de le partager avec d'autres personnes, pour qu'elles comprennent tout de suite notre démarche.  
 
 Nous allons travailler ici avec un jeu de données fictif appelé `Data_exemple`.  
