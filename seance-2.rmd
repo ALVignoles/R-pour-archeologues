@@ -18,6 +18,6 @@ L'un des objectifs de ces extensions est de fournir des fonctions avec une synta
 
 Téléchargons et chargons le package tidyverse avec les commandes suivantes
 ```{r tidyverse, echo=T}
-install.packages("tidyverse")
-library(tidyverse)
+#install.packages("tidyverse")
+#library(tidyverse)
 ```
