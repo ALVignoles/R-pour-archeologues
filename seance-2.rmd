@@ -16,8 +16,9 @@ Elles abordent un très grand nombre d’opérations courantes dans R (la liste 
 
 L'un des objectifs de ces extensions est de fournir des fonctions avec une syntaxe cohérente, qui fonctionnent bien ensemble, et qui retournent des résultats prévisibles. Elles sont en grande partie issues du travail d’Hadley Wickham.  
 
-Téléchargons et chargons le package tidyverse avec les commandes suivantes
+Téléchargeons et chargons le package tidyverse avec les commandes suivantes
 ```{r tidyverse, echo=T}
 #install.packages("tidyverse")
 #library(tidyverse)
 ```
+
