@@ -1,5 +1,5 @@
 ---
-title: "SÃ©ance 1 : Se familiariser avec R"
+title: "Séance 1 : Se familiariser avec R"
 output: bookdown::html_document2
 ---
 
@@ -9,86 +9,86 @@ library(tidyverse)
 ```
 
 # - Introduction
-Dans cette introduction, nous allons dÃ©couvrir les bases du langage de programmation R.  
-Tout d'abord, tout le texte prÃ©cÃ©dÃ© par le signe # est ce qu'on appelle un commentaire. 
+Dans cette introduction, nous allons découvrir les bases du langage de programmation R.  
+Tout d'abord, tout le texte précédé par le signe # est ce qu'on appelle un commentaire. 
 ```{r comment, echo=T}
 # commentaire
 ```
 
-Ce sont des lignes qui ne seront pas exÃ©cutÃ©es par le code et qui nous permettrons de dÃ©crire les Ã©tapes du script.
-Bien commenter son code est trÃ¨s important car cela nous permet de le comprendre facilement mÃªme aprÃ¨s des mois et des annÃ©es sans y avoir travaillÃ© (en thÃ©orie !).
-Cela nous permet aussi de le partager avec d'autres personnes, pour qu'elles comprennent tout de suite notre dÃ©marche.  
+Ce sont des lignes qui ne seront pas exécutées par le code et qui nous permettrons de décrire les étapes du script.
+Bien commenter son code est très important car cela nous permet de le comprendre facilement même après des mois et des années sans y avoir travaillé (en théorie !).
+Cela nous permet aussi de le partager avec d'autres personnes, pour qu'elles comprennent tout de suite notre démarche.  
 
-Nous allons travailler ici avec un jeu de donnÃ©es fictif appelÃ© `Data_exemple`.  
-Il s'agit d'un tableau dÃ©crivant plusieurs donnÃ©es qualitatives, quantitatives et spatiales de l'industrie lithique d'une collection.  
+Nous allons travailler ici avec un jeu de données fictif appelé `Data_exemple`.  
+Il s'agit d'un tableau décrivant plusieurs données qualitatives, quantitatives et spatiales de l'industrie lithique d'une collection.  
 
-Les jeux de donnÃ©es utilisÃ©s dans le cadre de ce workshop sont stockÃ©s dans le dossier `data` du rÃ©pertoire clonÃ© ("tÃ©lÃ©chargÃ©") depuis github `R-pour-archeologues`. Nous avons ouvert le fichier `R-pour-archeologues.Rproj` afin de travailler au sein d'un environnement commun Ã  tou-te-s, ce qui nous permet d'avoir un mÃªme dossier actif au dÃ©marrage de R. Cela sera utile pour charger les jeux de donnÃ©es et sauvegarder les rÃ©sultats de nos productions dans cet espace.  
+Les jeux de données utilisés dans le cadre de ce workshop sont stockés dans le dossier `data` du répertoire cloné ("téléchargé") depuis github `R-pour-archeologues`. Nous avons ouvert le fichier `R-pour-archeologues.Rproj` afin de travailler au sein d'un environnement commun à tou-te-s, ce qui nous permet d'avoir un même dossier actif au démarrage de R. Cela sera utile pour charger les jeux de données et sauvegarder les résultats de nos productions dans cet espace.  
 
-# - Ouvrir un jeu de donnÃ©es
-Il existe deux maniÃ¨res d'ouvrir un jeu de donnÃ©es:  
+# - Ouvrir un jeu de données
+Il existe deux manières d'ouvrir un jeu de données:  
 - en utilisant le pointer-cliquer  
 - en utilisant du code  
 
-## - MÃ©thode pointer-cliquer
-Nous allons commencer par ouvrir le jeu de donnÃ©es `Data_exemple` en utilisant le bouton `Import dataset` dans l'onglet `Environnement` en haut Ã  droite:  
-1- Choisir le fichier dans le rÃ©pertoire avec le bouton `browse`:  
+## - Méthode pointer-cliquer
+Nous allons commencer par ouvrir le jeu de données `Data_exemple` en utilisant le bouton `Import dataset` dans l'onglet `Environnement` en haut à droite:  
+1- Choisir le fichier dans le répertoire avec le bouton `browse`:  
 <code>.../R-pour-archeologues/data/Data_exemple.xlsx</code>
-2- Dans cette mÃªme fenÃªtre dans la section `import options` il est possible de spÃ©cifier le nom du jeu de donnÃ©es qui sera stockÃ© dans R: appelez le "jdd".  
-Cette procÃ©dure permet d'importer un tableau excel.  
+2- Dans cette même fenêtre dans la section `import options` il est possible de spécifier le nom du jeu de données qui sera stocké dans R: appelez le "jdd".  
+Cette procédure permet d'importer un tableau excel.  
 
-## - MÃ©thode par le code
-PrÃ©fÃ©rez l'utilisation du code afin de rendre l'ensemble de la procÃ©dure reproductible.  
+## - Méthode par le code
+Préférez l'utilisation du code afin de rendre l'ensemble de la procédure reproductible.  
 Pour cela on utilisera la fonction `read.csv` ou `read_excel`.  
 
 ```{r dataset, echo=T}
 jdd <- read.csv("data/data_exemple.csv")
 
-# on peut prÃ©ciser :
+# on peut préciser :
 jdd <- read.csv(            # ouverture de la fonction read.csv()
   "data/data_exemple.csv",  # le chemin du fichier
-  header = TRUE,            # si la premiÃ¨re ligne contient le titre des col 
-  sep=",",                  # le sÃ©parateur (, ou ; ou autre, c'est selon..)
+  header = TRUE,            # si la première ligne contient le titre des col 
+  sep=",",                  # le séparateur (, ou ; ou autre, c'est selon..)
   )                         # fermeture de la fonction read.csv()
 
-# ou si vous travaillez Ã  partir d'une feuille excel: 
+# ou si vous travaillez à partir d'une feuille excel: 
 # jdd <- read_excel("data/Data_exemple.xlsx")
 ```
 
 
-# - Explorer un jeu de donnÃ©es
-Vous venez d'ouvrir le tableau dans R et il a Ã©tÃ© stockÃ© dans un objet que l'on a appelÃ© `jdd`.  
+# - Explorer un jeu de données
+Vous venez d'ouvrir le tableau dans R et il a été stocké dans un objet que l'on a appelé `jdd`.  
 
-Pour explorer ce jeu de donnÃ©es il est possible d'utiliser le pointer-cliquer en cliquant sur la ligne `jdd`, situÃ©e la section `Data` du panneau en haut Ã  droite (onglet `Environment`).  
-Mais prÃ©fÃ©rez lÃ  aussi le code: soit avec la commande `view(jdd)` (mÃªme rÃ©sultat que prÃ©cÃ©demment avec le pointer-cliquer)
+Pour explorer ce jeu de données il est possible d'utiliser le pointer-cliquer en cliquant sur la ligne `jdd`, située la section `Data` du panneau en haut à droite (onglet `Environment`).  
+Mais préférez là aussi le code: soit avec la commande `view(jdd)` (même résultat que précédemment avec le pointer-cliquer)
 ```{r dataset view, echo=T}
 view(jdd)
 ```
 
-ou simplement en utilisant la commande `jdd` (nom du jeu de donnÃ©es) pour afficher le contenu du tableau dans la console
+ou simplement en utilisant la commande `jdd` (nom du jeu de données) pour afficher le contenu du tableau dans la console
 ```{r dataset console, echo=T}
 jdd
 ```
 
-Afin de ne pas encombrer la console, il est aussi possible de n'afficher que les 6 premiÃ¨res lignes du tableau avec la commande `head()`
+Afin de ne pas encombrer la console, il est aussi possible de n'afficher que les 6 premières lignes du tableau avec la commande `head()`
 ```{r dataset head, echo=T}
 head(jdd)
 ```
 
 
-# - Explorer un jeu de donnÃ©es
-Un data frame est un type d'objet R correspondant Ã  un tableau. Il existe plusieurs classes que nous dÃ©couvrirons au fur et Ã  mesure.  
-On peut vÃ©rifier la classe d'objet de `jdd` avec la commande `class(jdd)`. `class()` est **une fonction**. C'est une opÃ©ration qui sera appliquÃ©e Ã  un objet. La fonction `class()` permet d'afficher la classe de l'objet auquel on applique cette fonction.
+# - Explorer un jeu de données
+Un data frame est un type d'objet R correspondant à un tableau. Il existe plusieurs classes que nous découvrirons au fur et à mesure.  
+On peut vérifier la classe d'objet de `jdd` avec la commande `class(jdd)`. `class()` est **une fonction**. C'est une opération qui sera appliquée à un objet. La fonction `class()` permet d'afficher la classe de l'objet auquel on applique cette fonction.
 ```{r class, echo=T}
 class(jdd)
 ```
 
-Lorsque l'on ne comprends pas l'objectif d'une fonction ou que l'on a oubliÃ©, on peut demander de l'aide avec la fonction `help()` ou plus simplement Ã  `?class`. 
+Lorsque l'on ne comprends pas l'objectif d'une fonction ou que l'on a oublié, on peut demander de l'aide avec la fonction `help()` ou plus simplement à `?class`. 
 ```{r help, echo=T}
 ?class
-help(class) # notez que ces deux commandes ont le mÃªme rÃ©sultat.
+help(class) # notez que ces deux commandes ont le même résultat.
 ```
 
-Si l'on souhaite obtenir des informations statistiques gÃ©nÃ©rales sur les diffÃ©rentes dimensions du tableau. On utilise la fonction `summary()` pour obtenir des informations basiques telles que le min/max/moyenne etc de chaque variable de classe numÃ©rique.  
+Si l'on souhaite obtenir des informations statistiques générales sur les différentes dimensions du tableau. On utilise la fonction `summary()` pour obtenir des informations basiques telles que le min/max/moyenne etc de chaque variable de classe numérique.  
 ```{r summary, echo=T}
 summary(jdd)
 ```
@@ -99,13 +99,13 @@ nrow(jdd) # nb de lignes
 ncol(jdd) # nb de colonnes 
 ```
 
-Pour vÃ©rifier le type de variable dans un tableau (ce sera important car certaines fonctions qui nÃ©cessitent un type spÃ©cifique de variable), on peut appliquer la fonction `class()` sur chaque variable que l'on associe au jeu de donnÃ© avec l'opÃ©rateur `$`
+Pour vérifier le type de variable dans un tableau (ce sera important car certaines fonctions qui nécessitent un type spécifique de variable), on peut appliquer la fonction `class()` sur chaque variable que l'on associe au jeu de donné avec l'opérateur `$`
 ```{r classcol, echo=T}
 class(jdd$type)
 class(jdd$longueur)
 ```
 
-La variable `longueur` est de classe numÃ©rique tandis que la variable `type` est de classe `character`. Or, pour que R traite des variables catÃ©gorielles avec R il faut utiliser le format `factor`. Nous allons donc convertir la variable `type` en un facteur avec la fonction `factor()`.
+La variable `longueur` est de classe numérique tandis que la variable `type` est de classe `character`. Or, pour que R traite des variables catégorielles avec R il faut utiliser le format `factor`. Nous allons donc convertir la variable `type` en un facteur avec la fonction `factor()`.
 ```{r makefactor, echo=T}
 jdd$type <- factor(jdd$type) # cette commande signifie au pied de la lettre : 
                              # dans la colonne "type" du data frame "jdd", je  
@@ -113,73 +113,73 @@ jdd$type <- factor(jdd$type) # cette commande signifie au pied de la lettre :
                              # au format "facteur"
 ```
 
-On vÃ©rifie que le code a bien fonctionnÃ© avec class()
+On vérifie que le code a bien fonctionné avec class()
 ```{r classcol2, echo=T}
 class(jdd$type)
 ```
 
-Lorsque l'on modifie les donnÃ©es primaires, il est parfois prÃ©fÃ©rable de crÃ©er une nouvelle colonne afin de garder une trace des donnÃ©es brutes
+Lorsque l'on modifie les données primaires, il est parfois préférable de créer une nouvelle colonne afin de garder une trace des données brutes
 ```{r makefactor2, echo=T}
 jdd$type_fac <- as.factor(jdd$type)
 
-class(jdd$type_fac) # notez: mÃªme rÃ©sultat que prÃ©cÃ©demment
+class(jdd$type_fac) # notez: même résultat que précédemment
 ```
 
-Nous pouvons Ã  prÃ©sent vÃ©rifier les diffÃ©rentes valeurs que peut prendre une variable catÃ©gorielle, par la fonction `levels()`
+Nous pouvons à présent vérifier les différentes valeurs que peut prendre une variable catégorielle, par la fonction `levels()`
 ```{r levels, echo=T}
 levels(jdd$type)
 ```
 
-Ces quelques fonctions sont utiles pour explorer les donnÃ©es et se rendre compte d'erreurs Ã  un stade prÃ©liminaire.
+Ces quelques fonctions sont utiles pour explorer les données et se rendre compte d'erreurs à un stade préliminaire.
 
-# - CrÃ©er un graphique simple 
-A prÃ©sent, essayons de visualiser un graphique de la longueur vs la largeur des piÃ¨ces.  
+# - Créer un graphique simple 
+A présent, essayons de visualiser un graphique de la longueur vs la largeur des pièces.  
 Dans le language R de base, on utilise la fonction `plot()`
 ```{r plot1, echo=T}
 plot(x = jdd$longueur, y = jdd$largeur)
 ```
-Ici, Ã  l'intÃ©rieur de la fonction, on a prÃ©cisÃ© quels arguments Ã©taient concernÃ©s: x et y. Les fonctions comme `class()`, `levels()` n'ont qu'un argument, c'est pourquoi nous n'avons pas eu besoin de le prÃ©ciser.  
+Ici, à l'intérieur de la fonction, on a précisé quels arguments étaient concernés: x et y. Les fonctions comme `class()`, `levels()` n'ont qu'un argument, c'est pourquoi nous n'avons pas eu besoin de le préciser.  
 
-Un argument est un objet que l'on passera Ã  la fonction pour qu'elle s'Ã©xecute. De faÃ§on gÃ©nÃ©rale, les arguments sont rentrÃ©s dans l'ordre chronologique dans lequel ils sont programmÃ©s dans la fonction. Voyons voir cela de plus prÃ¨s. 
+Un argument est un objet que l'on passera à la fonction pour qu'elle s'éxecute. De faÃ§on générale, les arguments sont rentrés dans l'ordre chronologique dans lequel ils sont programmés dans la fonction. Voyons voir cela de plus près. 
 ```{r plothelp, echo=T}
 ?plot
 ```
 
-Dans la fiche d'aide, nous pouvons voir que cette fonction nÃ©cessite deux arguments au minimum :  
-`x` (abscisse) et `y` (ordonnÃ©e).  
-Il est possible de prÃ©ciser ou non dans le code quels objets vont dans quels arguments, mais ce n'est pas nÃ©cessaire si l'on respecte l'ordre logique avec `x` d'abord et `y` ensuite.  
-Ainsi, la commande suivante aura le mÃªme rÃ©sultat que prÃ©cÃ©demment 
+Dans la fiche d'aide, nous pouvons voir que cette fonction nécessite deux arguments au minimum :  
+`x` (abscisse) et `y` (ordonnée).  
+Il est possible de préciser ou non dans le code quels objets vont dans quels arguments, mais ce n'est pas nécessaire si l'on respecte l'ordre logique avec `x` d'abord et `y` ensuite.  
+Ainsi, la commande suivante aura le même résultat que précédemment 
 ```{r plot2, echo=T}
 plot(jdd$longueur, jdd$largeur)
 ```
 
-Notez ici l'importance de bien sÃ©parer chaque argument par une virgule `,`. Sans cela R il n'est pas possible de passer la commande.  
+Notez ici l'importance de bien séparer chaque argument par une virgule `,`. Sans cela R il n'est pas possible de passer la commande.  
 
-Si la fonction `plot()` nÃ©cessite ces deux arguments pour fonctionner, nous pouvons lui transmettre d'autres arguments annexes permettant d'amÃ©liorer la qualitÃ© graphique. Par exemple, modifions un peu le titre des axes pour que ce soit plus clair:
+Si la fonction `plot()` nécessite ces deux arguments pour fonctionner, nous pouvons lui transmettre d'autres arguments annexes permettant d'améliorer la qualité graphique. Par exemple, modifions un peu le titre des axes pour que ce soit plus clair:
 ```{r}
 plot(
   x = jdd$longueur,             # il est possible de sauter une ligne 
-  y = jdd$largeur,              # aprÃ¨s chaque virgule ou parenthÃ¨se
+  y = jdd$largeur,              # après chaque virgule ou parenthèse
      xlab = "Longueur (cm)",    # pour faciliter la lecture du code
-     ylab = "Largeur (cm)"      # avant de fermer la parenthÃ¨se
+     ylab = "Largeur (cm)"      # avant de fermer la parenthèse
      )
 ```
 
-PrÃ©cisons ici que les textes entre guillemets ("" ou '') seront automatiquement considÃ©rÃ©s comme des objets de type caractÃ¨re. Il est d'ailleurs possible de les dÃ©finir avant de les inclure dans la fonction:
+Précisons ici que les textes entre guillemets ("" ou '') seront automatiquement considérés comme des objets de type caractère. Il est d'ailleurs possible de les définir avant de les inclure dans la fonction:
 ```{r plot3, echo=T}
 xlabel <- "Longueur (cm)"
 ylabel <- "Largeur (cm)"
 plot(x = jdd$longueur, y = jdd$largeur,
      xlab = xlabel, ylab = ylabel)
 
-# Ajoutons l'objet du titre avant de l'insÃ©rer dans le plot
+# Ajoutons l'objet du titre avant de l'insérer dans le plot
 title <- "Dimension des objets en silex"
 plot(x = jdd$longueur, y = jdd$largeur,
      xlab = xlabel, ylab = ylabel, 
      main = title)
 ```
 
-Pour aller plus loin, il est possible de colorer les points en fonction d'une catÃ©gorie.   Essayons avec la catÃ©gorie `type_fac`
+Pour aller plus loin, il est possible de colorer les points en fonction d'une catégorie.   Essayons avec la catégorie `type_fac`
 ```{r plot4, echo=T}
 plot(x = jdd$longueur, y = jdd$largeur,
      col = jdd$type_fac, 
@@ -187,7 +187,7 @@ plot(x = jdd$longueur, y = jdd$largeur,
      main = title)
 ```
 
-On peut Ã©galement changer la forme des points avec l'argument `pch`. Essayons de faire un graphique avec des formes diffÃ©rentes en fonction du type de silex.
+On peut également changer la forme des points avec l'argument `pch`. Essayons de faire un graphique avec des formes différentes en fonction du type de silex.
 NB : N'oublions pas de convertir notre colonne silex en facteur !
 ```{r plot5, echo=T}
 jdd$silex_fac <- as.factor(jdd$silex)
@@ -200,7 +200,7 @@ plot(x = jdd$longueur, y = jdd$largeur,
      main = title)
 ```
 
-Les points de ce graphe sont trop petits pour Ãªtre bien visibles. Mais bien sÃ»r il est possible de modifier leur taille au sein de la fonction `plot()`. 
+Les points de ce graphe sont trop petits pour être bien visibles. Mais bien sÃ»r il est possible de modifier leur taille au sein de la fonction `plot()`. 
 ```{r plot6, echo=T}
 plot(x = jdd$longueur, y = jdd$largeur,
      col = jdd$type_fac, 
@@ -213,15 +213,15 @@ plot(x = jdd$longueur, y = jdd$largeur,
 # - Enregistrer un graphique 
 Il existe plusieurs moyens pour enregistrer une figure:  
 - Le premier est de cliquer sur le bouton `Export` dans l'onglet `Plots`. Vous pouvez alors choisir le dossier dans lequel sauvegarder la figure, dont vous pouvez modifier les dimensions manuellement.  
-- Toutefois, il est parfois utile de sauvegarder directement la figure avec une ligne de code, notamment dans le but de rÃ©aliser plusieurs figures similaires de la mÃªme taille exactement ! Utiliser la fonction `pdf()` est plus reproductible et ne complique par le code outre mesure.  
+- Toutefois, il est parfois utile de sauvegarder directement la figure avec une ligne de code, notamment dans le but de réaliser plusieurs figures similaires de la même taille exactement ! Utiliser la fonction `pdf()` est plus reproductible et ne complique par le code outre mesure.  
 
-Enregistrons notre figure au format pdf de cette maniÃ¨re:
+Enregistrons notre figure au format pdf de cette manière:
 ```{r plot6save, eval = F, echo=T}
-#Il faut tout d'abord crÃ©er un fichier pdf vide de la taille voulue
-pdf("figures/Figure1.pdf",        # ici on Ã©crit le chemin vers la figure
+#Il faut tout d'abord créer un fichier pdf vide de la taille voulue
+pdf("figures/Figure1.pdf",        # ici on écrit le chemin vers la figure
      width = 4.5, height = 4.5)   # et ici les dimensions de la figure en cm. 
 
-### On Ã©crit la figure dans le pdf
+### On écrit la figure dans le pdf
 plot(x = jdd$longueur, y = jdd$largeur,
      col = jdd$type_fac, 
      pch = c(16, 17, 18)[as.numeric(jdd$silex_fac)], 
@@ -229,7 +229,7 @@ plot(x = jdd$longueur, y = jdd$largeur,
      xlab = xlabel, ylab = ylabel, 
      main = title)
 
-### et on clÃ´ture l'Ã©criture de la figure dans le pdf
+### et on clÃ´ture l'écriture de la figure dans le pdf
 
 dev.off()
 ```
