@@ -156,7 +156,7 @@ plan.modif +
                                        fill = silex, shape = type_fac, size = 1)) +
     # ici on va changer le titre des légendes 
   labs(color = "Matière première", shape = "Catégorie d'objet") +
-    # et là, nous pouvons supprimer les légendes que nous ne souhaitons pas voir apparaître dans la figure finale. 
+    # et là, nous pouvons supprimer les légendes que nous ne souhaitons pas voir apparaÃ®tre dans la figure finale. 
   guides(fill = "none", size = "none")
 ```
 
@@ -319,7 +319,7 @@ Si vous consultez la console, vous remarquez que l'on a affiché la valeur `i` t
 Dans la mesure du possible, nous vous conseillons d'utiliser plutôt les boucles `for()`, car ce sont elles qui sont plus utilisée dans la communauté. `while()` est également très bien et vous pouvez arriver au même résultat qu'avec une boucle `for()`, mais l'utilisation de `for()` fait vraiment partie de la "culture R" en tant que culture de programmation ! 
 
 ## - Exemple sur le jeu de données du site de la Forêt
-Mettons en pratique ce concept sur le jeu de données du site de la Forêt. Nous allons créer plusieurs plans de Répartition en fonction de la dimensions des pièces. Tout d'abord, rafraîchissons nous la mémoire sur les statistiques basiques du jeu de données.
+Mettons en pratique ce concept sur le jeu de données du site de la Forêt. Nous allons créer plusieurs plans de Répartition en fonction de la dimensions des pièces. Tout d'abord, rafraÃ®chissons nous la mémoire sur les statistiques basiques du jeu de données.
 ```{r summary 2, echo=T}
 summary(jdd)
 ```
