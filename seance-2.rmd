@@ -25,9 +25,9 @@ Téléchargeons et chargons l'ensemble des bibliothèques du **tidyverse** avec 
 # - Importer un jeu de données
 Dans l'idéal il convient d'importer un tableau depuis excel (ou autre programme) à partir de CSVs (comma-separated-values), qui est un format simple, non-propriétaire (qui ne nécessite pas d'être lu par un logiciel particulier (et la plupart du temps payant), en texte simple ("plain-text"), qui permet à la fois d'être lu par l'humain, traité par la machine, et convient au stockage de données organisées en colonnes/lignes).\
 
-Point important : dans les tableaux, éviter les espaces ( ` ` ) et les parenthèses ( `(` ou `)` ), car R va interpréter ces blancs et automatiquement les remplacer par des signes (essentiellement `.`).
+Point important : dans les tableaux, éviter les espaces ( ` ` ) et les parenthèses ( `(` ou `)` ), car R va interpréter ces blancs et automatiquement les remplacer par des signes (essentiellement `.`).\
 
-Dans R on peut charger et lire ce jeu de données avec la fonction de base `read.csv()`. 
+Dans R on peut charger et lire un jeu de données avec la fonction de base `read.csv()`
 ```{r import csv, echo=T}
 jdd <- read.csv("data/data_exemple.csv") 
 # attention à bien vérifier quel séparateur est utilisé : "," ";" ou "tab"
@@ -35,7 +35,7 @@ jdd <- read.csv("data/data_exemple.csv")
 # si ce n'est pas le cas préciser avec sep=""
 ```
 
-Des données dans d'autres format peuvent être lu avec la fonction `read.table()`.
+Des données dans d'autres format peuvent être lues avec la fonction `read.table()`
 ```{r import read.table, echo=T}
 jdd <- read.table("data/data_exemple.txt", sep=",", header = TRUE)
 # attention à bien vérifier quel séparateur est utilisé : "," ";" ou "tab"
@@ -46,13 +46,13 @@ jdd <- read.table("data/data_exemple.txt", sep=",", header = TRUE)
 # correspond au nom des colonnes
 ```
 
-Pour ouvrir des fichiers au format Microsoft Excel on peut utiliser les fonctions de la bibliothèque **readxl**:\  `read_excel()`,`read_xls()`, `read_xlsx()`.
+Pour ouvrir des fichiers au format Microsoft Excel on peut utiliser les fonctions de la bibliothèque **readxl**:\  `read_excel()`,`read_xls()`, `read_xlsx()`, par exemple
 ```{r import read_xlsx, echo=T}
 #install.packages("readxl")
 library(readxl)
 jdd <- read_xlsx("data/data_exemple.xlsx")
 ```
-Des tables enregistrées au format OpenDocument peuvent être lu grace à la fonction `readODS()`.
+Des tables enregistrées au format OpenDocument peuvent être lues grace à la fonction `readODS()`.
 
 
 # - Manipuler un jeu de données
@@ -62,7 +62,7 @@ Tout d'abord voici quelques éléments de code de base dans le language R :\
 - `<-` est un "opérateurs d’assignation", et s'utilise de telle manière que l'objet nommé à la gauche de ce signe correspond au résultat (*output*) du code à sa droite. C'est dans ce sens que l'on vient de l'utiliser plus haut avec par exemple `jdd <- read.csv("data/data_exemple.csv")`\
 - `&` signifie ET (AND) dans 
 - les opérateurs de base de la logique booléenne (logique à deux états, 0 et 1, qui permet d'analyser des décisions et de trier des jeux de données) sont "ET" `&`, "OU" `|`, et "NON" `!`\
-- les contenus de classe "character" (texte ou dates) doivent être entrés en utilisant les guillements `""`.\
+- les contenus de classe "character" (texte ou date) doivent être entrés en utilisant les guillements `" "`.\
 - les contenus de classe "numeric" ne sont pas entre guillemets.
 - comme dans les formules d'excel, un ensemble de valeurs peut être défini en formant un vecteur en utilisant les deux points `:` au sein de la fonction `c()`.\
 - les opérateurs logiques les plus communs:\
