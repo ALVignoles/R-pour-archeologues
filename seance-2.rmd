@@ -84,7 +84,7 @@ jdd[ , 1:4] #les colonnes 1 à 4 (ne montre que les 10 premières lignes)
 jdd[3, 1:4] #les cellules en 3e ligne, des colonnes 1 à 4
 jdd[jdd$type == "burin", ] #les lignes pour lesquelles le contenu de la colonne "type" correspond exactement à "burin"
 jdd[grep("burin", jdd$type), ] #toutes les lignes qui contiennent le mot "burin" dans la colonne "type"
-subset(jdd, as.numeric(longueur_cm) < 5) #toutes les lignes qui des valeurs de longueur_cm inférieures à 5
+subset(jdd, as.numeric(longueur_cm) < 3) #toutes les lignes qui des valeurs de longueur_cm inférieures à 3
 
 ```
 
@@ -96,7 +96,7 @@ library(data.table)
 ```{r filter data.table, echo=T}
 jdd[jdd$type %like% "burin", ] # toutes les lignes qui contiennent "burin" dans la colonne "type"
 #jdd[jdd$type %like% c("burin","lam"), ] # toutes les lignes qui contiennent "burin" ou "lam" dans la colonne "type"
-jdd[jdd$longueur_cm < 5]  # toutes les lignes qui contiennent "burin" dans la colonne "type"
+#jdd[jdd$longueur_cm < 5]  # toutes les lignes qui contiennent "burin" dans la colonne "type"
 
 ```
 
