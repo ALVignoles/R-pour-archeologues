@@ -89,10 +89,10 @@ library(data.table)
 ```{r select data.table, echo=T}
 jdd[3:5,] #sélectionner les lignes 3 à 5
 jdd[,1:4] #sélectionner les colonnes 1 à 4 (ne montre que les 10 premières lignes)
-jdd[3,4] #sélectionner la cellule en 3e ligne, 4e colonne
+jdd[3,1:4] #sélectionner les cellules en 3e ligne, des colonnes 1 à 4
 jdd[jdd$type == "burin", ]  #sélectionner toutes les lignes avec le contenu "burin" dans la colonne "type"
-jdd[jdd$type %like% "burin", ]  #sélectionner toutes les lignes qui contiennent "burin" dans la colonne "type"
-jdd[type %like% "burin"]
+#jdd[jdd$type %like% "burin", ]  #sélectionner toutes les lignes qui contiennent "burin" dans la colonne "type"
+#jdd[type %like% "burin"]
 
 ```
 
