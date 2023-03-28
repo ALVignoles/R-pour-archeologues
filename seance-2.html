@@ -343,7 +343,9 @@ display: none;
 <div id="introduction" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> - Introduction</h1>
 <p>Nous avons vu à la séance précédente comment parcourir un jeu de données et faire un graphique simple avec le language R de base.<br />
-Au cours de cette séance nous utiliserons les extensions de la bibliothèque <strong>tidyverse</strong>. Ce terme est une contraction de <em>tidy</em> (qu’on pourrait traduire par “bien rangé”) et de <em>universe</em>. Il s’agit d’une collection d’extensions conçues à partir d’une philosophie commune. Elles abordent un très grand nombre d’opérations courantes dans R (la liste n’est pas exhaustive):<br />
+Rappelons notamment l’usage des fonctions <code>view()</code>, <code>head()</code>, <code>class()</code>, <code>summary()</code>, <code>str()</code>, <code>nrow()</code>, <code>ncol()</code>, <code>levels()</code>, <code>plot()</code>, etc.<br />
+</p>
+<p>Au cours de cette séance nous utiliserons aussi les fonctions des bibliothèques issues du <strong>tidyverse</strong> - contraction de <em>tidy</em> (“bien rangé”) et de <em>universe</em>. Il s’agit d’une collection de bibliothèques/extensions conçues dans une philosophie commune. Elles abordent un très grand nombre d’opérations courantes dans R dont :<br />
 - l’import/export de données<br />
 - la manipulation des tableaux de données<br />
 - la manipulation de variables<br />
@@ -352,7 +354,7 @@ Au cours de cette séance nous utiliserons les extensions de la bibliothèque <s
 - la programmation<br />
 </p>
 <p>L’un des objectifs de ces extensions est de fournir des fonctions avec une syntaxe cohérente, qui fonctionnent bien ensemble, et qui retournent des résultats prévisibles. Elles sont en grande partie issues du travail d’Hadley Wickham.<br />
-Téléchargeons et chargons l’ensemble des bibliothèques du <strong>tidyverse</strong> avec les commandes suivantes</p>
+Téléchargeons et chargons l’ensemble des bibliothèques du <strong>tidyverse</strong> avec les commandes suivantes :</p>
 <pre class="r"><code>#install.packages(&quot;tidyverse&quot;)
 #library(tidyverse)</code></pre>
 </div>
@@ -360,13 +362,14 @@ Téléchargeons et chargons l’ensemble des bibliothèques du <strong>tidyverse
 <h1><span class="header-section-number">2</span> - Importer un jeu de données</h1>
 <p>Dans l’idéal il convient d’importer un tableau depuis excel (ou autre programme) à partir de CSVs (comma-separated-values), qui est un format simple, non-propriétaire (qui ne nécessite pas d’être lu par un logiciel particulier (et la plupart du temps payant), en texte simple (“plain-text”), qui permet à la fois d’être lu par l’humain, traité par la machine, et convient au stockage de données organisées en colonnes/lignes).<br />
 </p>
-<p>Point important: éviter les espaces ( <code></code> ) et les parenthèses ( <code>(</code> ou <code>)</code> ) dans les cellules des tableaux, car R comble automatiquement ces blancs avec des signes.</p>
-<p>Dans R on peut charger et lire ce jeu de données avec la fonction de base <code>read.csv()</code>.</p>
+<p>Point important : dans les tableaux, éviter les espaces ( <code></code> ) et les parenthèses ( <code>(</code> ou <code>)</code> ), car R va interpréter ces blancs et automatiquement les remplacer par des signes (essentiellement <code>.</code>).<br />
+</p>
+<p>Dans R on peut charger et lire un jeu de données avec la fonction de base <code>read.csv()</code></p>
 <pre class="r"><code>jdd &lt;- read.csv(&quot;data/data_exemple.csv&quot;) 
 # attention à bien vérifier quel séparateur est utilisé : &quot;,&quot; &quot;;&quot; ou &quot;tab&quot;
 # par défaut read.csv() va estimer que le séparateur est un &quot;,&quot;.
 # si ce n&#39;est pas le cas préciser avec sep=&quot;&quot;</code></pre>
-<p>Des données dans d’autres format peuvent être lu avec la fonction <code>read.table()</code>.</p>
+<p>Des données dans d’autres format peuvent être lues avec la fonction <code>read.table()</code></p>
 <pre class="r"><code>jdd &lt;- read.table(&quot;data/data_exemple.txt&quot;, sep=&quot;,&quot;, header = TRUE)
 # attention à bien vérifier quel séparateur est utilisé : &quot;,&quot; &quot;;&quot; ou &quot;tab&quot;
 # par défaut read.table() va estimer que le séparateur est une tabulation.
@@ -374,11 +377,11 @@ Téléchargeons et chargons l’ensemble des bibliothèques du <strong>tidyverse
 
 # avec read.table() préciser également header = TRUE pour indiquer que la première ligne
 # correspond au nom des colonnes</code></pre>
-<p>Pour ouvrir des fichiers au format Microsoft Excel on peut utiliser les fonctions de la bibliothèque <strong>readxl</strong>:  <code>read_excel()</code>,<code>read_xls()</code>, <code>read_xlsx()</code>.</p>
+<p>Pour ouvrir des fichiers au format Microsoft Excel on peut utiliser les fonctions de la bibliothèque <strong>readxl</strong>:  <code>read_excel()</code>,<code>read_xls()</code>, <code>read_xlsx()</code>, par exemple</p>
 <pre class="r"><code>#install.packages(&quot;readxl&quot;)
 library(readxl)
 jdd &lt;- read_xlsx(&quot;data/data_exemple.xlsx&quot;)</code></pre>
-<p>Des tables enregistrées au format OpenDocument peuvent être lu grace à la fonction <code>readODS()</code>.</p>
+<p>Des tables enregistrées au format OpenDocument peuvent être lues grace à la fonction <code>readODS()</code>.</p>
 </div>
 <div id="manipuler-un-jeu-de-données" class="section level1" number="3">
 <h1><span class="header-section-number">3</span> - Manipuler un jeu de données</h1>
@@ -387,7 +390,7 @@ jdd &lt;- read_xlsx(&quot;data/data_exemple.xlsx&quot;)</code></pre>
 - <code>&lt;-</code> est un “opérateurs d’assignation”, et s’utilise de telle manière que l’objet nommé à la gauche de ce signe correspond au résultat (<em>output</em>) du code à sa droite. C’est dans ce sens que l’on vient de l’utiliser plus haut avec par exemple <code>jdd &lt;- read.csv(&quot;data/data_exemple.csv&quot;)</code><br />
 - <code>&amp;</code> signifie ET (AND) dans
 - les opérateurs de base de la logique booléenne (logique à deux états, 0 et 1, qui permet d’analyser des décisions et de trier des jeux de données) sont “ET” <code>&amp;</code>, “OU” <code>|</code>, et “NON” <code>!</code><br />
-- les contenus de classe “character” (texte ou dates) doivent être entrés en utilisant les guillements <code>&quot;&quot;</code>.<br />
+- les contenus de classe “character” (texte ou date) doivent être entrés en utilisant les guillements <code>&quot; &quot;</code>.<br />
 - les contenus de classe “numeric” ne sont pas entre guillemets.
 - comme dans les formules d’excel, un ensemble de valeurs peut être défini en formant un vecteur en utilisant les deux points <code>:</code> au sein de la fonction <code>c()</code>.<br />
 - les opérateurs logiques les plus communs:<br />
@@ -446,22 +449,12 @@ jdd &lt;- read_xlsx(&quot;data/data_exemple.xlsx&quot;)</code></pre>
 ## 2      6 burin diedre      280   150 8           3.5        type A      NA
 ## 3      8 burin du Raysse   260   300 5.3         3.8        type B       1
 ## 4      9 chute de burin    230   280 2           0.5        type A       2</code></pre>
-<pre class="r"><code>subset(jdd, as.numeric(longueur_cm) &lt; 5) #toutes les lignes qui des valeurs de longueur_cm inférieures à 5</code></pre>
-<pre><code>## # A tibble: 12 × 8
-##    numero type            x_cm  y_cm longueur_cm largeur_cm silex  raccord
-##     &lt;dbl&gt; &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;    &lt;dbl&gt;
-##  1      3 picardie          50    80 3.2         1.2        type B       1
-##  2      4 percoir          260   100 4.7         2.1        type B      NA
-##  3      9 chute de burin   230   280 2           0.5        type A       2
-##  4     19 eclat            190   250 2.3         2          type A      NA
-##  5     23 eclat            260   390 4.5         3.6        type A      NA
-##  6     27 eclat            240   350 4.8         3.7        type A      NA
-##  7     28 eclat            290   360 2.5         2          type A      NA
-##  8     29 eclat            250   390 3.4         2.8        type A      NA
-##  9     30 eclat            280   370 1.9         1.2        type A      NA
-## 10     31 eclat            260   300 4.6         2.8        type A      NA
-## 11     32 eclat            210   290 1.4         1          type A      NA
-## 12     33 eclat            200   280 2.3         2.2        type A      NA</code></pre>
+<pre class="r"><code>subset(jdd, as.numeric(longueur_cm) &lt; 2) #toutes les lignes qui des valeurs de longueur_cm inférieures à 2</code></pre>
+<pre><code>## # A tibble: 2 × 8
+##   numero type   x_cm  y_cm longueur_cm largeur_cm silex  raccord
+##    &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;    &lt;dbl&gt;
+## 1     30 eclat   280   370 1.9         1.2        type A      NA
+## 2     32 eclat   210   290 1.4         1          type A      NA</code></pre>
 </div>
 <div id="avec-data.table" class="section level3" number="3.1.2">
 <h3><span class="header-section-number">3.1.2</span> Avec <code>data.table()</code></h3>
@@ -476,7 +469,7 @@ library(data.table)</code></pre>
 ## 3      8 burin du Raysse   260   300 5.3         3.8        type B       1
 ## 4      9 chute de burin    230   280 2           0.5        type A       2</code></pre>
 <pre class="r"><code>#jdd[jdd$type %like% c(&quot;burin&quot;,&quot;lam&quot;), ] # toutes les lignes qui contiennent &quot;burin&quot; ou &quot;lam&quot; dans la colonne &quot;type&quot;
-#jdd[jdd$longueur_cm &lt; 5]  # toutes les lignes qui contiennent &quot;burin&quot; dans la colonne &quot;type&quot;</code></pre>
+#jdd[jdd$longueur_cm &lt; 2]  # toutes les lignes qui contiennent &quot;burin&quot; dans la colonne &quot;type&quot;</code></pre>
 </div>
 <div id="avec-dplyr-bibliothèque-du-tidyverse" class="section level3" number="3.1.3">
 <h3><span class="header-section-number">3.1.3</span> Avec <code>dplyr()</code> (bibliothèque du tidyverse)</h3>
