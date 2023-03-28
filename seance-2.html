@@ -389,37 +389,31 @@ jdd &lt;- read_xlsx(&quot;data/data_exemple.xlsx&quot;)</code></pre>
 - les opérateurs de base de la logique booléenne (logique à deux états, 0 et 1, qui permet d’analyser des décisions et de trier des jeux de données) sont “ET” <code>&amp;</code>, “OU” <code>|</code>, et “NON” <code>!</code><br />
 - les contenus de classe “character” (texte ou dates) doivent être entrés en utilisant les guillements <code>&quot;&quot;</code>.<br />
 - les contenus de classe “numeric” ne sont pas entre guillemets.
-- comme dans les formules d’excel, un ensemble de valeurs peut être défini en utilisant les deux points <code>:</code> au sein</p>
-<p>As in a spreadsheet, you can specify a range of values with a colon, for example: c(1:10) creates a list of integers (whole numbers) from one to ten.
-Some common operators:</p>
-<ul>
-<li><ul>
-<li>add, subtract.</li>
-</ul></li>
-<li>/ multiply, divide.
-&gt; &lt; greater than, less than.
-&gt;= &lt;= greater than or equal to, less than or equal to.
-!= not equal to.
-Equals signs can be a little confusing, but see how they are used in the code we use today:</li>
-</ul>
-<p>== test whether an object is equal to a value. This is often used when filtering data, as we will see.
-= make an object equal to a value; works like &lt;-, but used within the brackets of a function.</p>
+- comme dans les formules d’excel, un ensemble de valeurs peut être défini en formant un vecteur en utilisant les deux points <code>:</code> au sein de la fonction <code>c()</code>.<br />
+- les opérateurs logiques les plus communs:<br />
+<code>+</code> ajouter<br />
+<code>-</code> soustraire<br />
+<code>*</code> multiplier<br />
+<code>/</code> diviser<br />
+<code>&gt;</code> et <code>&lt;</code> pour plus grand/plus petit que<br />
+<code>&gt;=</code> et <code>&lt;=</code> pour plus grand ou égal à / plus petit ou égal à<br />
+<code>!=</code> pas égal à<br />
+<code>==</code> voir le/les objet(s) égal(aux) à… souvent utiliser pour sélectionner/filter des données<br />
+<code>=</code> fait qu’un objet est égal à une valeur donnée. fonctionne comme <code>&lt;-</code>, mais à l’intérieur d’une fonction.</p>
 <p>Il existe des fonctions très utiles dans le language R de base que l’on peut également passer avec les fonctions des bibliothèques <strong>data.table()</strong> et <strong>dplyr()</strong> du tydiverse.<br />
 </p>
-<div id="sélectionnervoir-le-contenu-de-cellules-particulières-dans-la-console" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Sélectionner/voir le contenu de cellules particulières (dans la console)</h2>
-<div id="avec-data.table" class="section level3" number="3.1.1">
-<h3><span class="header-section-number">3.1.1</span> Avec <code>data.table()</code></h3>
-<pre class="r"><code>#install.packages(&quot;data.table&quot;)
-library(data.table)</code></pre>
-<pre class="r"><code>jdd[3:5,] #sélectionner les lignes 3 à 5</code></pre>
+<div id="sélectionnerfiltrer-le-contenu-de-cellules-particulières-dans-la-console" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Sélectionner/filtrer le contenu de cellules particulières (dans la console)</h2>
+<div id="avec-r-de-base" class="section level3" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Avec R de base</h3>
+<pre class="r"><code>jdd[3:5, ] #les lignes 3 à 5</code></pre>
 <pre><code>## # A tibble: 3 × 8
 ##   numero type      x_cm  y_cm longueur_cm largeur_cm silex  raccord
 ##    &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;    &lt;dbl&gt;
 ## 1      3 picardie    50    80 3.2         1.2        type B       1
 ## 2      4 percoir    260   100 4.7         2.1        type B      NA
 ## 3      5 burin      240   120 6           2.4        type B       2</code></pre>
-<pre class="r"><code>jdd[,1:4] #sélectionner les colonnes 1 à 4 (ne montre que les 10 premières lignes)</code></pre>
+<pre class="r"><code>jdd[ , 1:4] #les colonnes 1 à 4 (ne montre que les 10 premières lignes)</code></pre>
 <pre><code>## # A tibble: 33 × 4
 ##    numero type                         x_cm  y_cm
 ##     &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt; &lt;dbl&gt;
@@ -434,21 +428,58 @@ library(data.table)</code></pre>
 ##  9      9 chute de burin                230   280
 ## 10     10 nucleus a eclats laminaires   180   290
 ## # … with 23 more rows</code></pre>
-<pre class="r"><code>jdd[3,1:4] #sélectionner les cellules en 3e ligne, des colonnes 1 à 4</code></pre>
+<pre class="r"><code>jdd[3, 1:4] #les cellules en 3e ligne, des colonnes 1 à 4</code></pre>
 <pre><code>## # A tibble: 1 × 4
 ##   numero type      x_cm  y_cm
 ##    &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
 ## 1      3 picardie    50    80</code></pre>
-<pre class="r"><code>jdd[jdd$type == &quot;burin&quot;, ]  #sélectionner toutes les lignes avec le contenu &quot;burin&quot; dans la colonne &quot;type&quot;</code></pre>
+<pre class="r"><code>jdd[jdd$type == &quot;burin&quot;, ] #les lignes pour lesquelles le contenu de la colonne &quot;type&quot; correspond exactement à &quot;burin&quot;</code></pre>
 <pre><code>## # A tibble: 1 × 8
 ##   numero type   x_cm  y_cm longueur_cm largeur_cm silex  raccord
 ##    &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;    &lt;dbl&gt;
 ## 1      5 burin   240   120 6           2.4        type B       2</code></pre>
-<pre class="r"><code>#jdd[jdd$type %like% &quot;burin&quot;, ]  #sélectionner toutes les lignes qui contiennent &quot;burin&quot; dans la colonne &quot;type&quot;
-#jdd[type %like% &quot;burin&quot;]</code></pre>
+<pre class="r"><code>jdd[grep(&quot;burin&quot;, jdd$type), ] #toutes les lignes qui contiennent le mot &quot;burin&quot; dans la colonne &quot;type&quot;</code></pre>
+<pre><code>## # A tibble: 4 × 8
+##   numero type             x_cm  y_cm longueur_cm largeur_cm silex  raccord
+##    &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;    &lt;dbl&gt;
+## 1      5 burin             240   120 6           2.4        type B       2
+## 2      6 burin diedre      280   150 8           3.5        type A      NA
+## 3      8 burin du Raysse   260   300 5.3         3.8        type B       1
+## 4      9 chute de burin    230   280 2           0.5        type A       2</code></pre>
+<pre class="r"><code>subset(jdd, as.numeric(longueur_cm) &lt; 5) #toutes les lignes qui des valeurs de longueur_cm inférieures à 5</code></pre>
+<pre><code>## # A tibble: 12 × 8
+##    numero type            x_cm  y_cm longueur_cm largeur_cm silex  raccord
+##     &lt;dbl&gt; &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;    &lt;dbl&gt;
+##  1      3 picardie          50    80 3.2         1.2        type B       1
+##  2      4 percoir          260   100 4.7         2.1        type B      NA
+##  3      9 chute de burin   230   280 2           0.5        type A       2
+##  4     19 eclat            190   250 2.3         2          type A      NA
+##  5     23 eclat            260   390 4.5         3.6        type A      NA
+##  6     27 eclat            240   350 4.8         3.7        type A      NA
+##  7     28 eclat            290   360 2.5         2          type A      NA
+##  8     29 eclat            250   390 3.4         2.8        type A      NA
+##  9     30 eclat            280   370 1.9         1.2        type A      NA
+## 10     31 eclat            260   300 4.6         2.8        type A      NA
+## 11     32 eclat            210   290 1.4         1          type A      NA
+## 12     33 eclat            200   280 2.3         2.2        type A      NA</code></pre>
 </div>
-<div id="avec-dplyr-bibliothèque-du-tidyverse" class="section level3" number="3.1.2">
-<h3><span class="header-section-number">3.1.2</span> Avec <code>dplyr()</code> (bibliothèque du tidyverse)</h3>
+<div id="avec-data.table" class="section level3" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Avec <code>data.table()</code></h3>
+<pre class="r"><code>#install.packages(&quot;data.table&quot;)
+library(data.table)</code></pre>
+<pre class="r"><code>jdd[jdd$type %like% &quot;burin&quot;, ] # toutes les lignes qui contiennent &quot;burin&quot; dans la colonne &quot;type&quot;</code></pre>
+<pre><code>## # A tibble: 4 × 8
+##   numero type             x_cm  y_cm longueur_cm largeur_cm silex  raccord
+##    &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;    &lt;dbl&gt;
+## 1      5 burin             240   120 6           2.4        type B       2
+## 2      6 burin diedre      280   150 8           3.5        type A      NA
+## 3      8 burin du Raysse   260   300 5.3         3.8        type B       1
+## 4      9 chute de burin    230   280 2           0.5        type A       2</code></pre>
+<pre class="r"><code>#jdd[jdd$type %like% c(&quot;burin&quot;,&quot;lam&quot;), ] # toutes les lignes qui contiennent &quot;burin&quot; ou &quot;lam&quot; dans la colonne &quot;type&quot;
+#jdd[jdd$longueur_cm &lt; 5]  # toutes les lignes qui contiennent &quot;burin&quot; dans la colonne &quot;type&quot;</code></pre>
+</div>
+<div id="avec-dplyr-bibliothèque-du-tidyverse" class="section level3" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> Avec <code>dplyr()</code> (bibliothèque du tidyverse)</h3>
 <p>dplyr and data.table for splitting the data up by groups, applying some common or custom functions, and combining the output back into a convenient form (ie. typical aggregation, splitting and summarising operations). Both packages are fast on very large datasets.</p>
 </div>
 </div>
