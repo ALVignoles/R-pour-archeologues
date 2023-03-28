@@ -52,10 +52,32 @@ jdd <- read_xlsx("data/data_exemple.xlsx")
 ```
 Des tables enregistrées au format OpenDocument peuvent être lu grace à la fonction `readODS()`.
 
+
 # - Manipuler un jeu de données
 https://gitlab.com/linogaliana/bigr/-/blob/master/04-datatable.Rmd
 
-Il existe des fonctions très utiles dans le language R de base (bibliothèque **data.table**), que l'on peut également passer avec les fonctions de la bibliothèque **tydiverse**.\
+Tout d'abord voici quelques éléments de code de base dans le language R :\
+- `<-` est un "opérateurs d’assignation", et s'utilise de telle manière que l'objet nommé à la gauche de ce signe correspond au résultat (*output*) du code à sa droite. C'est dans ce sens que l'on vient de l'utiliser plus haut avec par exemple `jdd <- read.csv("data/data_exemple.csv")`\
+- `&` signifie ET (AND) dans 
+- les opérateurs de base de la logique booléenne (logique à deux états, 0 et 1, qui permet d'analyser des décisions et de trier des jeux de données) sont "ET" `&`, "OU" `|`, et "NON" `!`\
+- les contenus de classe "character" (texte ou dates) doivent être entrés en utilisant les guillements `""`.\
+- les contenus de classe "numeric" ne sont pas entre guillemets.
+- comme dans les formules d'excel, un ensemble de valeurs peut être défini en utilisant les deux points `:` au sein 
+
+As in a spreadsheet, you can specify a range of values with a colon, for example: c(1:10) creates a list of integers (whole numbers) from one to ten.
+Some common operators:
+
++ - add, subtract.
+* / multiply, divide.
+> < greater than, less than.
+>= <= greater than or equal to, less than or equal to.
+!= not equal to.
+Equals signs can be a little confusing, but see how they are used in the code we use today:
+
+== test whether an object is equal to a value. This is often used when filtering data, as we will see.
+= make an object equal to a value; works like <-, but used within the brackets of a function.
+
+Il existe des fonctions très utiles dans le language R de base que l'on peut également passer avec les fonctions des bibliothèques **data.table()** et **dplyr()** du tydiverse.\
 
 ## Sélectionner/voir le contenu de cellules particulières (dans la console)
 ### Avec `data.table()`
@@ -63,7 +85,10 @@ Il existe des fonctions très utiles dans le language R de base (bibliothèque *
 jdd[3:5,] #sélectionner les lignes 3 à 5
 jdd[,1:4] #sélectionner les colonnes 1 à 4 (ne montre que les 10 premières lignes)
 jdd[3,4] #sélectionner la cellule en 3e ligne, 4e colonne
-jdd[jdd$type == "burin", ]  #sélectionner toutes les lignes qui contiennent "burin" dans la colonne "type"
+jdd[jdd$type == "burin", ]  #sélectionner toutes les lignes avec le contenu "burin" dans la colonne "type"
+jdd[jdd$type %like% "burin", ]  #sélectionner toutes les lignes qui contiennent "burin" dans la colonne "type"
+jdd[type %like% "burin"]
+
 ```
 
 ### Avec `dplyr()` (bibliothèque du tidyverse)
