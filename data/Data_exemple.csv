@@ -1,4 +1,4 @@
-numero,type,x(cm),y(cm),longueur(cm),largeur(cm),silex,raccord
+numero,type,x_cm,y_cm,longueur_cm,largeur_cm,silex,raccord
 1,gravette,10,60,5,1.5,type A,
 2,gravette,30,50,5.9,1.8,type C,
 3,picardie,50,80,3.2,1.2,type B,1

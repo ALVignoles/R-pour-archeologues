@@ -360,7 +360,7 @@ Téléchargeons et chargons l’ensemble des bibliothèques du <strong>tidyverse
 <h1><span class="header-section-number">2</span> - Importer un jeu de données</h1>
 <p>Dans l’idéal il convient d’importer un tableau depuis excel (ou autre programme) à partir de CSVs (comma-separated-values), qui est un format simple, non-propriétaire (qui ne nécessite pas d’être lu par un logiciel particulier (et la plupart du temps payant), en texte simple (“plain-text”), qui permet à la fois d’être lu par l’humain, traité par la machine, et convient au stockage de données organisées en colonnes/lignes).<br />
 </p>
-<p>Point important: éviter les blancs/espaces dans les cellules des tableaux, car comble automatiquement ces blancs avec des signes.</p>
+<p>Point important: éviter les espaces ( <code></code> ) et les parenthèses ( <code>(</code> ou <code>)</code> ) dans les cellules des tableaux, car R comble automatiquement ces blancs avec des signes.</p>
 <p>Dans R on peut charger et lire ce jeu de données avec la fonction de base <code>read.csv()</code>.</p>
 <pre class="r"><code>jdd &lt;- read.csv(&quot;data/data_exemple.csv&quot;) 
 # attention à bien vérifier quel séparateur est utilisé : &quot;,&quot; &quot;;&quot; ou &quot;tab&quot;
@@ -374,9 +374,59 @@ Téléchargeons et chargons l’ensemble des bibliothèques du <strong>tidyverse
 
 # avec read.table() préciser également header = TRUE pour indiquer que la première ligne
 # correspond au nom des colonnes</code></pre>
-<p>Pour ouvrir des fichiers au format Microsoft Excel on peut utiliser les fonctions <code>readxl()</code>, <code>read_excel()</code>,
-<code>read_xls()</code>, <code>read_xlsx()</code>.<br />
-Des tables enregistrées au format OpenDocument peuvent être lu grace à la fonction <code>readODS()</code>.</p>
+<p>Pour ouvrir des fichiers au format Microsoft Excel on peut utiliser les fonctions de la bibliothèque <strong>readxl</strong>:  <code>read_excel()</code>,<code>read_xls()</code>, <code>read_xlsx()</code>.</p>
+<pre class="r"><code>#install.packages(&quot;readxl&quot;)
+library(readxl)
+jdd &lt;- read_xlsx(&quot;data/data_exemple.xlsx&quot;)</code></pre>
+<p>Des tables enregistrées au format OpenDocument peuvent être lu grace à la fonction <code>readODS()</code>.</p>
+</div>
+<div id="manipuler-un-jeu-de-données" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> - Manipuler un jeu de données</h1>
+<p><a href="https://gitlab.com/linogaliana/bigr/-/blob/master/04-datatable.Rmd" class="uri">https://gitlab.com/linogaliana/bigr/-/blob/master/04-datatable.Rmd</a></p>
+<p>Il existe des fonctions très utiles dans le language R de base (bibliothèque <strong>data.table</strong>), que l’on peut également passer avec les fonctions de la bibliothèque <strong>tydiverse</strong>.<br />
+</p>
+<div id="sélectionnervoir-le-contenu-de-cellules-particulières-dans-la-console" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Sélectionner/voir le contenu de cellules particulières (dans la console)</h2>
+<div id="avec-data.table" class="section level3" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Avec <code>data.table()</code></h3>
+<pre class="r"><code>jdd[3:5,] #sélectionner les lignes 3 à 5</code></pre>
+<pre><code>## # A tibble: 3 × 8
+##   numero type      x_cm  y_cm longueur_cm largeur_cm silex  raccord
+##    &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;    &lt;dbl&gt;
+## 1      3 picardie    50    80 3.2         1.2        type B       1
+## 2      4 percoir    260   100 4.7         2.1        type B      NA
+## 3      5 burin      240   120 6           2.4        type B       2</code></pre>
+<pre class="r"><code>jdd[,1:4] #sélectionner les colonnes 1 à 4 (ne montre que les 10 premières lignes)</code></pre>
+<pre><code>## # A tibble: 33 × 4
+##    numero type                         x_cm  y_cm
+##     &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt; &lt;dbl&gt;
+##  1      1 gravette                       10    60
+##  2      2 gravette                       30    50
+##  3      3 picardie                       50    80
+##  4      4 percoir                       260   100
+##  5      5 burin                         240   120
+##  6      6 burin diedre                  280   150
+##  7      7 percoir                       250   130
+##  8      8 burin du Raysse               260   300
+##  9      9 chute de burin                230   280
+## 10     10 nucleus a eclats laminaires   180   290
+## # … with 23 more rows</code></pre>
+<pre class="r"><code>jdd[3,4] #sélectionner la cellule en 3e ligne, 4e colonne</code></pre>
+<pre><code>## # A tibble: 1 × 1
+##    y_cm
+##   &lt;dbl&gt;
+## 1    80</code></pre>
+<pre class="r"><code>jdd[jdd$type == &quot;burin&quot;, ]  #sélectionner toutes les lignes qui contiennent &quot;burin&quot; dans la colonne &quot;type&quot;</code></pre>
+<pre><code>## # A tibble: 1 × 8
+##   numero type   x_cm  y_cm longueur_cm largeur_cm silex  raccord
+##    &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;    &lt;dbl&gt;
+## 1      5 burin   240   120 6           2.4        type B       2</code></pre>
+</div>
+<div id="avec-dplyr-bibliothèque-du-tidyverse" class="section level3" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Avec <code>dplyr()</code> (bibliothèque du tidyverse)</h3>
+<p>dplyr and data.table for splitting the data up by groups, applying some common or custom functions, and combining the output back into a convenient form (ie. typical aggregation, splitting and summarising operations). Both packages are fast on very large datasets.</p>
+</div>
+</div>
 </div>
 
 

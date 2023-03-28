@@ -23,7 +23,7 @@ Téléchargeons et chargons l'ensemble des bibliothèques du **tidyverse** avec 
 # - Importer un jeu de données
 Dans l'idéal il convient d'importer un tableau depuis excel (ou autre programme) à partir de CSVs (comma-separated-values), qui est un format simple, non-propriétaire (qui ne nécessite pas d'être lu par un logiciel particulier (et la plupart du temps payant), en texte simple ("plain-text"), qui permet à la fois d'être lu par l'humain, traité par la machine, et convient au stockage de données organisées en colonnes/lignes).\
 
-Point important: éviter les blancs/espaces dans les cellules des tableaux, car comble automatiquement ces blancs avec des signes.
+Point important: éviter les espaces ( ` ` ) et les parenthèses ( `(` ou `)` ) dans les cellules des tableaux, car R comble automatiquement ces blancs avec des signes.
 
 Dans R on peut charger et lire ce jeu de données avec la fonction de base `read.csv()`. 
 ```{r import csv, echo=T}
@@ -44,6 +44,32 @@ jdd <- read.table("data/data_exemple.txt", sep=",", header = TRUE)
 # correspond au nom des colonnes
 ```
 
-Pour ouvrir des fichiers au format Microsoft Excel on peut utiliser les fonctions `readxl()`, `read_excel()`,
-`read_xls()`, `read_xlsx()`.\
+Pour ouvrir des fichiers au format Microsoft Excel on peut utiliser les fonctions de la bibliothèque **readxl**:\  `read_excel()`,`read_xls()`, `read_xlsx()`.
+```{r import read_xlsx, echo=T}
+#install.packages("readxl")
+library(readxl)
+jdd <- read_xlsx("data/data_exemple.xlsx")
+```
 Des tables enregistrées au format OpenDocument peuvent être lu grace à la fonction `readODS()`.
+
+# - Manipuler un jeu de données
+https://gitlab.com/linogaliana/bigr/-/blob/master/04-datatable.Rmd
+
+Il existe des fonctions très utiles dans le language R de base (bibliothèque **data.table**), que l'on peut également passer avec les fonctions de la bibliothèque **tydiverse**.\
+
+## Sélectionner/voir le contenu de cellules particulières (dans la console)
+### Avec `data.table()`
+```{r select data.table, echo=T}
+jdd[3:5,] #sélectionner les lignes 3 à 5
+jdd[,1:4] #sélectionner les colonnes 1 à 4 (ne montre que les 10 premières lignes)
+jdd[3,4] #sélectionner la cellule en 3e ligne, 4e colonne
+jdd[jdd$type == "burin", ]  #sélectionner toutes les lignes qui contiennent "burin" dans la colonne "type"
+```
+
+### Avec `dplyr()` (bibliothèque du tidyverse)
+```{r select dplyr, echo=T}
+
+```
+
+dplyr and data.table for splitting the data up by groups, applying some common or custom functions, and combining the output back into a convenient form (ie. typical aggregation, splitting and summarising operations). Both packages are fast on very large datasets.
+
