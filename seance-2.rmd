@@ -81,13 +81,23 @@ Il existe des fonctions très utiles dans le language R de base que l'on peut é
 ## Sélectionner/filtrer le contenu de cellules particulières (dans la console)
 ### Avec R de base
 ```{r filter base R, echo=T}
-jdd[3:5, ] #les lignes 3 à 5
-jdd[ , 1:4] #les colonnes 1 à 4 (ne montre que les 10 premières lignes)
-jdd[3, 1:4] #les cellules en 3e ligne, des colonnes 1 à 4
-jdd[jdd$type == "burin", ] #les lignes pour lesquelles le contenu de la colonne "type" correspond exactement à "burin"
-jdd[grep("burin", jdd$type), ] #toutes les lignes qui contiennent le mot "burin" dans la colonne "type"
-subset(jdd, as.numeric(longueur_cm) < 2) #toutes les lignes qui des valeurs de longueur_cm inférieures à 2
+#les lignes 3 à 5
+jdd[3:5, ]
 
+#les colonnes 1 à 4 (ne montre que les 10 premières lignes)
+jdd[ , 1:4]
+
+#les cellules en 3e ligne, des colonnes 1 à 4
+jdd[3, 1:4]
+
+#les lignes pour lesquelles le contenu de la colonne "type" correspond exactement à "burin"
+jdd[jdd$type == "burin", ]
+
+#toutes les lignes qui contiennent le mot "burin" dans la colonne "type"
+jdd[grep("burin", jdd$type), ]
+
+#toutes les lignes qui des valeurs de longueur_cm inférieures à 2
+subset(jdd, as.numeric(longueur_cm) < 2)
 ```
 
 ### Avec `data.table()`
