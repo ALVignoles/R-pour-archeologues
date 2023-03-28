@@ -96,7 +96,7 @@ jdd[jdd$type == "burin", ]
 #toutes les lignes qui contiennent le mot "burin" dans la colonne "type"
 jdd[grep("burin", jdd$type), ]
 
-#toutes les lignes qui des valeurs de longueur_cm inférieures à 2
+#toutes les lignes qui contiennent des valeurs de longueur_cm inférieures à 2
 subset(jdd, as.numeric(longueur_cm) < 2)
 ```
 
