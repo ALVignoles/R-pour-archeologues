@@ -22,11 +22,28 @@ Téléchargeons et chargons l'ensemble des bibliothèques du **tidyverse** avec 
 
 # - Importer un jeu de données
 Dans l'idéal il convient d'importer un tableau depuis excel (ou autre programme) à partir de CSVs (comma-separated-values), qui est un format simple, non-propriétaire (qui ne nécessite pas d'être lu par un logiciel particulier (et la plupart du temps payant), en texte simple ("plain-text"), qui permet à la fois d'être lu par l'humain, traité par la machine, et convient au stockage de données organisées en colonnes/lignes)./
+
+Point important: éviter les blancs / espaces dans les cellules des tableaux, car comble automatiquement ces blancs avec des signes.
+
 Dans R on peut charger et lire ce jeu de données avec la fonction de base `read.csv()`. 
 ```{r import csv, echo=T}
-jdd <- read.csv("data/data_exemple.csv")
+jdd <- read.csv("data/data_exemple.csv") 
+# attention à bien vérifier quel séparateur est utilisé : "," ";" ou "tab"
+# par défaut read.csv() va estimer que le séparateur est un ",".
+# si ce n'est pas le cas préciser avec sep=""
 ```
 
 Des données dans d'autres format peuvent être lu avec la fonction `read.table()`.
+```{r import csv, echo=T}
+jdd <- read.table("data/data_exemple.txt", sep=",", header = TRUE)
+# attention à bien vérifier quel séparateur est utilisé : "," ";" ou "tab"
+# par défaut read.table() va estimer que le séparateur est une tabulation.
+# si ce n'est pas le cas préciser avec sep=""
 
+# avec read.table() préciser également header = TRUE pour indiquer que la première ligne
+# correspond au nom des colonnes
+```
 
+Pour ouvrir des fichiers au format Microsoft Excel on peut utiliser les fonctions `readxl()`, `read_excel()`,
+`read_xls()`, `read_xlsx()`./
+Des tables enregistrées au format OpenDocument peuvent être lu grace à la fonction `readODS()`).
