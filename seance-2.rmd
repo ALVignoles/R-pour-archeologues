@@ -16,11 +16,6 @@ Au cours de cette séance nous utiliserons aussi les fonctions des bibliothèque
 - la programmation\
 
 L'un des objectifs de ces extensions est de fournir des fonctions avec une syntaxe cohérente, qui fonctionnent bien ensemble, et qui retournent des résultats prévisibles. Elles sont en grande partie issues du travail d’Hadley Wickham.\
-Téléchargeons et chargons l'ensemble des bibliothèques du **tidyverse** avec les commandes suivantes :
-```{r tidyverse, echo=T}
-#install.packages("tidyverse")
-#library(tidyverse)
-```
 
 # - Importer un jeu de données
 Dans l'idéal il convient d'importer un tableau depuis excel (ou autre programme) à partir de CSVs (comma-separated-values), qui est un format simple, non-propriétaire (qui ne nécessite pas d'être lu par un logiciel particulier (et la plupart du temps payant), en texte simple ("plain-text"), qui permet à la fois d'être lu par l'humain, traité par la machine, et convient au stockage de données organisées en colonnes/lignes).\
@@ -32,21 +27,22 @@ Dans R on peut charger et lire un jeu de données avec la fonction de base `read
 jdd <- read.csv("data/data_exemple.csv") 
 # attention à bien vérifier quel séparateur est utilisé : "," ";" ou "tab"
 # par défaut read.csv() va estimer que le séparateur est un ",".
-# si ce n'est pas le cas préciser avec sep=""
+
+# si ce n'est pas le cas préciser avec la commande "sep =" comme suit:
+jdd <- read.csv("data/data_exemple.csv", sep = ",")
 ```
 
 Des données dans d'autres format peuvent être lues avec la fonction `read.table()`
 ```{r import read.table, echo=T}
-jdd <- read.table("data/data_exemple.txt", sep=",", header = TRUE)
-# attention à bien vérifier quel séparateur est utilisé : "," ";" ou "tab"
 # par défaut read.table() va estimer que le séparateur est une tabulation.
-# si ce n'est pas le cas préciser avec sep=""
+# il convient donc de préciser que le séparateur est une virgule avec sep = ""
 
-# avec read.table() préciser également header = TRUE pour indiquer que la première ligne
-# correspond au nom des colonnes
+# avec read.table() préciser également header = TRUE pour indiquer que la première 
+# ligne correspond au nom des colonnes
+jdd <- read.table("data/data_exemple.txt", sep = ",", header = TRUE)
 ```
 
-Pour ouvrir des fichiers au format Microsoft Excel on peut utiliser les fonctions de la bibliothèque **readxl**:\  `read_excel()`,`read_xls()`, `read_xlsx()`, par exemple
+Pour ouvrir des fichiers au format Microsoft Excel on peut utiliser les fonctions de la bibliothèque **readxl**:\  `read_excel()`,`read_xls()`, `read_xlsx()`, par exemple :
 ```{r import read_xlsx, echo=T}
 #install.packages("readxl")
 library(readxl)
@@ -79,31 +75,32 @@ Tout d'abord voici quelques éléments de code de base dans le language R :\
 Il existe des fonctions très utiles dans le language R de base que l'on peut également passer avec les fonctions des bibliothèques **data.table()** et **dplyr()** du tydiverse.\
 
 ## Sélectionner/filtrer le contenu de cellules particulières (dans la console)
-### Avec R de base
+### Avec le language R de base
 ```{r filter base R, echo=T}
-#les lignes 3 à 5
+#les lignes 3 à 5:
 jdd[3:5, ]
 
-#les colonnes 1 à 4 (ne montre que les 10 premières lignes)
+#les colonnes 1 à 4 (ne montre que les 10 premières lignes):
 jdd[ , 1:4]
 
-#les cellules en 3e ligne, des colonnes 1 à 4
+#les cellules en 3e ligne, des colonnes 1 à 4:
 jdd[3, 1:4]
 
-#les lignes pour lesquelles le contenu de la colonne "type" correspond exactement à "burin"
+#les lignes pour lesquelles le contenu de la colonne "type" correspond exactement à "burin":
 jdd[jdd$type == "burin", ]
 
-#toutes les lignes qui contiennent le mot "burin" dans la colonne "type"
+#toutes les lignes qui contiennent le mot "burin" dans la colonne "type":
 jdd[grep("burin", jdd$type), ]
 
-#toutes les lignes qui contiennent "burin" ou "lam" dans la colonne "type"
+#toutes les lignes qui contiennent "burin" ou "lam" dans la colonne "type":
 jdd[grep("burin|lam", jdd$type), ]
 
 #toutes les lignes qui contiennent des valeurs de longueur_cm inférieures à 2
-subset(jdd, as.numeric(longueur_cm) < 2) #forcer un changement de classe de la colonne
-
-jdd$longueur_cm <- as.numeric(jdd$longueur_cm) # ou changer la classe de la colonne en amont
-subset(jdd, as.numeric(longueur_cm) < 2)
+subset(jdd, as.numeric(longueur_cm) < 2) #force un changement de classe de la colonne
+# ou
+jdd$longueur_cm <- as.numeric(jdd$longueur_cm) # change la classe de la colonne en amont
+#puis:
+subset(jdd, longueur_cm < 2)
 ```
 
 ### Avec `data.table()`
@@ -112,20 +109,44 @@ subset(jdd, as.numeric(longueur_cm) < 2)
 library(data.table)
 ```
 ```{r filter data.table, echo=T}
-#toutes les lignes qui contiennent le mot "burin" dans la colonne "type"
+#toutes les lignes qui contiennent le mot "burin" dans la colonne "type":
 jdd[jdd$type %like% "burin", ]
 
-#toutes les lignes qui contiennent "burin" ou "lam" dans la colonne "type"
+#toutes les lignes qui contiennent "burin" ou "lam" dans la colonne "type":
 jdd[jdd$type %like% "burin|lam", ]
 
-#toutes les lignes qui contiennent des valeurs de longueur_cm inférieures à 2
-jdd$longueur_cm <- as.numeric(jdd$longueur_cm) #changer la classe de la colonne en amont
+#toutes les lignes qui contiennent des valeurs de longueur_cm inférieures à 2:
+jdd$longueur_cm <- as.numeric(jdd$longueur_cm) #change la classe de la colonne en amont
 jdd[jdd$longueur_cm < 2, ]
 ```
 
 ### Avec `dplyr()` (bibliothèque du tidyverse)
-```{r select dplyr, echo=T}
+Téléchargeons et chargons l'ensemble des bibliothèques du **tidyverse** avec les commandes suivantes :
+```{r tidyverse, echo=T}
+#install.packages("tidyverse")
+#library(tidyverse)
+```
 
+L’opérateur `%>%` est appelé *pipe* (anglais) et est issu de la bibliothèque **magrittr**. Il permet d'enchainer les fonctions sans les inclure les une dans les autres.
+```{r filter dplyr, echo=T}
+#les lignes pour lesquelles le contenu de la colonne "type" correspond exactement à "burin":
+dplyr::filter(jdd, type == "burin")
+# ou avec le 'pipe':
+jdd %>% dplyr::filter(type == "burin")
+
+#toutes les lignes qui contiennent le mot "burin" dans la colonne "type":
+dplyr::filter(jdd, grepl("burin", type))
+# ou avec le 'pipe':
+jdd %>% dplyr::filter(grepl("burin", type))
+
+#toutes les lignes qui contiennent "burin" ou "lam" dans la colonne "type":
+dplyr::filter(jdd, grepl("burin|lam", type))
+# ou avec le 'pipe':
+jdd %>% dplyr::filter(grepl("burin|lam", type))
+
+#toutes les lignes qui contiennent des valeurs de longueur_cm inférieures à 2:
+jdd$longueur_cm <- as.numeric(jdd$longueur_cm) # change la classe de la colonne en amont
+dplyr::filter(jdd, longueur_cm < 2)
 ```
 
 dplyr and data.table for splitting the data up by groups, applying some common or custom functions, and combining the output back into a convenient form (ie. typical aggregation, splitting and summarising operations). Both packages are fast on very large datasets.
