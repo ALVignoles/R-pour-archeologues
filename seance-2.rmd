@@ -96,7 +96,13 @@ jdd[jdd$type == "burin", ]
 #toutes les lignes qui contiennent le mot "burin" dans la colonne "type"
 jdd[grep("burin", jdd$type), ]
 
+#toutes les lignes qui contiennent "burin" ou "lam" dans la colonne "type"
+jdd[grep("burin|lam", jdd$type), ]
+
 #toutes les lignes qui contiennent des valeurs de longueur_cm inférieures à 2
+subset(jdd, as.numeric(longueur_cm) < 2) #forcer un changement de classe de la colonne
+
+jdd$longueur_cm <- as.numeric(jdd$longueur_cm) # ou changer la classe de la colonne en amont
 subset(jdd, as.numeric(longueur_cm) < 2)
 ```
 
@@ -106,10 +112,15 @@ subset(jdd, as.numeric(longueur_cm) < 2)
 library(data.table)
 ```
 ```{r filter data.table, echo=T}
-jdd[jdd$type %like% "burin", ] # toutes les lignes qui contiennent "burin" dans la colonne "type"
-#jdd[jdd$type %like% c("burin","lam"), ] # toutes les lignes qui contiennent "burin" ou "lam" dans la colonne "type"
-#jdd[jdd$longueur_cm < 2]  # toutes les lignes qui contiennent "burin" dans la colonne "type"
+#toutes les lignes qui contiennent le mot "burin" dans la colonne "type"
+jdd[jdd$type %like% "burin", ]
 
+#toutes les lignes qui contiennent "burin" ou "lam" dans la colonne "type"
+jdd[jdd$type %like% "burin|lam", ]
+
+#toutes les lignes qui contiennent des valeurs de longueur_cm inférieures à 2
+jdd$longueur_cm <- as.numeric(jdd$longueur_cm) #changer la classe de la colonne en amont
+jdd[jdd$longueur_cm < 2, ]
 ```
 
 ### Avec `dplyr()` (bibliothèque du tidyverse)
