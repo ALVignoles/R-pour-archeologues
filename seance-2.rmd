@@ -4,8 +4,10 @@ output: bookdown::html_document2
 ---
 
 # - Introduction
-Nous avons vu à la séance précédente comment parcourir un jeu de données et faire un graphique simple avec le language R de base.  
-Au cours de cette séance nous utiliserons les extensions de la bibliothèque **tidyverse**. Ce terme est une contraction de *tidy* (qu’on pourrait traduire par “bien rangé”) et de *universe*. Il s’agit d’une collection d’extensions conçues à partir d'une philosophie commune. Elles abordent un très grand nombre d’opérations courantes dans R (la liste n’est pas exhaustive):\
+Nous avons vu à la séance précédente comment parcourir un jeu de données et faire un graphique simple avec le language R de base.\
+Rappelons notamment l'usage des fonctions `view()`, `head()`, `class()`, `summary()`, `str()`, `nrow()`, `ncol()`, `levels()`, `plot()`, etc.\
+
+Au cours de cette séance nous utiliserons aussi les fonctions des bibliothèques issues du **tidyverse** - contraction de *tidy* (“bien rangé”) et de *universe*. Il s’agit d’une collection de bibliothèques/extensions conçues dans une philosophie commune. Elles abordent un très grand nombre d’opérations courantes dans R dont :\
 - l'import/export de données\
 - la manipulation des tableaux de données\
 - la manipulation de variables\
@@ -13,8 +15,8 @@ Au cours de cette séance nous utiliserons les extensions de la bibliothèque **
 - l'extraction de données du web\
 - la programmation\
 
-L'un des objectifs de ces extensions est de fournir des fonctions avec une syntaxe cohérente, qui fonctionnent bien ensemble, et qui retournent des résultats prévisibles. Elles sont en grande partie issues du travail d’Hadley Wickham.  
-Téléchargeons et chargons l'ensemble des bibliothèques du **tidyverse** avec les commandes suivantes
+L'un des objectifs de ces extensions est de fournir des fonctions avec une syntaxe cohérente, qui fonctionnent bien ensemble, et qui retournent des résultats prévisibles. Elles sont en grande partie issues du travail d’Hadley Wickham.\
+Téléchargeons et chargons l'ensemble des bibliothèques du **tidyverse** avec les commandes suivantes :
 ```{r tidyverse, echo=T}
 #install.packages("tidyverse")
 #library(tidyverse)
@@ -23,7 +25,7 @@ Téléchargeons et chargons l'ensemble des bibliothèques du **tidyverse** avec 
 # - Importer un jeu de données
 Dans l'idéal il convient d'importer un tableau depuis excel (ou autre programme) à partir de CSVs (comma-separated-values), qui est un format simple, non-propriétaire (qui ne nécessite pas d'être lu par un logiciel particulier (et la plupart du temps payant), en texte simple ("plain-text"), qui permet à la fois d'être lu par l'humain, traité par la machine, et convient au stockage de données organisées en colonnes/lignes).\
 
-Point important: éviter les espaces ( ` ` ) et les parenthèses ( `(` ou `)` ) dans les cellules des tableaux, car R comble automatiquement ces blancs avec des signes.
+Point important : dans les tableaux, éviter les espaces ( ` ` ) et les parenthèses ( `(` ou `)` ), car R va interpréter ces blancs et automatiquement les remplacer par des signes (essentiellement `.`).
 
 Dans R on peut charger et lire ce jeu de données avec la fonction de base `read.csv()`. 
 ```{r import csv, echo=T}
@@ -84,7 +86,7 @@ jdd[ , 1:4] #les colonnes 1 à 4 (ne montre que les 10 premières lignes)
 jdd[3, 1:4] #les cellules en 3e ligne, des colonnes 1 à 4
 jdd[jdd$type == "burin", ] #les lignes pour lesquelles le contenu de la colonne "type" correspond exactement à "burin"
 jdd[grep("burin", jdd$type), ] #toutes les lignes qui contiennent le mot "burin" dans la colonne "type"
-subset(jdd, as.numeric(longueur_cm) < 3) #toutes les lignes qui des valeurs de longueur_cm inférieures à 3
+subset(jdd, as.numeric(longueur_cm) < 2) #toutes les lignes qui des valeurs de longueur_cm inférieures à 2
 
 ```
 
@@ -96,7 +98,7 @@ library(data.table)
 ```{r filter data.table, echo=T}
 jdd[jdd$type %like% "burin", ] # toutes les lignes qui contiennent "burin" dans la colonne "type"
 #jdd[jdd$type %like% c("burin","lam"), ] # toutes les lignes qui contiennent "burin" ou "lam" dans la colonne "type"
-#jdd[jdd$longueur_cm < 5]  # toutes les lignes qui contiennent "burin" dans la colonne "type"
+#jdd[jdd$longueur_cm < 2]  # toutes les lignes qui contiennent "burin" dans la colonne "type"
 
 ```
 
