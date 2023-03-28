@@ -81,6 +81,11 @@ Il existe des fonctions très utiles dans le language R de base que l'on peut é
 
 ## Sélectionner/voir le contenu de cellules particulières (dans la console)
 ### Avec `data.table()`
+
+```{r data.table, echo=T}
+#install.packages("data.table")
+library(data.table)
+```
 ```{r select data.table, echo=T}
 jdd[3:5,] #sélectionner les lignes 3 à 5
 jdd[,1:4] #sélectionner les colonnes 1 à 4 (ne montre que les 10 premières lignes)
