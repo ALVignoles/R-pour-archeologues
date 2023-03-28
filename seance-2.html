@@ -343,13 +343,14 @@ display: none;
 <div id="introduction" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> - Introduction</h1>
 <p>Nous avons vu à la séance précédente comment parcourir un jeu de données et faire un graphique simple avec le language R de base.<br />
-Au cours de cette séance nous utiliserons les extensions du <em>package</em> <strong>tidyverse</strong>. Le terme tidyverse est une contraction de <em>tidy</em> (qu’on pourrait traduire par “bien rangé”) et de <em>universe</em>. Il s’agit d’une collection d’extensions conçues à partir d’une philosophie commune. Elles abordent un très grand nombre d’opérations courantes dans R (la liste n’est pas exhaustive):/
-- l’import/export de données/
-- la manipulation des tableaux de données/
-- la manipulation de variables/
-- la visualisation/
-- l’extraction de données du web/
-- la programmation/</p>
+Au cours de cette séance nous utiliserons les extensions de la bibliothèque <strong>tidyverse</strong>. Ce terme est une contraction de <em>tidy</em> (qu’on pourrait traduire par “bien rangé”) et de <em>universe</em>. Il s’agit d’une collection d’extensions conçues à partir d’une philosophie commune. Elles abordent un très grand nombre d’opérations courantes dans R (la liste n’est pas exhaustive):<br />
+- l’import/export de données<br />
+- la manipulation des tableaux de données<br />
+- la manipulation de variables<br />
+- la visualisation<br />
+- l’extraction de données du web<br />
+- la programmation<br />
+</p>
 <p>L’un des objectifs de ces extensions est de fournir des fonctions avec une syntaxe cohérente, qui fonctionnent bien ensemble, et qui retournent des résultats prévisibles. Elles sont en grande partie issues du travail d’Hadley Wickham.<br />
 Téléchargeons et chargons l’ensemble des bibliothèques du <strong>tidyverse</strong> avec les commandes suivantes</p>
 <pre class="r"><code>#install.packages(&quot;tidyverse&quot;)
@@ -357,10 +358,25 @@ Téléchargeons et chargons l’ensemble des bibliothèques du <strong>tidyverse
 </div>
 <div id="importer-un-jeu-de-données" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> - Importer un jeu de données</h1>
-<p>Dans l’idéal il convient d’importer un tableau depuis excel (ou autre programme) à partir de CSVs (comma-separated-values), qui est un format simple, non-propriétaire (qui ne nécessite pas d’être lu par un logiciel particulier (et la plupart du temps payant), en texte simple (“plain-text”), qui permet à la fois d’être lu par l’humain, traité par la machine, et convient au stockage de données organisées en colonnes/lignes)./
-Dans R on peut charger et lire ce jeu de données avec la fonction de base <code>read.csv()</code>.</p>
-<pre class="r"><code>jdd &lt;- read.csv(&quot;data/data_exemple.csv&quot;)</code></pre>
+<p>Dans l’idéal il convient d’importer un tableau depuis excel (ou autre programme) à partir de CSVs (comma-separated-values), qui est un format simple, non-propriétaire (qui ne nécessite pas d’être lu par un logiciel particulier (et la plupart du temps payant), en texte simple (“plain-text”), qui permet à la fois d’être lu par l’humain, traité par la machine, et convient au stockage de données organisées en colonnes/lignes).<br />
+</p>
+<p>Point important: éviter les blancs/espaces dans les cellules des tableaux, car comble automatiquement ces blancs avec des signes.</p>
+<p>Dans R on peut charger et lire ce jeu de données avec la fonction de base <code>read.csv()</code>.</p>
+<pre class="r"><code>jdd &lt;- read.csv(&quot;data/data_exemple.csv&quot;) 
+# attention à bien vérifier quel séparateur est utilisé : &quot;,&quot; &quot;;&quot; ou &quot;tab&quot;
+# par défaut read.csv() va estimer que le séparateur est un &quot;,&quot;.
+# si ce n&#39;est pas le cas préciser avec sep=&quot;&quot;</code></pre>
 <p>Des données dans d’autres format peuvent être lu avec la fonction <code>read.table()</code>.</p>
+<pre class="r"><code>jdd &lt;- read.table(&quot;data/data_exemple.txt&quot;, sep=&quot;,&quot;, header = TRUE)
+# attention à bien vérifier quel séparateur est utilisé : &quot;,&quot; &quot;;&quot; ou &quot;tab&quot;
+# par défaut read.table() va estimer que le séparateur est une tabulation.
+# si ce n&#39;est pas le cas préciser avec sep=&quot;&quot;
+
+# avec read.table() préciser également header = TRUE pour indiquer que la première ligne
+# correspond au nom des colonnes</code></pre>
+<p>Pour ouvrir des fichiers au format Microsoft Excel on peut utiliser les fonctions <code>readxl()</code>, <code>read_excel()</code>,
+<code>read_xls()</code>, <code>read_xlsx()</code>.<br />
+Des tables enregistrées au format OpenDocument peuvent être lu grace à la fonction <code>readODS()</code>.</p>
 </div>
 
 
