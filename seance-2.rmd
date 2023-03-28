@@ -62,20 +62,17 @@ Tout d'abord voici quelques éléments de code de base dans le language R :\
 - les opérateurs de base de la logique booléenne (logique à deux états, 0 et 1, qui permet d'analyser des décisions et de trier des jeux de données) sont "ET" `&`, "OU" `|`, et "NON" `!`\
 - les contenus de classe "character" (texte ou dates) doivent être entrés en utilisant les guillements `""`.\
 - les contenus de classe "numeric" ne sont pas entre guillemets.
-- comme dans les formules d'excel, un ensemble de valeurs peut être défini en utilisant les deux points `:` au sein 
-
-As in a spreadsheet, you can specify a range of values with a colon, for example: c(1:10) creates a list of integers (whole numbers) from one to ten.
-Some common operators:
-
-+ - add, subtract.
-* / multiply, divide.
-> < greater than, less than.
->= <= greater than or equal to, less than or equal to.
-!= not equal to.
-Equals signs can be a little confusing, but see how they are used in the code we use today:
-
-== test whether an object is equal to a value. This is often used when filtering data, as we will see.
-= make an object equal to a value; works like <-, but used within the brackets of a function.
+- comme dans les formules d'excel, un ensemble de valeurs peut être défini en formant un vecteur en utilisant les deux points `:` au sein de la fonction `c()`.\
+- les opérateurs logiques les plus communs:\
+`+` ajouter\
+`-` soustraire\
+`*` multiplier\
+`/` diviser\
+`>` et `<` pour plus grand/plus petit que\
+`>=` et `<=` pour plus grand ou égal à / plus petit ou égal à\
+`!=` pas égal à\
+`==` voir le/les objet(s) égal(aux) à... souvent utiliser pour sélectionner/filter des données\
+`=` fait qu'un objet est égal à une valeur donnée. fonctionne comme `<-`, mais à l'intérieur d'une fonction.
 
 Il existe des fonctions très utiles dans le language R de base que l'on peut également passer avec les fonctions des bibliothèques **data.table()** et **dplyr()** du tydiverse.\
 
