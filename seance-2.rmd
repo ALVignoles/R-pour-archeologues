@@ -76,20 +76,27 @@ Tout d'abord voici quelques éléments de code de base dans le language R :\
 
 Il existe des fonctions très utiles dans le language R de base que l'on peut également passer avec les fonctions des bibliothèques **data.table()** et **dplyr()** du tydiverse.\
 
-## Sélectionner/voir le contenu de cellules particulières (dans la console)
-### Avec `data.table()`
+## Sélectionner/filtrer le contenu de cellules particulières (dans la console)
+### Avec R de base
+```{r filter base R, echo=T}
+jdd[3:5, ] #les lignes 3 à 5
+jdd[ , 1:4] #les colonnes 1 à 4 (ne montre que les 10 premières lignes)
+jdd[3, 1:4] #les cellules en 3e ligne, des colonnes 1 à 4
+jdd[jdd$type == "burin", ] #les lignes pour lesquelles le contenu de la colonne "type" correspond exactement à "burin"
+jdd[grep("burin", jdd$type), ] #toutes les lignes qui contiennent le mot "burin" dans la colonne "type"
+subset(jdd, as.numeric(longueur_cm) < 5) #toutes les lignes qui des valeurs de longueur_cm inférieures à 5
 
+```
+
+### Avec `data.table()`
 ```{r data.table, echo=T}
 #install.packages("data.table")
 library(data.table)
 ```
-```{r select data.table, echo=T}
-jdd[3:5,] #sélectionner les lignes 3 à 5
-jdd[,1:4] #sélectionner les colonnes 1 à 4 (ne montre que les 10 premières lignes)
-jdd[3,1:4] #sélectionner les cellules en 3e ligne, des colonnes 1 à 4
-jdd[jdd$type == "burin", ]  #sélectionner toutes les lignes avec le contenu "burin" dans la colonne "type"
-#jdd[jdd$type %like% "burin", ]  #sélectionner toutes les lignes qui contiennent "burin" dans la colonne "type"
-#jdd[type %like% "burin"]
+```{r filter data.table, echo=T}
+jdd[jdd$type %like% "burin", ] # toutes les lignes qui contiennent "burin" dans la colonne "type"
+#jdd[jdd$type %like% c("burin","lam"), ] # toutes les lignes qui contiennent "burin" ou "lam" dans la colonne "type"
+jdd[jdd$longueur_cm < 5]  # toutes les lignes qui contiennent "burin" dans la colonne "type"
 
 ```
 
