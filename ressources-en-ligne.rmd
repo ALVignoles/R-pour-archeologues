@@ -10,9 +10,11 @@ Voici quelques ressources pour découvrir le fonctionnement général de R et R 
 - [R for Data Science](https://external.ink?to=/r4ds.had.co.nz/index.html) par Hadley Wickham et Garrett Grolemund  
 - [Découvrir R et RStudio](https://external.ink?to=/mtes-mct.github.io/parcours_r_socle_introduction/) est un manuel en français réalisé par Thierry Zorn, Murielle Lethrosne, Vivien Roussez, Pascal Irz & Nicolas Torterotot. Il s'agit d'un dispositif de formation proposé par les Ministères de la transition écologique et solidaire (MTES), et de la Cohésion des territoires et des Relations avec les collectivités territoriales (MCTRCT) du gouvernement français.  
 - Un document présentant la [Gestion des données avec R](https://external.ink?to=/lms.fun-mooc.fr/c4x/UPSUD/42001S02/asset/data-management.html) est proposé par Christophe Lalanne et Bruno Falissard. Il y est notamment expliqué sous quelle forme apparaissent les données par rapport à excel (concept de data frame) et comment les importer pour travailler dans Rstudio.  
-- L'[Introduction à R et au tidyverse](https://external.ink?to=/juba.github.io/tidyverse/) est un livre en français par Julien Barnier (déposé également [sur Zenodo](https://external.ink?to=/doi.org/10.5281/zenodo.6382599)) qui fait le point sur la prise en main de R et Rstudio, le concept de dataframe, les analyses univariées et bivariées, les visualisations et les représentations graphiques. Il propose également des "manuels d'utilisation" pour plusieurs packages courant dans le tidyverse (tels que ggplot2, dplyr, stringr, tidyr et rmarkdown), et propose de nombreux exercices.  
+- L'[Introduction à R et au tidyverse](https://external.ink?to=/juba.github.io/tidyverse/) est un livre en français par Julien Barnier (déposé également [sur Zenodo](https://external.ink?to=/doi.org/10.5281/zenodo.6382599)) qui fait le point sur la prise en main de R et Rstudio, le concept de dataframe, les analyses univariées et bivariées, les visualisations et les représentations graphiques. Il propose également des "manuels d'utilisation" pour plusieurs packages courant dans le tidyverse (tels que ggplot2, dplyr, stringr, tidyr et rmarkdown), et propose de nombreux exercices.
 - Pour s'aider à utiliser les principaux packages, il existe des fiches aide-mémoire (cheatsheets) mises en lignes sur le [site officiel de Rstudio/Posit](https://external.ink?to=/rstudio.com/resources/cheatsheets/).  
-- Les packages R sont rencensés sur [https://rdocumentation.org/](https://external.ink?to=/rdocumentation.org/).  
+- Les packages R sont rencensés sur [https://rdocumentation.org/](https://external.ink?to=/rdocumentation.org/).
+- Une fiche aide-mémoire [pour l'usage des couleurs en codage hexadécimal](https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf) sur R
+- Une page dédiée à la [création de figures avec R base](https://nicercode.github.io/guides/plotting/)
 
 # Ressources concernant l'usage de R pour des applications en archéologie
 - [Ben Marwick](https://external.ink?to=/rdocumentation.org/github.com/benmarwick) est professeur à l'Université de Washington et est l'un des archéologues les plus actifs dans le développement de pratiques liées à l' "ouverture" des données et à la reproductibilité des analyses et codes sources.  
@@ -57,3 +59,32 @@ library(swirl)
 * [UtilitR](https://external.ink?to=/utilitr.org/) manuel de R par les agents de l'Insee
 * [Les données spatiales avec R](https://external.ink?to=/github.com/MaelTheuliere/rspatial) par @MaelTheuliere, support de cours sur l'analyse spatiale avec R et sf
 * [Contes et stats R](https://external.ink?to=/perso.ens-lyon.fr/lise.vaudor/grimoireStat/_book/intro.html#pourquoi-ce-livre) par Lise Vaudor
+
+# Banques de données spatiales 
+Voici quelques banques de données spatialisées pour vous aider à créer de jolies cartes ou utiliser des données environnementales diverses. 
+
+## Modèles Numériques de Terrain 
+[Liste de MNT en open-source](https://opendem.info/link_dem.html)
+[MNT bathymétrique mondial du NOAA](https://data.noaa.gov/onestop/collections?q=%22digital%20elevation%22)
+
+## Données climatiques et paléoclimatiques 
+[Variables climatiques sub-actuelles du Climatic Research Unit](https://www.uea.ac.uk/groups-and-centres/climatic-research-unit)
+[Variables climatiques actuelles du modèle WorldClim](https://worldclim.org)
+[Variables climatiques actuelles et passées du laboratoire Chelsa](https://chelsa-climate.org)
+[Simulations du climat du BRIDGE](https://www.paleo.bristol.ac.uk/ummodel/list_of_simulations.html)
+[Simulations du climat passé de l'équipe PaleoClim](http://www.paleoclim.org)
+
+## Données hydrographiques
+[Modèle HydroSheds (v2)](https://www.hydrosheds.org/hydrosheds-v2)
+
+## Données océaniques 
+[EMODnet](https://emodnet.ec.europa.eu)
+
+## Données géographiques et géologiques 
+
+## Données administratives 
+
+## Exploration en ligne de données spatialisées
+[Géoportail](https://www.geoportail.gouv.fr)
+[Open Land Map](https://openlandmap.org)
+
