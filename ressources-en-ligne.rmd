@@ -64,27 +64,27 @@ library(swirl)
 Voici quelques banques de données spatialisées pour vous aider à créer de jolies cartes ou utiliser des données environnementales diverses. 
 
 ## Modèles Numériques de Terrain 
-[Liste de MNT en open-source](https://opendem.info/link_dem.html)
-[MNT bathymétrique mondial du NOAA](https://data.noaa.gov/onestop/collections?q=%22digital%20elevation%22)
+* [Liste de MNT en open-source](https://opendem.info/link_dem.html)
+* [MNT bathymétrique mondial du NOAA](https://data.noaa.gov/onestop/collections?q=%22digital%20elevation%22)
 
 ## Données climatiques et paléoclimatiques 
-[Variables climatiques sub-actuelles du Climatic Research Unit](https://www.uea.ac.uk/groups-and-centres/climatic-research-unit)
-[Variables climatiques actuelles du modèle WorldClim](https://worldclim.org)
-[Variables climatiques actuelles et passées du laboratoire Chelsa](https://chelsa-climate.org)
-[Simulations du climat du BRIDGE](https://www.paleo.bristol.ac.uk/ummodel/list_of_simulations.html)
-[Simulations du climat passé de l'équipe PaleoClim](http://www.paleoclim.org)
+* [Variables climatiques sub-actuelles du Climatic Research Unit](https://www.uea.ac.uk/groups-and-centres/climatic-research-unit)
+* [Variables climatiques actuelles du modèle WorldClim](https://worldclim.org)
+* [Variables climatiques actuelles et passées du laboratoire Chelsa](https://chelsa-climate.org)
+* [Simulations du climat du BRIDGE](https://www.paleo.bristol.ac.uk/ummodel/list_of_simulations.html)
+* [Simulations du climat passé de l'équipe PaleoClim](http://www.paleoclim.org)
 
 ## Données hydrographiques
-[Modèle HydroSheds (v2)](https://www.hydrosheds.org/hydrosheds-v2)
+* [Modèle HydroSheds (v2)](https://www.hydrosheds.org/hydrosheds-v2)
 
 ## Données océaniques 
-[EMODnet](https://emodnet.ec.europa.eu)
+* [EMODnet](https://emodnet.ec.europa.eu)
 
 ## Données géographiques et géologiques 
 
 ## Données administratives 
 
 ## Exploration en ligne de données spatialisées
-[Géoportail](https://www.geoportail.gouv.fr)
-[Open Land Map](https://openlandmap.org)
+* [Géoportail](https://www.geoportail.gouv.fr)
+* [Open Land Map](https://openlandmap.org)
 
