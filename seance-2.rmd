@@ -50,6 +50,35 @@ jdd <- read_xlsx("data/data_exemple.xlsx")
 ```
 Des tables enregistrées au format OpenDocument peuvent être lues grace à la fonction `readODS()`.
 
+Bien vérifier que la classe des variables correspond à la réalité des informations:
+```{r change class, echo=T}
+jdd
+
+# changeons la classe des colonnes "x_cm", "y_cm", "longueur_cm" et "largeur_cm"
+# car elles contiennent des données numériques.
+# pour cela utilisons lq fonction lapply() qui qpplique une boucle sur une 
+# structure de type liste (d'où le "l" devant apply).
+# associons-y la fonction as.numeric()
+jdd[,3:6] <- lapply(jdd[,3:6], as.numeric)
+```
+```{r specify class, echo=T}
+# On peut aussi spécifier la classe des différentes colonnes dès l'importation 
+# avec la fonction colClasses() :
+jdd <- read.table("data/data_exemple.txt", sep = ",", header = TRUE,
+                  colClasses = c(numero = "numeric",
+                                 type = "character",
+                                 x_cm = "numeric",
+                                 y_cm = "numeric",
+                                 longueur_cm = "numeric",
+                                 largeur_cm = "numeric",
+                                 silex = "character",
+                                 raccord = "numeric"
+                                 ))
+# A noter qu'en utilisant le format .csv le problème d'attribution de classe
+# n'existe pas,
+# et que la fonction colClasses() n'est pas compatible avec read_xlsx() !
+```
+
 
 # - Manipuler un jeu de données
 https://gitlab.com/linogaliana/bigr/-/blob/master/04-datatable.Rmd
@@ -96,10 +125,6 @@ jdd[grep("burin", jdd$type), ]
 jdd[grep("burin|lam", jdd$type), ]
 
 #toutes les lignes qui contiennent des valeurs de longueur_cm inférieures à 2
-subset(jdd, as.numeric(longueur_cm) < 2) #force un changement de classe de la colonne
-# ou
-jdd$longueur_cm <- as.numeric(jdd$longueur_cm) # change la classe de la colonne en amont
-#puis:
 subset(jdd, longueur_cm < 2)
 ```
 
@@ -116,7 +141,6 @@ jdd[jdd$type %like% "burin", ]
 jdd[jdd$type %like% "burin|lam", ]
 
 #toutes les lignes qui contiennent des valeurs de longueur_cm inférieures à 2:
-jdd$longueur_cm <- as.numeric(jdd$longueur_cm) #change la classe de la colonne en amont
 jdd[jdd$longueur_cm < 2, ]
 ```
 
@@ -145,8 +169,17 @@ dplyr::filter(jdd, grepl("burin|lam", type))
 jdd %>% dplyr::filter(grepl("burin|lam", type))
 
 #toutes les lignes qui contiennent des valeurs de longueur_cm inférieures à 2:
-jdd$longueur_cm <- as.numeric(jdd$longueur_cm) # change la classe de la colonne en amont
 dplyr::filter(jdd, longueur_cm < 2)
+```
+
+```{r filter average by group, echo=T}
+jdd[jdd$longueur_cm < 5 & mean("largeur_cm")]
+
+# ou avec dplyr() :
+jdd %>%
+  dplyr::filter(longueur_cm < 5) %>%
+  dplyr::group_by(silex) %>%
+  dplyr::summarise(mean(largeur_cm))
 ```
 
 dplyr and data.table for splitting the data up by groups, applying some common or custom functions, and combining the output back into a convenient form (ie. typical aggregation, splitting and summarising operations). Both packages are fast on very large datasets.
