@@ -315,7 +315,7 @@ dplyr::filter(jdd, longueur_cm < 2)
 ```{r filter average by group, echo=T}
 #jdd[jdd$longueur_cm < 5 & mean("largeur_cm")]
 
-# ou avec dplyr() :
+# ou avec les fonctions de dplyr() :
 jdd %>%
   dplyr::filter(longueur_cm < 5) %>%
   dplyr::group_by(silex) %>%
