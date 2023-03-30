@@ -1,0 +1,18 @@
+---
+title: "TP 1"
+output: html_document
+---
+
+L'objectif des TPs que nous vous proposons est de vous entraîner à refaire les différentes opérations que vous avez apprises dans le cadre du workshop. Ces TPs consistent en des questions auxquelles nous vous proposons de répondre au fur et à mesure. N'hésitez pas à travailler à plusieurs !
+
+Pour les deux premiers TPs, nous allons utiliser un jeu de données comportant plusieurs informations qualitatives et quantitatives sur des pointes de flèches de la période Archaïque, récoltées à Fort Hood au Texas au cours de prospections de surface. Ce jeu de données est disponible au sein du package `archdata`, qui regroupe plusieurs jeux de données archéologiques.
+
+# - Préparation 
+1.1. Commencez tout d'abord par installer le package `archdata`.  
+
+1.2. Maintenant, ouvrez le jeu de données `DartPoints`. 
+
+# - Se familiariser avec le jeu de données 
+2.1. Combien y a-t-il de variables (colonnes) et d'enregistrements (lignes) dans le jeu de données ?
+
+2.2. Lister le nombre de  
