@@ -1,5 +1,5 @@
 ---
-title: "Séance 2 : Analyser et visualiser un jeu de données semi-quantitatif"
+title: "Séance 2 : Créer des graphiques avec base R et ggplot"
 output: bookdown::html_document2
 ---
 
