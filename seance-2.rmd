@@ -131,6 +131,3 @@ plot(x = jdd$longueur, y = jdd$largeur,
 dev.off()
 ```
 
-
-
-
