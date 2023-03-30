@@ -1,5 +1,5 @@
 ---
-title: "Séance 1 : Se familiariser avec R"
+title: "Séance 1 : Analyser et visualiser un jeu de données semi-quantitatif"
 output: bookdown::html_document2
 ---
 
