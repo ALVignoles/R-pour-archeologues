@@ -4,183 +4,130 @@ output: bookdown::html_document2
 ---
 
 # - Introduction
-Nous avons vu à la séance précédente comment parcourir un jeu de données et faire un graphique simple avec le language R de base.\
+
+Nous avons vu à la séance précédente comment parcourir un jeu de données avec le language R de base.\
 Rappelons notamment l'usage des fonctions `view()`, `head()`, `class()`, `summary()`, `str()`, `nrow()`, `ncol()`, `levels()`, `plot()`, etc.\
 
-Au cours de cette séance nous utiliserons aussi les fonctions des bibliothèques issues du **tidyverse** - contraction de *tidy* (“bien rangé”) et de *universe*. Il s’agit d’une collection de bibliothèques/extensions conçues dans une philosophie commune. Elles abordent un très grand nombre d’opérations courantes dans R dont :\
-- l'import/export de données\
-- la manipulation des tableaux de données\
-- la manipulation de variables\
-- la visualisation\
-- l'extraction de données du web\
-- la programmation\
+Nous avons également vu comment manipuler un jeu de données, avec les fonctions R de base, et avec les fonctions de la bibliothèque `dplyr()` du tidyverse.\
 
-L'un des objectifs de ces extensions est de fournir des fonctions avec une syntaxe cohérente, qui fonctionnent bien ensemble, et qui retournent des résultats prévisibles. Elles sont en grande partie issues du travail d’Hadley Wickham.\
+Passons maintenant à la visualisation avec les graphiques.\
 
-# - Importer un jeu de données
-Dans l'idéal il convient d'importer un tableau depuis excel (ou autre programme) à partir de CSVs (comma-separated-values), qui est un format simple, non-propriétaire (qui ne nécessite pas d'être lu par un logiciel particulier (et la plupart du temps payant), en texte simple ("plain-text"), qui permet à la fois d'être lu par l'humain, traité par la machine, et convient au stockage de données organisées en colonnes/lignes).\
-
-Point important : dans les tableaux, éviter les espaces ( ` ` ) et les parenthèses ( `(` ou `)` ), car R va interpréter ces blancs et automatiquement les remplacer par des signes (essentiellement `.`).\
-
-Dans R on peut charger et lire un jeu de données avec la fonction de base `read.csv()`
+Tout d'abord rechargeons notre jeu de données :\
 ```{r import csv, echo=T}
 jdd <- read.csv("data/data_exemple.csv") 
-# attention à bien vérifier quel séparateur est utilisé : "," ";" ou "tab"
-# par défaut read.csv() va estimer que le séparateur est un ",".
-
-# si ce n'est pas le cas préciser avec la commande "sep =" comme suit:
-jdd <- read.csv("data/data_exemple.csv", sep = ",")
-```
-
-Des données dans d'autres format peuvent être lues avec la fonction `read.table()`
-```{r import read.table, echo=T}
-# par défaut read.table() va estimer que le séparateur est une tabulation.
-# il convient donc de préciser que le séparateur est une virgule avec sep = ""
-
-# avec read.table() préciser également header = TRUE pour indiquer que la première 
-# ligne correspond au nom des colonnes
-jdd <- read.table("data/data_exemple.txt", sep = ",", header = TRUE)
-```
-
-Pour ouvrir des fichiers au format Microsoft Excel on peut utiliser les fonctions de la bibliothèque **readxl**:\  `read_excel()`,`read_xls()`, `read_xlsx()`, par exemple :
-```{r import read_xlsx, echo=T}
-#install.packages("readxl")
-library(readxl)
-jdd <- read_xlsx("data/data_exemple.xlsx")
-```
-Des tables enregistrées au format OpenDocument peuvent être lues grace à la fonction `readODS()`.
-
-Bien vérifier que la classe des variables correspond à la réalité des informations:
-```{r change class, echo=T}
-jdd
-
-# changeons la classe des colonnes "x_cm", "y_cm", "longueur_cm" et "largeur_cm"
-# car elles contiennent des données numériques.
-# pour cela utilisons lq fonction lapply() qui qpplique une boucle sur une 
-# structure de type liste (d'où le "l" devant apply).
-# associons-y la fonction as.numeric()
-jdd[,3:6] <- lapply(jdd[,3:6], as.numeric)
-```
-```{r specify class, echo=T}
-# On peut aussi spécifier la classe des différentes colonnes dès l'importation 
-# avec la fonction colClasses() :
-jdd <- read.table("data/data_exemple.txt", sep = ",", header = TRUE,
-                  colClasses = c(numero = "numeric",
-                                 type = "character",
-                                 x_cm = "numeric",
-                                 y_cm = "numeric",
-                                 longueur_cm = "numeric",
-                                 largeur_cm = "numeric",
-                                 silex = "character",
-                                 raccord = "numeric"
-                                 ))
-# A noter qu'en utilisant le format .csv le problème d'attribution de classe
-# n'existe pas,
-# et que la fonction colClasses() n'est pas compatible avec read_xlsx() !
 ```
 
 
-# - Manipuler un jeu de données
-https://gitlab.com/linogaliana/bigr/-/blob/master/04-datatable.Rmd
+# - Créer un graphique simple avec les commandes R de base
 
-Tout d'abord voici quelques éléments de code de base dans le language R :\
-- `<-` est un "opérateurs d’assignation", et s'utilise de telle manière que l'objet nommé à la gauche de ce signe correspond au résultat (*output*) du code à sa droite. C'est dans ce sens que l'on vient de l'utiliser plus haut avec par exemple `jdd <- read.csv("data/data_exemple.csv")`\
-- `&` signifie ET (AND) dans 
-- les opérateurs de base de la logique booléenne (logique à deux états, 0 et 1, qui permet d'analyser des décisions et de trier des jeux de données) sont "ET" `&`, "OU" `|`, et "NON" `!`\
-- les contenus de classe "character" (texte ou date) doivent être entrés en utilisant les guillements `" "`.\
-- les contenus de classe "numeric" ne sont pas entre guillemets.
-- comme dans les formules d'excel, un ensemble de valeurs peut être défini en formant un vecteur en utilisant les deux points `:` au sein de la fonction `c()`.\
-- les opérateurs logiques les plus communs:\
-`+` ajouter\
-`-` soustraire\
-`*` multiplier\
-`/` diviser\
-`>` et `<` pour plus grand/plus petit que\
-`>=` et `<=` pour plus grand ou égal à / plus petit ou égal à\
-`!=` pas égal à\
-`==` voir le/les objet(s) égal(aux) à... souvent utiliser pour sélectionner/filter des données\
-`=` fait qu'un objet est égal à une valeur donnée. fonctionne comme `<-`, mais à l'intérieur d'une fonction.
+A présent, essayons de visualiser un graphique de la longueur vs la largeur des pièces.\
+Dans le language R de base, on utilise la fonction `plot()`
 
-Il existe des fonctions très utiles dans le language R de base que l'on peut également passer avec les fonctions des bibliothèques **data.table()** et **dplyr()** du tydiverse.\
-
-## Sélectionner/filtrer le contenu de cellules particulières (dans la console)
-### Avec le language R de base
-```{r filter base R, echo=T}
-#les lignes 3 à 5:
-jdd[3:5, ]
-
-#les colonnes 1 à 4 (ne montre que les 10 premières lignes):
-jdd[ , 1:4]
-
-#les cellules en 3e ligne, des colonnes 1 à 4:
-jdd[3, 1:4]
-
-#les lignes pour lesquelles le contenu de la colonne "type" correspond exactement à "burin":
-jdd[jdd$type == "burin", ]
-
-#toutes les lignes qui contiennent le mot "burin" dans la colonne "type":
-jdd[grep("burin", jdd$type), ]
-
-#toutes les lignes qui contiennent "burin" ou "lam" dans la colonne "type":
-jdd[grep("burin|lam", jdd$type), ]
-
-#toutes les lignes qui contiennent des valeurs de longueur_cm inférieures à 2
-subset(jdd, longueur_cm < 2)
+```{r plot1, echo=T}
+plot(x = jdd$longueur, y = jdd$largeur)
 ```
 
-### Avec `data.table()`
-```{r data.table, echo=T}
-#install.packages("data.table")
-library(data.table)
-```
-```{r filter data.table, echo=T}
-#toutes les lignes qui contiennent le mot "burin" dans la colonne "type":
-jdd[jdd$type %like% "burin", ]
+Ici, à l'intérieur de la fonction, on a précisé quels arguments étaient concernés: x et y. Les fonctions comme `class()`, `levels()` n'ont qu'un argument, c'est pourquoi nous n'avons pas eu besoin de le préciser.
 
-#toutes les lignes qui contiennent "burin" ou "lam" dans la colonne "type":
-jdd[jdd$type %like% "burin|lam", ]
+Un argument est un objet que l'on passera à la fonction pour qu'elle s'exécute. De façon générale, les arguments sont rentrés dans l'ordre chronologique dans lequel ils sont programmés dans la fonction. Voyons voir cela de plus près.
 
-#toutes les lignes qui contiennent des valeurs de longueur_cm inférieures à 2:
-jdd[jdd$longueur_cm < 2, ]
+```{r plothelp, echo=T}
+?plot
 ```
 
-### Avec `dplyr()` (bibliothèque du tidyverse)
-Téléchargeons et chargons l'ensemble des bibliothèques du **tidyverse** avec les commandes suivantes :
-```{r tidyverse, echo=T}
-#install.packages("tidyverse")
-#library(tidyverse)
+Dans la fiche d'aide, nous pouvons voir que cette fonction nécessite deux arguments au minimum :\
+`x` (abscisse) et `y` (ordonnée).\
+Il est possible de préciser ou non dans le code quels objets vont dans quels arguments, mais ce n'est pas nécessaire si l'on respecte l'ordre logique avec `x` d'abord et `y` ensuite.\
+Ainsi, la commande suivante aura le même résultat que précédemment
+
+```{r plot2, echo=T}
+plot(jdd$longueur, jdd$largeur)
 ```
 
-L’opérateur `%>%` est appelé *pipe* (anglais) et est issu de la bibliothèque **magrittr**. Il permet d'enchainer les fonctions sans les inclure les une dans les autres.
-```{r filter dplyr, echo=T}
-#les lignes pour lesquelles le contenu de la colonne "type" correspond exactement à "burin":
-dplyr::filter(jdd, type == "burin")
-# ou avec le 'pipe':
-jdd %>% dplyr::filter(type == "burin")
+Notez ici l'importance de bien séparer chaque argument par une virgule `,`. Sans cela il n'est pas possible de passer la commande.
 
-#toutes les lignes qui contiennent le mot "burin" dans la colonne "type":
-dplyr::filter(jdd, grepl("burin", type))
-# ou avec le 'pipe':
-jdd %>% dplyr::filter(grepl("burin", type))
+Si la fonction `plot()` nécessite ces deux arguments pour fonctionner, nous pouvons lui transmettre d'autres arguments annexes permettant d'améliorer la qualité graphique. Par exemple, modifions le titre des axes pour que ce soit plus clair:
 
-#toutes les lignes qui contiennent "burin" ou "lam" dans la colonne "type":
-dplyr::filter(jdd, grepl("burin|lam", type))
-# ou avec le 'pipe':
-jdd %>% dplyr::filter(grepl("burin|lam", type))
-
-#toutes les lignes qui contiennent des valeurs de longueur_cm inférieures à 2:
-dplyr::filter(jdd, longueur_cm < 2)
+```{r}
+plot(
+  x = jdd$longueur,             # il est possible de sauter une ligne 
+  y = jdd$largeur,              # après chaque virgule ou parenthèse
+     xlab = "Longueur (cm)",    # pour faciliter la lecture du code
+     ylab = "Largeur (cm)"      # avant de fermer la parenthèse
+     )
 ```
 
-```{r filter average by group, echo=T}
-jdd[jdd$longueur_cm < 5 & mean("largeur_cm")]
+Précisons ici que les textes entre guillemets ("" ou '') seront automatiquement considérés comme des objets de type caractère. Il est d'ailleurs possible de les définir avant de les inclure dans la fonction:
 
-# ou avec dplyr() :
-jdd %>%
-  dplyr::filter(longueur_cm < 5) %>%
-  dplyr::group_by(silex) %>%
-  dplyr::summarise(mean(largeur_cm))
+```{r plot3, echo=T}
+xlabel <- "Longueur (cm)"
+ylabel <- "Largeur (cm)"
+plot(x = jdd$longueur, y = jdd$largeur,
+     xlab = xlabel, ylab = ylabel)
+
+# Ajoutons l'objet du titre avant de l'insérer dans le plot
+title <- "Dimension des objets en silex"
+plot(x = jdd$longueur, y = jdd$largeur,
+     xlab = xlabel, ylab = ylabel, 
+     main = title)
 ```
 
-dplyr and data.table for splitting the data up by groups, applying some common or custom functions, and combining the output back into a convenient form (ie. typical aggregation, splitting and summarising operations). Both packages are fast on very large datasets.
+Pour aller plus loin, il est possible de colorer les points en fonction d'une catégorie. Essayons avec la catégorie `type_fac`
+
+```{r plot4, echo=T}
+plot(x = jdd$longueur, y = jdd$largeur,
+     col = jdd$type_fac, 
+     xlab = xlabel, ylab = ylabel,
+     main = title)
+```
+
+On peut également changer la forme des points avec l'argument `pch`. Essayons de faire un graphique avec des formes différentes en fonction du type de silex. NB : N'oublions pas de convertir notre colonne silex en facteur !
+
+```{r plot5, echo=T}
+jdd$silex_fac <- as.factor(jdd$silex)
+
+plot(x = jdd$longueur, y = jdd$largeur,
+     col = jdd$type_fac, 
+     pch = c(16, 17, 18)[as.numeric(jdd$silex_fac)], # ici, on assigne les formes
+                                                     # 16, 17 et 18 aux levels  
+     xlab = xlabel, ylab = ylabel, 
+     main = title)
+```
+
+Les points de ce graphe sont trop petits pour être bien visibles. Mais il est possible de modifier leur taille au sein de la fonction `plot()`.
+
+```{r plot6, echo=T}
+plot(x = jdd$longueur, y = jdd$largeur,
+     col = jdd$type_fac, 
+     pch = c(16, 17, 18)[as.numeric(jdd$silex_fac)],  
+     cex = 1.5,
+     xlab = xlabel, ylab = ylabel, 
+     main = title)
+```
+
+# - Enregistrer un graphique
+
+Il existe plusieurs moyens pour enregistrer une figure:\
+- Le premier est de cliquer sur le bouton `Export` dans l'onglet `Plots`. Vous pouvez alors choisir le dossier dans lequel sauvegarder la figure, dont vous pouvez modifier les dimensions manuellement.\
+- Toutefois, il est parfois utile de sauvegarder directement la figure avec une ligne de code, notamment dans le but de réaliser plusieurs figures similaires de la même taille exactement ! Utiliser la fonction `pdf()` est plus reproductible et ne complique par le code outre mesure.
+
+Enregistrons notre figure au format pdf de cette manière:
+
+```{r plot6save, eval = F, echo=T}
+#Il faut tout d'abord créer un fichier pdf vide de la taille voulue
+pdf("figures/Figure1.pdf",        # ici on écrit le chemin vers la figure
+     width = 4.5, height = 4.5)   # et ici les dimensions de la figure en cm. 
+
+### On écrit la figure dans le pdf
+plot(x = jdd$longueur, y = jdd$largeur,
+     col = jdd$type_fac, 
+     pch = c(16, 17, 18)[as.numeric(jdd$silex_fac)], 
+     cex = 1.5,
+     xlab = xlabel, ylab = ylabel, 
+     main = title)
+
+### et on cloture l'écriture de la figure dans le pdf
+
+dev.off()
+```
 
