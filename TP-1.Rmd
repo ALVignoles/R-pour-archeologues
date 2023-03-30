@@ -1,5 +1,5 @@
 ---
-title: "TP 1"
+title: "TP 1 et 2"
 output: html_document
 ---
 
@@ -15,4 +15,8 @@ Pour les deux premiers TPs, nous allons utiliser un jeu de données comportant p
 # - Se familiariser avec le jeu de données 
 2.1. Combien y a-t-il de variables (colonnes) et d'enregistrements (lignes) dans le jeu de données ?
 
-2.2. Lister le nombre de  
+2.2. Lister les types de variables du jeu de données : combien y en a-t-il ?
+
+2.3. 
+
+# - Explorer le jeu de données
