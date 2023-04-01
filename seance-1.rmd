@@ -314,8 +314,7 @@ dplyr::filter(jdd, longueur_cm < 2)
 
 ```{r filter average by group, echo=T}
 # avec les fonctions de base R :
-aggregate(data = (subset(jdd, longueur_cm < 5)), 
-          largeur_cm ~ silex, FUN = mean)
+aggregate(data = (subset(jdd, longueur_cm < 5)), largeur_cm ~ silex, FUN = mean)
 
 # ou avec les fonctions de dplyr() et des 'pipes' :
 jdd %>%
