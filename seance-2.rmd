@@ -75,6 +75,8 @@ plot(x = jdd$longueur, y = jdd$largeur,
 Pour aller plus loin, il est possible de colorer les points en fonction d'une catégorie. Essayons avec la catégorie `type_fac`
 
 ```{r plot4, echo=T}
+jdd$type_fac <- as.factor(jdd$type)
+
 plot(x = jdd$longueur, y = jdd$largeur,
      col = jdd$type_fac, 
      xlab = xlabel, ylab = ylabel,
@@ -126,7 +128,7 @@ plot(x = jdd$longueur, y = jdd$largeur,
      xlab = xlabel, ylab = ylabel, 
      main = title)
 
-### et on cloture l'écriture de la figure dans le pdf
+### et on clot l'écriture de la figure dans le pdf
 
 dev.off()
 ```
