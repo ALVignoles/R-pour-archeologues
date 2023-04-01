@@ -421,19 +421,19 @@ jdd &lt;- read_xlsx(&quot;data/data_exemple.xlsx&quot;)</code></pre>
 <p>Bien vérifier que la classe des variables correspond à la réalité des informations:</p>
 <pre class="r"><code>jdd</code></pre>
 <pre><code>## # A tibble: 33 × 8
-##    numero type                         x_cm  y_cm longue…¹ large…² silex raccord
-##     &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt;
-##  1      1 gravette                       10    60 5        1.5     type…      NA
-##  2      2 gravette                       30    50 5.9      1.8     type…      NA
-##  3      3 picardie                       50    80 3.2      1.2     type…       1
-##  4      4 percoir                       260   100 4.7      2.1     type…      NA
-##  5      5 burin                         240   120 6        2.4     type…       2
-##  6      6 burin diedre                  280   150 8        3.5     type…      NA
-##  7      7 percoir                       250   130 5.6      3.8     type…      NA
-##  8      8 burin du Raysse               260   300 5.3      3.8     type…       1
-##  9      9 chute de burin                230   280 2        0.5     type…       2
-## 10     10 nucleus a eclats laminaires   180   290 10.2     6.9     type…      NA
-## # … with 23 more rows, and abbreviated variable names ¹​longueur_cm, ²​largeur_cm</code></pre>
+##    numero type             x_cm  y_cm longueur_cm largeur_cm silex  raccord
+##     &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;    &lt;dbl&gt;
+##  1      1 gravette           10    60 5           1.5        type A      NA
+##  2      2 gravette           30    50 5.9         1.8        type C      NA
+##  3      3 picardie           50    80 3.2         1.2        type B       1
+##  4      4 percoir           260   100 4.7         2.1        type B      NA
+##  5      5 burin             240   120 6           2.4        type B       2
+##  6      6 burin diedre      280   150 8           3.5        type A      NA
+##  7      7 percoir           250   130 5.6         3.8        type A      NA
+##  8      8 burin du Raysse   260   300 5.3         3.8        type B       1
+##  9      9 chute de burin    230   280 2           0.5        type A       2
+## 10     10 nucleus a lames   180   290 10.2        6.9        type A      NA
+## # … with 23 more rows</code></pre>
 <pre class="r"><code># changeons la classe des colonnes &quot;x_cm&quot;, &quot;y_cm&quot;, &quot;longueur_cm&quot; et &quot;largeur_cm&quot;
 # car elles contiennent des données numériques.
 # pour cela utilisons lq fonction lapply() qui qpplique une boucle sur une 
@@ -464,74 +464,40 @@ Mais préférez là aussi le code: soit avec la commande <code>view(jdd)</code> 
 <pre class="r"><code>view(jdd)</code></pre>
 <p>ou simplement en utilisant la commande <code>jdd</code> (nom du jeu de données) pour afficher le contenu du tableau dans la console</p>
 <pre class="r"><code>jdd</code></pre>
-<pre><code>##    numero                        type x_cm y_cm longueur_cm largeur_cm  silex
-## 1       1                    gravette   10   60         5.0        1.5 type A
-## 2       2                    gravette   30   50         5.9        1.8 type C
-## 3       3                    picardie   50   80         3.2        1.2 type B
-## 4       4                     percoir  260  100         4.7        2.1 type B
-## 5       5                       burin  240  120         6.0        2.4 type B
-## 6       6                burin diedre  280  150         8.0        3.5 type A
-## 7       7                     percoir  250  130         5.6        3.8 type A
-## 8       8             burin du Raysse  260  300         5.3        3.8 type B
-## 9       9              chute de burin  230  280         2.0        0.5 type A
-## 10     10 nucleus a eclats laminaires  180  290        10.2        6.9 type A
-## 11     11                        lame   80   90        10.0        2.8 type A
-## 12     12                        lame   50   70         8.5        2.7 type A
-## 13     13                        lame   20   50         9.2        3.1 type A
-## 14     14                        lame   10   90         7.4        2.4 type A
-## 15     15                        lame   30   80         6.9        1.4 type A
-## 16     16                        lame   40   50         9.8        3.1 type A
-## 17     17                        lame   50   60         6.7        1.4 type A
-## 18     18                        lame   80  100         7.4        1.9 type A
-## 19     19                       eclat  190  250         2.3        2.0 type A
-## 20     20                       eclat  200  300         5.9        3.4 type A
-## 21     21                       eclat  280  350         8.4        5.9 type A
-## 22     22                       eclat  250  360         6.2        6.1 type A
-## 23     23                       eclat  260  390         4.5        3.6 type A
-## 24     24                       eclat  210  340         9.5        7.1 type A
-## 25     25                       eclat  230  370         5.8        4.2 type A
-## 26     26                       eclat  270  330         6.1        3.9 type A
-## 27     27                       eclat  240  350         4.8        3.7 type A
-## 28     28                       eclat  290  360         2.5        2.0 type A
-## 29     29                       eclat  250  390         3.4        2.8 type A
-## 30     30                       eclat  280  370         1.9        1.2 type A
-## 31     31                       eclat  260  300         4.6        2.8 type A
-## 32     32                       eclat  210  290         1.4        1.0 type A
-## 33     33                       eclat  200  280         2.3        2.2 type A
-##    raccord
-## 1       NA
-## 2       NA
-## 3        1
-## 4       NA
-## 5        2
-## 6       NA
-## 7       NA
-## 8        1
-## 9        2
-## 10      NA
-## 11      NA
-## 12      NA
-## 13      NA
-## 14      NA
-## 15      NA
-## 16      NA
-## 17      NA
-## 18      NA
-## 19      NA
-## 20      NA
-## 21      NA
-## 22      NA
-## 23      NA
-## 24      NA
-## 25      NA
-## 26      NA
-## 27      NA
-## 28      NA
-## 29      NA
-## 30      NA
-## 31      NA
-## 32      NA
-## 33      NA</code></pre>
+<pre><code>##    numero            type x_cm y_cm longueur_cm largeur_cm  silex raccord
+## 1       1        gravette   10   60         5.0        1.5 type A      NA
+## 2       2        gravette   30   50         5.9        1.8 type C      NA
+## 3       3        picardie   50   80         3.2        1.2 type B       1
+## 4       4         percoir  260  100         4.7        2.1 type B      NA
+## 5       5           burin  240  120         6.0        2.4 type B       2
+## 6       6    burin diedre  280  150         8.0        3.5 type A      NA
+## 7       7         percoir  250  130         5.6        3.8 type A      NA
+## 8       8 burin du Raysse  260  300         5.3        3.8 type B       1
+## 9       9  chute de burin  230  280         2.0        0.5 type A       2
+## 10     10 nucleus a lames  180  290        10.2        6.9 type A      NA
+## 11     11            lame   80   90        10.0        2.8 type A      NA
+## 12     12            lame   50   70         8.5        2.7 type A      NA
+## 13     13            lame   20   50         9.2        3.1 type A      NA
+## 14     14            lame   10   90         7.4        2.4 type A      NA
+## 15     15            lame   30   80         6.9        1.4 type A      NA
+## 16     16            lame   40   50         9.8        3.1 type A      NA
+## 17     17            lame   50   60         6.7        1.4 type A      NA
+## 18     18            lame   80  100         7.4        1.9 type A      NA
+## 19     19           eclat  190  250         2.3        2.0 type A      NA
+## 20     20           eclat  200  300         5.9        3.4 type A      NA
+## 21     21           eclat  280  350         8.4        5.9 type A      NA
+## 22     22           eclat  250  360         6.2        6.1 type A      NA
+## 23     23           eclat  260  390         4.5        3.6 type A      NA
+## 24     24           eclat  210  340         9.5        7.1 type A      NA
+## 25     25           eclat  230  370         5.8        4.2 type A      NA
+## 26     26           eclat  270  330         6.1        3.9 type A      NA
+## 27     27           eclat  240  350         4.8        3.7 type A      NA
+## 28     28           eclat  290  360         2.5        2.0 type A      NA
+## 29     29           eclat  250  390         3.4        2.8 type A      NA
+## 30     30           eclat  280  370         1.9        1.2 type A      NA
+## 31     31           eclat  260  300         4.6        2.8 type A      NA
+## 32     32           eclat  210  290         1.4        1.0 type A      NA
+## 33     33           eclat  200  280         2.3        2.2 type A      NA</code></pre>
 <p>Afin de ne pas encombrer la console, il est aussi possible de n’afficher que les 6 premières lignes du tableau avec la commande <code>head()</code></p>
 <pre class="r"><code>head(jdd)</code></pre>
 <pre><code>##   numero         type x_cm y_cm longueur_cm largeur_cm  silex raccord
@@ -594,11 +560,9 @@ class(jdd$type_fac) # notez: même résultat que précédemment</code></pre>
 <pre><code>## [1] &quot;factor&quot;</code></pre>
 <p>Nous pouvons à présent vérifier les différentes valeurs que peut prendre une variable catégorielle, par la fonction <code>levels()</code></p>
 <pre class="r"><code>levels(jdd$type)</code></pre>
-<pre><code>##  [1] &quot;burin&quot;                       &quot;burin diedre&quot;               
-##  [3] &quot;burin du Raysse&quot;             &quot;chute de burin&quot;             
-##  [5] &quot;eclat&quot;                       &quot;gravette&quot;                   
-##  [7] &quot;lame&quot;                        &quot;nucleus a eclats laminaires&quot;
-##  [9] &quot;percoir&quot;                     &quot;picardie&quot;</code></pre>
+<pre><code>##  [1] &quot;burin&quot;           &quot;burin diedre&quot;    &quot;burin du Raysse&quot; &quot;chute de burin&quot; 
+##  [5] &quot;eclat&quot;           &quot;gravette&quot;        &quot;lame&quot;            &quot;nucleus a lames&quot;
+##  [9] &quot;percoir&quot;         &quot;picardie&quot;</code></pre>
 <p>Ces quelques fonctions sont utiles pour explorer les données et se rendre compte d’erreurs à un stade préliminaire.</p>
 </div>
 <div id="manipuler-un-jeu-de-données" class="section level1" number="6">
@@ -635,40 +599,40 @@ jdd[3:5, ]</code></pre>
 ## 5      5    burin  240  120         6.0        2.4 type B       2    burin</code></pre>
 <pre class="r"><code>#les colonnes 1 à 4 (ne montre que les 10 premières lignes):
 jdd[ , 1:4]</code></pre>
-<pre><code>##    numero                        type x_cm y_cm
-## 1       1                    gravette   10   60
-## 2       2                    gravette   30   50
-## 3       3                    picardie   50   80
-## 4       4                     percoir  260  100
-## 5       5                       burin  240  120
-## 6       6                burin diedre  280  150
-## 7       7                     percoir  250  130
-## 8       8             burin du Raysse  260  300
-## 9       9              chute de burin  230  280
-## 10     10 nucleus a eclats laminaires  180  290
-## 11     11                        lame   80   90
-## 12     12                        lame   50   70
-## 13     13                        lame   20   50
-## 14     14                        lame   10   90
-## 15     15                        lame   30   80
-## 16     16                        lame   40   50
-## 17     17                        lame   50   60
-## 18     18                        lame   80  100
-## 19     19                       eclat  190  250
-## 20     20                       eclat  200  300
-## 21     21                       eclat  280  350
-## 22     22                       eclat  250  360
-## 23     23                       eclat  260  390
-## 24     24                       eclat  210  340
-## 25     25                       eclat  230  370
-## 26     26                       eclat  270  330
-## 27     27                       eclat  240  350
-## 28     28                       eclat  290  360
-## 29     29                       eclat  250  390
-## 30     30                       eclat  280  370
-## 31     31                       eclat  260  300
-## 32     32                       eclat  210  290
-## 33     33                       eclat  200  280</code></pre>
+<pre><code>##    numero            type x_cm y_cm
+## 1       1        gravette   10   60
+## 2       2        gravette   30   50
+## 3       3        picardie   50   80
+## 4       4         percoir  260  100
+## 5       5           burin  240  120
+## 6       6    burin diedre  280  150
+## 7       7         percoir  250  130
+## 8       8 burin du Raysse  260  300
+## 9       9  chute de burin  230  280
+## 10     10 nucleus a lames  180  290
+## 11     11            lame   80   90
+## 12     12            lame   50   70
+## 13     13            lame   20   50
+## 14     14            lame   10   90
+## 15     15            lame   30   80
+## 16     16            lame   40   50
+## 17     17            lame   50   60
+## 18     18            lame   80  100
+## 19     19           eclat  190  250
+## 20     20           eclat  200  300
+## 21     21           eclat  280  350
+## 22     22           eclat  250  360
+## 23     23           eclat  260  390
+## 24     24           eclat  210  340
+## 25     25           eclat  230  370
+## 26     26           eclat  270  330
+## 27     27           eclat  240  350
+## 28     28           eclat  290  360
+## 29     29           eclat  250  390
+## 30     30           eclat  280  370
+## 31     31           eclat  260  300
+## 32     32           eclat  210  290
+## 33     33           eclat  200  280</code></pre>
 <pre class="r"><code>#les cellules en 3e ligne, des colonnes 1 à 4:
 jdd[3, 1:4]</code></pre>
 <pre><code>##   numero     type x_cm y_cm
@@ -691,34 +655,34 @@ jdd[grep(&quot;burin&quot;, jdd$type), ]</code></pre>
 ## 9  chute de burin</code></pre>
 <pre class="r"><code>#toutes les lignes qui contiennent &quot;burin&quot; ou &quot;lam&quot; dans la colonne &quot;type&quot;:
 jdd[grep(&quot;burin|lam&quot;, jdd$type), ]</code></pre>
-<pre><code>##    numero                        type x_cm y_cm longueur_cm largeur_cm  silex
-## 5       5                       burin  240  120         6.0        2.4 type B
-## 6       6                burin diedre  280  150         8.0        3.5 type A
-## 8       8             burin du Raysse  260  300         5.3        3.8 type B
-## 9       9              chute de burin  230  280         2.0        0.5 type A
-## 10     10 nucleus a eclats laminaires  180  290        10.2        6.9 type A
-## 11     11                        lame   80   90        10.0        2.8 type A
-## 12     12                        lame   50   70         8.5        2.7 type A
-## 13     13                        lame   20   50         9.2        3.1 type A
-## 14     14                        lame   10   90         7.4        2.4 type A
-## 15     15                        lame   30   80         6.9        1.4 type A
-## 16     16                        lame   40   50         9.8        3.1 type A
-## 17     17                        lame   50   60         6.7        1.4 type A
-## 18     18                        lame   80  100         7.4        1.9 type A
-##    raccord                    type_fac
-## 5        2                       burin
-## 6       NA                burin diedre
-## 8        1             burin du Raysse
-## 9        2              chute de burin
-## 10      NA nucleus a eclats laminaires
-## 11      NA                        lame
-## 12      NA                        lame
-## 13      NA                        lame
-## 14      NA                        lame
-## 15      NA                        lame
-## 16      NA                        lame
-## 17      NA                        lame
-## 18      NA                        lame</code></pre>
+<pre><code>##    numero            type x_cm y_cm longueur_cm largeur_cm  silex raccord
+## 5       5           burin  240  120         6.0        2.4 type B       2
+## 6       6    burin diedre  280  150         8.0        3.5 type A      NA
+## 8       8 burin du Raysse  260  300         5.3        3.8 type B       1
+## 9       9  chute de burin  230  280         2.0        0.5 type A       2
+## 10     10 nucleus a lames  180  290        10.2        6.9 type A      NA
+## 11     11            lame   80   90        10.0        2.8 type A      NA
+## 12     12            lame   50   70         8.5        2.7 type A      NA
+## 13     13            lame   20   50         9.2        3.1 type A      NA
+## 14     14            lame   10   90         7.4        2.4 type A      NA
+## 15     15            lame   30   80         6.9        1.4 type A      NA
+## 16     16            lame   40   50         9.8        3.1 type A      NA
+## 17     17            lame   50   60         6.7        1.4 type A      NA
+## 18     18            lame   80  100         7.4        1.9 type A      NA
+##           type_fac
+## 5            burin
+## 6     burin diedre
+## 8  burin du Raysse
+## 9   chute de burin
+## 10 nucleus a lames
+## 11            lame
+## 12            lame
+## 13            lame
+## 14            lame
+## 15            lame
+## 16            lame
+## 17            lame
+## 18            lame</code></pre>
 <pre class="r"><code>#toutes les lignes qui contiennent des valeurs de longueur_cm inférieures à 2
 subset(jdd, longueur_cm &lt; 2)</code></pre>
 <pre><code>##    numero  type x_cm y_cm longueur_cm largeur_cm  silex raccord type_fac
@@ -751,34 +715,34 @@ jdd[jdd$type %like% &quot;burin&quot;, ]</code></pre>
 ## 9  chute de burin</code></pre>
 <pre class="r"><code>#toutes les lignes qui contiennent &quot;burin&quot; ou &quot;lam&quot; dans la colonne &quot;type&quot;:
 jdd[jdd$type %like% &quot;burin|lam&quot;, ]</code></pre>
-<pre><code>##    numero                        type x_cm y_cm longueur_cm largeur_cm  silex
-## 5       5                       burin  240  120         6.0        2.4 type B
-## 6       6                burin diedre  280  150         8.0        3.5 type A
-## 8       8             burin du Raysse  260  300         5.3        3.8 type B
-## 9       9              chute de burin  230  280         2.0        0.5 type A
-## 10     10 nucleus a eclats laminaires  180  290        10.2        6.9 type A
-## 11     11                        lame   80   90        10.0        2.8 type A
-## 12     12                        lame   50   70         8.5        2.7 type A
-## 13     13                        lame   20   50         9.2        3.1 type A
-## 14     14                        lame   10   90         7.4        2.4 type A
-## 15     15                        lame   30   80         6.9        1.4 type A
-## 16     16                        lame   40   50         9.8        3.1 type A
-## 17     17                        lame   50   60         6.7        1.4 type A
-## 18     18                        lame   80  100         7.4        1.9 type A
-##    raccord                    type_fac
-## 5        2                       burin
-## 6       NA                burin diedre
-## 8        1             burin du Raysse
-## 9        2              chute de burin
-## 10      NA nucleus a eclats laminaires
-## 11      NA                        lame
-## 12      NA                        lame
-## 13      NA                        lame
-## 14      NA                        lame
-## 15      NA                        lame
-## 16      NA                        lame
-## 17      NA                        lame
-## 18      NA                        lame</code></pre>
+<pre><code>##    numero            type x_cm y_cm longueur_cm largeur_cm  silex raccord
+## 5       5           burin  240  120         6.0        2.4 type B       2
+## 6       6    burin diedre  280  150         8.0        3.5 type A      NA
+## 8       8 burin du Raysse  260  300         5.3        3.8 type B       1
+## 9       9  chute de burin  230  280         2.0        0.5 type A       2
+## 10     10 nucleus a lames  180  290        10.2        6.9 type A      NA
+## 11     11            lame   80   90        10.0        2.8 type A      NA
+## 12     12            lame   50   70         8.5        2.7 type A      NA
+## 13     13            lame   20   50         9.2        3.1 type A      NA
+## 14     14            lame   10   90         7.4        2.4 type A      NA
+## 15     15            lame   30   80         6.9        1.4 type A      NA
+## 16     16            lame   40   50         9.8        3.1 type A      NA
+## 17     17            lame   50   60         6.7        1.4 type A      NA
+## 18     18            lame   80  100         7.4        1.9 type A      NA
+##           type_fac
+## 5            burin
+## 6     burin diedre
+## 8  burin du Raysse
+## 9   chute de burin
+## 10 nucleus a lames
+## 11            lame
+## 12            lame
+## 13            lame
+## 14            lame
+## 15            lame
+## 16            lame
+## 17            lame
+## 18            lame</code></pre>
 <pre class="r"><code>#toutes les lignes qui contiennent des valeurs de longueur_cm inférieures à 2:
 jdd[jdd$longueur_cm &lt; 2, ]</code></pre>
 <pre><code>##    numero  type x_cm y_cm longueur_cm largeur_cm  silex raccord type_fac
@@ -825,72 +789,75 @@ jdd %&gt;% dplyr::filter(grepl(&quot;burin&quot;, type))</code></pre>
 ## 4  chute de burin</code></pre>
 <pre class="r"><code>#toutes les lignes qui contiennent &quot;burin&quot; ou &quot;lam&quot; dans la colonne &quot;type&quot;:
 dplyr::filter(jdd, grepl(&quot;burin|lam&quot;, type))</code></pre>
-<pre><code>##    numero                        type x_cm y_cm longueur_cm largeur_cm  silex
-## 1       5                       burin  240  120         6.0        2.4 type B
-## 2       6                burin diedre  280  150         8.0        3.5 type A
-## 3       8             burin du Raysse  260  300         5.3        3.8 type B
-## 4       9              chute de burin  230  280         2.0        0.5 type A
-## 5      10 nucleus a eclats laminaires  180  290        10.2        6.9 type A
-## 6      11                        lame   80   90        10.0        2.8 type A
-## 7      12                        lame   50   70         8.5        2.7 type A
-## 8      13                        lame   20   50         9.2        3.1 type A
-## 9      14                        lame   10   90         7.4        2.4 type A
-## 10     15                        lame   30   80         6.9        1.4 type A
-## 11     16                        lame   40   50         9.8        3.1 type A
-## 12     17                        lame   50   60         6.7        1.4 type A
-## 13     18                        lame   80  100         7.4        1.9 type A
-##    raccord                    type_fac
-## 1        2                       burin
-## 2       NA                burin diedre
-## 3        1             burin du Raysse
-## 4        2              chute de burin
-## 5       NA nucleus a eclats laminaires
-## 6       NA                        lame
-## 7       NA                        lame
-## 8       NA                        lame
-## 9       NA                        lame
-## 10      NA                        lame
-## 11      NA                        lame
-## 12      NA                        lame
-## 13      NA                        lame</code></pre>
+<pre><code>##    numero            type x_cm y_cm longueur_cm largeur_cm  silex raccord
+## 1       5           burin  240  120         6.0        2.4 type B       2
+## 2       6    burin diedre  280  150         8.0        3.5 type A      NA
+## 3       8 burin du Raysse  260  300         5.3        3.8 type B       1
+## 4       9  chute de burin  230  280         2.0        0.5 type A       2
+## 5      10 nucleus a lames  180  290        10.2        6.9 type A      NA
+## 6      11            lame   80   90        10.0        2.8 type A      NA
+## 7      12            lame   50   70         8.5        2.7 type A      NA
+## 8      13            lame   20   50         9.2        3.1 type A      NA
+## 9      14            lame   10   90         7.4        2.4 type A      NA
+## 10     15            lame   30   80         6.9        1.4 type A      NA
+## 11     16            lame   40   50         9.8        3.1 type A      NA
+## 12     17            lame   50   60         6.7        1.4 type A      NA
+## 13     18            lame   80  100         7.4        1.9 type A      NA
+##           type_fac
+## 1            burin
+## 2     burin diedre
+## 3  burin du Raysse
+## 4   chute de burin
+## 5  nucleus a lames
+## 6             lame
+## 7             lame
+## 8             lame
+## 9             lame
+## 10            lame
+## 11            lame
+## 12            lame
+## 13            lame</code></pre>
 <pre class="r"><code># ou avec le &#39;pipe&#39;:
 jdd %&gt;% dplyr::filter(grepl(&quot;burin|lam&quot;, type))</code></pre>
-<pre><code>##    numero                        type x_cm y_cm longueur_cm largeur_cm  silex
-## 1       5                       burin  240  120         6.0        2.4 type B
-## 2       6                burin diedre  280  150         8.0        3.5 type A
-## 3       8             burin du Raysse  260  300         5.3        3.8 type B
-## 4       9              chute de burin  230  280         2.0        0.5 type A
-## 5      10 nucleus a eclats laminaires  180  290        10.2        6.9 type A
-## 6      11                        lame   80   90        10.0        2.8 type A
-## 7      12                        lame   50   70         8.5        2.7 type A
-## 8      13                        lame   20   50         9.2        3.1 type A
-## 9      14                        lame   10   90         7.4        2.4 type A
-## 10     15                        lame   30   80         6.9        1.4 type A
-## 11     16                        lame   40   50         9.8        3.1 type A
-## 12     17                        lame   50   60         6.7        1.4 type A
-## 13     18                        lame   80  100         7.4        1.9 type A
-##    raccord                    type_fac
-## 1        2                       burin
-## 2       NA                burin diedre
-## 3        1             burin du Raysse
-## 4        2              chute de burin
-## 5       NA nucleus a eclats laminaires
-## 6       NA                        lame
-## 7       NA                        lame
-## 8       NA                        lame
-## 9       NA                        lame
-## 10      NA                        lame
-## 11      NA                        lame
-## 12      NA                        lame
-## 13      NA                        lame</code></pre>
+<pre><code>##    numero            type x_cm y_cm longueur_cm largeur_cm  silex raccord
+## 1       5           burin  240  120         6.0        2.4 type B       2
+## 2       6    burin diedre  280  150         8.0        3.5 type A      NA
+## 3       8 burin du Raysse  260  300         5.3        3.8 type B       1
+## 4       9  chute de burin  230  280         2.0        0.5 type A       2
+## 5      10 nucleus a lames  180  290        10.2        6.9 type A      NA
+## 6      11            lame   80   90        10.0        2.8 type A      NA
+## 7      12            lame   50   70         8.5        2.7 type A      NA
+## 8      13            lame   20   50         9.2        3.1 type A      NA
+## 9      14            lame   10   90         7.4        2.4 type A      NA
+## 10     15            lame   30   80         6.9        1.4 type A      NA
+## 11     16            lame   40   50         9.8        3.1 type A      NA
+## 12     17            lame   50   60         6.7        1.4 type A      NA
+## 13     18            lame   80  100         7.4        1.9 type A      NA
+##           type_fac
+## 1            burin
+## 2     burin diedre
+## 3  burin du Raysse
+## 4   chute de burin
+## 5  nucleus a lames
+## 6             lame
+## 7             lame
+## 8             lame
+## 9             lame
+## 10            lame
+## 11            lame
+## 12            lame
+## 13            lame</code></pre>
 <pre class="r"><code>#toutes les lignes qui contiennent des valeurs de longueur_cm inférieures à 2:
 dplyr::filter(jdd, longueur_cm &lt; 2)</code></pre>
 <pre><code>##   numero  type x_cm y_cm longueur_cm largeur_cm  silex raccord type_fac
 ## 1     30 eclat  280  370         1.9        1.2 type A      NA    eclat
 ## 2     32 eclat  210  290         1.4        1.0 type A      NA    eclat</code></pre>
-<pre class="r"><code>#jdd[jdd$longueur_cm &lt; 5 &amp; mean(&quot;largeur_cm&quot;)]
-
-# ou avec dplyr() :
+<pre class="r"><code># avec les fonctions de base R :
+aggregate(data = (subset(jdd, longueur_cm &lt; 5)), largeur_cm ~ silex, FUN = mean)</code></pre>
+<pre><code>##    silex largeur_cm
+## 1 type A       2.18
+## 2 type B       1.65</code></pre>
+<pre class="r"><code># ou avec les fonctions de dplyr() et des &#39;pipes&#39; :
 jdd %&gt;%
   dplyr::filter(longueur_cm &lt; 5) %&gt;%
   dplyr::group_by(silex) %&gt;%
