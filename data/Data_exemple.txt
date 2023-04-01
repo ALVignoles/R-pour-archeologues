@@ -8,7 +8,7 @@ numero,type,x_cm,y_cm,longueur_cm,largeur_cm,silex,raccord
 7,percoir,250,130,5.6,3.8,type A,
 8,burin du Raysse,260,300,5.3,3.8,type B,1
 9,chute de burin,230,280,2,0.5,type A,2
-10,nucleus a eclats laminaires,180,290,10.2,6.9,type A,
+10,nucleus a lames,180,290,10.2,6.9,type A,
 11,lame,80,90,10,2.8,type A,
 12,lame,50,70,8.5,2.7,type A,
 13,lame,20,50,9.2,3.1,type A,
