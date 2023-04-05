@@ -47,6 +47,17 @@ qpdf::pdf_length(             # indique le nombre de pages dans un pdf
   )
 ```
 
+# - pdftables(): convert PDF tables to csv, XML, or XLSX
+```{r load pdftables, echo = TRUE}
+#install.packages("pdftables")
+#library(pdftables)
+```
+S'enregistrer à https://pdftables.com/join
+```{r convert table example, echo = TRUE}
+convert_pdf("data/nagaoka-2022-1.pdf", "data/nagaoka-2022-1.csv")
+# Converted test.pdf to test2.csv
+```
+
 # - pals() and scales(): A comprehensive collection of color palettes, colormaps, and tools to evaluate them
 https://cran.r-project.org/web/packages/pals/pals.pdf
 https://kwstat.github.io/pals/
