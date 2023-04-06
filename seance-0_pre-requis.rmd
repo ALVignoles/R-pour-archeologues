@@ -24,7 +24,7 @@ Email\
 Statut (i.e doctorat, enseignant-chercheur, chercheur, ITA, IATOS)\
 Cadre/s d’utilisation (programme de recherche, recherche dans le cadre d’une thèse)\
 Description courte (< 5 lignes) du/des cadres/s d’utilisation\
-Affection d’une instance de GPU : oui/non (si oui par défaut 28SM/28 streamings processus, 10Go Ram)\
+Affection d’une instance de GPU : NON\
 Pour les étudiants en thèse : sujet, directeur de thèse, date de soutenance prévue.\
 Pour les étudiants, stagiaires, CDD : date de fin d’utilisation\
 Volumétrie des fichiers en GO\
