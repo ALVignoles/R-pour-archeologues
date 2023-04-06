@@ -9,10 +9,24 @@ Rendez-vous sur le dépôt [https://github.com/ALVignoles/R-pour-archeologues](h
 ![](figures/github.png)
 
 
-# Installer R et RStudio
-[R pour Mac](https://external.ink?to=/cran.r-project.org/bin/macosx/) ou [R pour Windows](https://external.ink?to=/cran.r-project.org/bin/windows/base/) ou [R pour Linux](https://external.ink?to=/cran.r-project.org/bin/linux/)  
+# R et RStudio
+-> Installer les logiciels ou utiliser la version en ligne de R Studio à partir d'Huma-num
+[R pour Mac](https://external.ink?to=/cran.r-project.org/bin/macosx/) ou [R pour Windows](https://external.ink?to=/cran.r-project.org/bin/windows/base/) ou [R pour Linux](https://external.ink?to=/cran.r-project.org/bin/linux/).\
+[RStudio](https://external.ink?to=/rstudio.com/products/rstudio/download/).\
 
-[RStudio](https://external.ink?to=/rstudio.com/products/rstudio/download/).  
+Pour utiliser la version R Studio d'Huma-num il vous faut:\
+1. Contacter assistance@huma-num.fr pour demander l'accès à https://r-tools.huma-num.fr/ \
+2. Leur communiquer les éléments suivants:\
+Nom, Prénom\
+Laboratoire / établissement de rattachement\
+Email\
+Statut (i.e doctorat, enseignant-chercheur, chercheur, ITA, IATOS)\
+Cadre/s d’utilisation (programme de recherche, recherche dans le cadre d’une thèse)\
+Description courte (< 5 lignes) du/des cadres/s d’utilisation\
+Affection d’une instance de GPU : oui/non (si oui par défaut 28SM/28 streamings processus, 10Go Ram)\
+Pour les étudiants en thèse : sujet, directeur de thèse, date de soutenance prévue.\
+Pour les étudiants, stagiaires, CDD : date de fin d’utilisation\
+Volumétrie des fichiers en GO\
 
 RStudio est constitué de 4 panneaux:  
 - en haut à gauche: **l'éditeur** où est édité le code enregistré dans fichiers.  
