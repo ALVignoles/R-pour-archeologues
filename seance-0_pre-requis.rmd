@@ -10,9 +10,10 @@ Rendez-vous sur le dépôt [https://github.com/ALVignoles/R-pour-archeologues](h
 
 
 # R et RStudio
--> Installer les logiciels ou utiliser la version en ligne de R Studio à partir d'Huma-num
+-> Installer les logiciels 
 [R pour Mac](https://external.ink?to=/cran.r-project.org/bin/macosx/) ou [R pour Windows](https://external.ink?to=/cran.r-project.org/bin/windows/base/) ou [R pour Linux](https://external.ink?to=/cran.r-project.org/bin/linux/).\
 [RStudio](https://external.ink?to=/rstudio.com/products/rstudio/download/).\
+ou utiliser la version en ligne de R Studio à partir d'Huma-num.\
 
 Pour utiliser la version R Studio d'Huma-num il vous faut:\
 1. Contacter assistance@huma-num.fr pour demander l'accès à https://r-tools.huma-num.fr/ \
