@@ -57,6 +57,12 @@ Trois moyens de préciser le répertoire de travail:
 1- Avec la commande `setwd()`. La commande `getwd()` permet de savoir dans quel répertoire vous vous trouvez. Notez que R ne reconnaît que le caractère “/” pour spécifier le chemin d’accès d’un répertoire.  
 2- On peut aussi passer la commande en pointer-cliquer dans la barre d'outil en haut de la fenêtre avec  
 *Session -> Set Working Directory -> Choose Directory*.  
-3- En ouvrant RStudio à partir d'un fichier .Rproj, en l'occurrence `R-pour-archeologues.Rproj`. Ce fichier permettra d'indiquer à R que l'on travaille par défaut dans le dossier où est stocké ce fichier, et pour reprendre le travail entre deux sessions, puisque le projet R garde en mémoire l'état dans lequel RStudio a été laissé lors de la dernière session. Puisque l'arborescence et le contenu de chaque machine dépend de l'utilisateur-trice, l'utilisation du projets R est très utile pour la reproductibilité, pour fournir un environnement commun à tou-te-s les utilisateurs.  
+3- En ouvrant une session RStudio à partir d'un fichier .Rproj, en l'occurrence `R-pour-archeologues.Rproj`. Ce fichier permettra d'indiquer à R que l'on travaille par défaut dans le dossier où est stocké ce fichier, et pour reprendre le travail entre deux sessions, puisque le projet R garde en mémoire l'état dans lequel RStudio a été laissé lors de la dernière session. Puisque l'arborescence et le contenu de chaque machine dépend de l'utilisateur-trice, l'utilisation du projets R est très utile pour la reproductibilité, pour fournir un environnement commun à tou-te-s les utilisateurs.  
+4- Si vous utilisez l'IDE RStudio sur le serveur d'Huma-num (https://r-tools.huma-num.fr/), la procédure est la suivante:
+- Sur votre machine, créer un fichier .zip 'R-pour-archeologues.zip' à partir du dossier 'R-pour-archeologues'
+téléchargé depuis GitHub.
+- Dans l'onglet 'Files' du panneau 'Visualisation' (dans le coin bas-droit de la fenêtre Rstudio), ajouter l'ensemble du dossier avec le bouton 'Upload'.
+- Avec la commande suivante, indiquer que ce dossier est le répertoire de travail: `setwd("~/R-pour-archeologues")`
+
 
 **Vous êtes prêt-e-s pour le workshop :-)**
