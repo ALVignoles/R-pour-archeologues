@@ -107,6 +107,42 @@ plot(x = jdd$longueur, y = jdd$largeur,
      main = title)
 ```
 
+Vous pouvez également ajouter une légende à votre graphique avec la fonction `legend()`.
+```{r plot7, echo=T}
+plot(x = jdd$longueur, y = jdd$largeur,
+     col = jdd$type_fac, 
+     pch = c(16, 17, 18)[as.numeric(jdd$silex_fac)],  
+     cex = 1.5,
+     xlab = xlabel, ylab = ylabel, 
+     main = title)
+
+# Commençons par la légende des types de silex 
+legend("topleft", # ici préciser la position de la légende
+       legend = c("Type A", "Type B", "Type C"), # ici préciser les légendes
+       pch = 16:18, # ici préciser les shapes
+       horiz = TRUE) # ici, on précise si l'on souhaite que la légende soit horizontale ou verticale
+```
+Il est possible d'ajouter plusieurs légendes sur une même figure ! 
+```{r plot8, echo=T}
+plot(x = jdd$longueur, y = jdd$largeur,
+     col = jdd$type_fac, 
+     pch = c(16, 17, 18)[as.numeric(jdd$silex_fac)],  
+     cex = 1.5,
+     xlab = xlabel, ylab = ylabel, 
+     main = title)
+
+legend("topleft", 
+       legend = c("Type A", "Type B", "Type C"), 
+       pch = 16:18, 
+       horiz = TRUE) 
+
+# Rajoutons la légende pour les types de pièces 
+legend("bottomright",
+       legend = levels(jdd$type_fac),
+       fill = 1:8, # l'argument "fill" permet de préciser les couleurs sous la forme de rectangles de légende 
+       cex = 0.5) # on peut également changer la taille de la légende afin qu'elle prenne moins de place 
+```
+
 # - Enregistrer un graphique
 
 Il existe plusieurs moyens pour enregistrer une figure:\
@@ -120,15 +156,24 @@ Enregistrons notre figure au format pdf de cette manière:
 pdf("figures/Figure1.pdf",        # ici on écrit le chemin vers la figure
      width = 4.5, height = 4.5)   # et ici les dimensions de la figure en cm. 
 
-### On écrit la figure dans le pdf
+## On écrit la figure dans le pdf
 plot(x = jdd$longueur, y = jdd$largeur,
      col = jdd$type_fac, 
      pch = c(16, 17, 18)[as.numeric(jdd$silex_fac)], 
      cex = 1.5,
      xlab = xlabel, ylab = ylabel, 
      main = title)
+###(sans oublier les légendes)
+legend("topleft", 
+       legend = c("Type A", "Type B", "Type C"), 
+       pch = 16:18, 
+       horiz = TRUE) 
+legend("bottomright",
+       legend = levels(jdd$type_fac),
+       fill = 1:8, 
+       cex = 0.5) 
 
-### et on clot l'écriture de la figure dans le pdf
+## et on clot l'écriture de la figure dans le pdf
 
 dev.off()
 ```
