@@ -3,7 +3,7 @@ title: "Pré-requis au workshop 'R pour les archéologues'"
 output: bookdown::html_document2
 ---
 
-# R et RStudio
+# - R et RStudio
 Installation de :\
 [R pour Mac](https://external.ink?to=/cran.r-project.org/bin/macosx/) ou\
 [R pour Windows](https://external.ink?to=/cran.r-project.org/bin/windows/base/) ou \
@@ -14,27 +14,28 @@ et de :\
 ou \
 utiliser [la version en ligne de R Studio à partir d'Huma-num](https://humanum.hypotheses.org/3088).\
 \
-Sur les machines les plus anciennes il se peut que l'installation de R Studio soit difficile.
-Une solution est d'utiliser l'application en ligne R Studio d'Huma-num.
-Pour cela il vous faut en amont contacter assistance@huma-num.fr et cogrid@huma-num.fr pour demander l'accès à https://r-tools.huma-num.fr/ en leur communiquant les éléments suivants:\
-- Nom, Prénom\
-- Laboratoire / établissement de rattachement\
-- Email\
-- Statut (i.e doctorat, enseignant-chercheur, chercheur, ITA, IATOS)\
-- Cadre/s d’utilisation (programme de recherche, recherche dans le cadre d’une thèse)\
-- Description courte (< 5 lignes) du/des cadres/s d’utilisation\
-- Affection d’une instance de GPU : NON\
-- Pour les étudiants en thèse : sujet, directeur de thèse, date de soutenance prévue.\
-- Pour les étudiants, stagiaires, CDD : date de fin d’utilisation\
-- Volumétrie des fichiers en GO : disons 2\
-Cela vous permettra d'ouvrir une session R Studio dans votre navigateur:\
-URL de connexion : https://r-tools.huma-num.fr/\
-avec le login et mot de passe du compte SSH qui vous aura été communiqué par sysadmin@huma-num.fr.\
-
+\
+*Aparté sur les problèmes d'équipement:*
+*Sur les machines les plus anciennes il se peut que l'installation de R Studio soit difficile.*
+*Une solution est d'utiliser l'application en ligne R Studio d'Huma-num.*
+*Pour cela il vous faut en amont contacter assistance@huma-num.fr et cogrid@huma-num.fr pour demander l'accès à https://r-tools.huma-num.fr/ en leur communiquant les éléments suivants:*\
+*- Nom, Prénom*\
+*- Laboratoire / établissement de rattachement*\
+*- Email*\
+*- Statut (i.e doctorat, enseignant-chercheur, chercheur, ITA, IATOS)*\
+*- Cadre/s d’utilisation (programme de recherche, recherche dans le cadre d’une thèse)*\
+*- Description courte (< 5 lignes) du/des cadres/s d’utilisation*\
+*- Affection d’une instance de GPU : NON*\
+*- Pour les étudiants en thèse : sujet, directeur de thèse, date de soutenance prévue.*\
+*- Pour les étudiants, stagiaires, CDD : date de fin d’utilisation*\
+*- Volumétrie des fichiers en GO : disons 2*\
+*Cela vous permettra d'ouvrir une session R Studio dans votre navigateur:*\
+*URL de connexion : https://r-tools.huma-num.fr/*\
+*avec le login et mot de passe du compte SSH qui vous aura été communiqué par sysadmin@huma-num.fr.*\
 ⚠️ **ATTENTION: Comptez 2 à 3 jours pour obtenir vos identifiants et mot de passe de connexion**
 \
-
-
+\
+\
 RStudio est constitué de 4 panneaux:  
 - en haut à gauche: **l'éditeur** où est édité le code enregistré dans fichiers.  
 - en bas à gauche: **la console** où sont executées les lignes de code, directement ou à partir du fichier source ouvert dans l'éditeur.  
@@ -44,13 +45,13 @@ RStudio est constitué de 4 panneaux:
 ![](figures/rstudio.png)  
 
 
-# Récupérer les documents nécessaires sur github
+# - Récupérer les documents nécessaires sur GitHub
 Rendez-vous sur le dépôt [https://github.com/ALVignoles/R-pour-archeologues](https://github.com/ALVignoles/R-pour-archeologues) et téléchargez l'ensemble au format zip.  
 
 ![](figures/github.png)
 
 
-# Répertoire de travail
+# - Répertoire de travail
 Pour pouvoir récupérer des données, maîtriser la sauvegarde des scripts, des résultats, etc. il est important d'indiquer au logiciel le répertoire de travail, c’est-à-dire le répertoire à partir duquel les jeux de données seront chargés, et où les résultats de nos productions seront sauvegardés.  
 
 Trois moyens de préciser le répertoire de travail:  
