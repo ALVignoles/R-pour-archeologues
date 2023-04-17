@@ -2,6 +2,7 @@
 title: "Pré-requis au workshop 'R pour les archéologues'"
 output: bookdown::html_document2
 ---
+<base target="_blank">
 
 # - R et RStudio
 Installation de :\
