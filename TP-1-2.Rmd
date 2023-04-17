@@ -7,19 +7,24 @@ L'objectif des TPs que nous vous proposons est de vous entraîner à refaire les
 
 Pour les deux premiers TPs, nous allons utiliser un jeu de données comportant plusieurs informations qualitatives et quantitatives sur des pointes de flèches de la période Archaïque, récoltées à Fort Hood au Texas au cours de prospections de surface. Ce jeu de données est disponible au sein du package `archdata`, qui regroupe plusieurs jeux de données archéologiques.
 
-# - Préparation 
+**1. Préparation**
+
 1.1. Commencez tout d'abord par installer le package `archdata`.  
 
 1.2. Maintenant, ouvrez le jeu de données `DartPoints`. 
+\
+\
+**2. Se familiariser avec le jeu de données** 
 
-# - Se familiariser avec le jeu de données 
 2.1. Combien y a-t-il de variables (colonnes) et d'enregistrements (lignes) dans le jeu de données ?
 
 2.2. Lister les types de variables du jeu de données : combien y en a-t-il ?
 
 2.3. Pour chaque type de pointe, récupérer la médiane et l'écart type pour la longueur/largeur/épaisseur. 
+\
+\
+**3. Créer des graphiques et visualiser des données**
 
-# - Créer des graphiques et visualiser des données 
 3.1. Visualiser le ratio largeur de la base/largeur maximale des pointes sous la forme d'un nuage de points. Utiliser un code couleur pour la forme de la base ('Base.Sh') et un code de forme pour le type de pointe ('Name'). Soignez les titres des axes et la légende, puis sauvegardez le graphique. 
 
 3.2. [BONUS] Créer des boites à moustaches pour visualiser les statistiques de bases de la longueur/largeur/épaisseur en fonction du type de pointe. Soignez les titres des axes et la légende, puis sauvegardez les graphiques. 
