@@ -19,4 +19,9 @@ Pour les deux premiers TPs, nous allons utiliser un jeu de données comportant p
 
 2.3. Pour chaque type de pointe, récupérer la médiane et l'écart type pour la longueur/largeur/épaisseur. 
 
+# - Créer des graphiques et visualiser des données 
+3.1.
 
+3.2. 
+
+3.3. 
