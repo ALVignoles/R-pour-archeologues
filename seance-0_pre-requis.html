@@ -390,7 +390,12 @@ avec le login et mot de passe du compte SSH qui vous aura été communiqué par 
 1- Avec la commande <code>setwd()</code>. La commande <code>getwd()</code> permet de savoir dans quel répertoire vous vous trouvez. Notez que R ne reconnaît que le caractère “/” pour spécifier le chemin d’accès d’un répertoire.<br />
 2- On peut aussi passer la commande en pointer-cliquer dans la barre d’outil en haut de la fenêtre avec<br />
 <em>Session -&gt; Set Working Directory -&gt; Choose Directory</em>.<br />
-3- En ouvrant RStudio à partir d’un fichier .Rproj, en l’occurrence <code>R-pour-archeologues.Rproj</code>. Ce fichier permettra d’indiquer à R que l’on travaille par défaut dans le dossier où est stocké ce fichier, et pour reprendre le travail entre deux sessions, puisque le projet R garde en mémoire l’état dans lequel RStudio a été laissé lors de la dernière session. Puisque l’arborescence et le contenu de chaque machine dépend de l’utilisateur-trice, l’utilisation du projets R est très utile pour la reproductibilité, pour fournir un environnement commun à tou-te-s les utilisateurs.</p>
+3- En ouvrant une session RStudio à partir d’un fichier .Rproj, en l’occurrence <code>R-pour-archeologues.Rproj</code>. Ce fichier permettra d’indiquer à R que l’on travaille par défaut dans le dossier où est stocké ce fichier, et pour reprendre le travail entre deux sessions, puisque le projet R garde en mémoire l’état dans lequel RStudio a été laissé lors de la dernière session. Puisque l’arborescence et le contenu de chaque machine dépend de l’utilisateur-trice, l’utilisation du projets R est très utile pour la reproductibilité, pour fournir un environnement commun à tou-te-s les utilisateurs.<br />
+4- Si vous utilisez l’IDE RStudio sur le serveur d’Huma-num (<a href="https://r-tools.huma-num.fr/" class="uri">https://r-tools.huma-num.fr/</a>), la procédure est la suivante:
+- Sur votre machine, créer un fichier .zip ‘R-pour-archeologues.zip’ à partir du dossier ‘R-pour-archeologues’
+téléchargé depuis GitHub.
+- Dans l’onglet ‘Files’ du panneau ‘Visualisation’ (dans le coin bas-droit de la fenêtre Rstudio), ajouter l’ensemble du dossier avec le bouton ‘Upload’.
+- Avec la commande suivante, indiquer que ce dossier est le répertoire de travail: <code>setwd(&quot;~/R-pour-archeologues&quot;)</code></p>
 <p><strong>Vous êtes prêt-e-s pour le workshop :-)</strong></p>
 </div>
 
