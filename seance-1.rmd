@@ -189,7 +189,7 @@ class(jdd$type)
 class(jdd$longueur)
 ```
 
-La variable `longueur` est de classe numérique tandis que la variable `type` est de classe `character`. Or, pour que R traite des variables catégorielles avec R il faut utiliser le format `factor`. Nous allons donc convertir la variable `type` en un facteur avec la fonction `factor()`.
+La variable `longueur` est de classe numérique tandis que la variable `type` est de classe `character`. Or, pour que R traite des variables catégorielles, il faut utiliser le format `factor`. Nous allons donc convertir la variable `type` en un facteur avec la fonction `factor()`.
 
 ```{r makefactor, echo=T}
 jdd$type <- factor(jdd$type) # cette commande signifie au pied de la lettre : 
