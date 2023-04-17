@@ -20,8 +20,6 @@ Pour les deux premiers TPs, nous allons utiliser un jeu de données comportant p
 2.3. Pour chaque type de pointe, récupérer la médiane et l'écart type pour la longueur/largeur/épaisseur. 
 
 # - Créer des graphiques et visualiser des données 
-3.1.
+3.1. Visualiser le ratio largeur de la base/largeur maximale des pointes sous la forme d'un nuage de points. Utiliser un code couleur pour la forme de la base ('Base.Sh') et un code de forme pour le type de pointe ('Name'). Soignez les titres des axes et la légende, puis sauvegardez le graphique. 
 
-3.2. 
-
-3.3. 
+3.2. [BONUS] Créer des boites à moustaches pour visualiser les statistiques de bases de la longueur/largeur/épaisseur en fonction du type de pointe. Soignez les titres des axes et la légende, puis sauvegardez les graphiques. 

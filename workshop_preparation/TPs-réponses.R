@@ -52,8 +52,70 @@ df #tableau de résultats
 
 
 ## 3.
-### 1. 
+### 1.
+?DartPoints #vérifier les levels 
 
+#test du plot
+plot(x = DartPoints$Width, y = DartPoints$B.Width,
+     bg = DartPoints$Base.Sh, 
+     pch = c(21, 22, 23, 24, 25)[as.numeric(DartPoints$Name)], 
+     cex = 1.5,
+     xlab = "Width (mm)", ylab = "Base width (mm)")
+##rajout légende
+legend("topright",
+       legend = c("Excurvate", "Incurvate", "Recurvate", "Straight", "No Data"), fill = 1:5, 
+       title = "Base Shape", cex = 0.7)
+legend(40, 21.8, 
+       legend = levels(DartPoints$Name), pch = 21:25,
+       title = "Dart point type", cex = 0.7) 
+
+#sauvegarde : manuelle ou avec la commande suivante 
+pdf("figures/Figure_TP1.pdf",
+    width = 7, height = 4.8)
+
+plot(x = DartPoints$Width, y = DartPoints$B.Width,
+     bg = DartPoints$Base.Sh, 
+     pch = c(21, 22, 23, 24, 25)[as.numeric(DartPoints$Name)], 
+     cex = 1.5,
+     xlab = "Width (mm)", ylab = "Base width (mm)")
+
+legend("topright",
+       legend = c("Excurvate", "Incurvate", "Recurvate", "Straight", "No Data"), fill = 1:5, 
+       title = "Base Shape", cex = 0.7)
+legend(40, 21.8, 
+       legend = levels(DartPoints$Name), pch = 21:25,
+       title = "Dart point type", cex = 0.7) 
+
+dev.off()
+
+
+### 2. 
+#length
+jpeg("figures/boxplot_length.jpg",
+     width = 550, height = 450)
+boxplot(Length ~ Name, data = DartPoints, 
+        main = "Plot of length by dart point type", xlab = "Dart point type", ylab = "Length (mm)",
+        col = c("#fde725", "#5ec962", "#21918c", "#3b528b", "#440154"),
+        frame = FALSE)
+dev.off()
+
+#width
+jpeg("figures/boxplot_width.jpg",
+     width = 550, height = 450)
+boxplot(Width ~ Name, data = DartPoints, 
+        main = "Plot of width by dart point type", xlab = "Dart point type", ylab = "Width (mm)",
+        col = c("#fde725", "#5ec962", "#21918c", "#3b528b", "#440154"),
+        frame = FALSE)
+dev.off()
+
+#thickness
+jpeg("figures/boxplot_thickness.jpg",
+     width = 550, height = 450)
+boxplot(Thickness ~ Name, data = DartPoints, 
+        main = "Plot of thickness by dart point type", xlab = "Dart point type", ylab = "Thickness (mm)",
+        col = c("#fde725", "#5ec962", "#21918c", "#3b528b", "#440154"),
+        frame = FALSE)
+dev.off()
 
 # TP 3 : faire des boucles ####
 data("BarmoseI.pp")
