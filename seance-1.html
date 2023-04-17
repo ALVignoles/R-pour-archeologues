@@ -545,7 +545,7 @@ help(class) # notez que ces deux commandes ont le même résultat.</code></pre>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <pre class="r"><code>class(jdd$longueur)</code></pre>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
-<p>La variable <code>longueur</code> est de classe numérique tandis que la variable <code>type</code> est de classe <code>character</code>. Or, pour que R traite des variables catégorielles avec R il faut utiliser le format <code>factor</code>. Nous allons donc convertir la variable <code>type</code> en un facteur avec la fonction <code>factor()</code>.</p>
+<p>La variable <code>longueur</code> est de classe numérique tandis que la variable <code>type</code> est de classe <code>character</code>. Or, pour que R traite des variables catégorielles, il faut utiliser le format <code>factor</code>. Nous allons donc convertir la variable <code>type</code> en un facteur avec la fonction <code>factor()</code>.</p>
 <pre class="r"><code>jdd$type &lt;- factor(jdd$type) # cette commande signifie au pied de la lettre : 
                              # dans la colonne &quot;type&quot; du data frame &quot;jdd&quot;, je  
                              # mets la colonne &quot;type&quot; du data frame &quot;jdd&quot; 
