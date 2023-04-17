@@ -17,6 +17,6 @@ Pour les deux premiers TPs, nous allons utiliser un jeu de données comportant p
 
 2.2. Lister les types de variables du jeu de données : combien y en a-t-il ?
 
-2.3. 
+2.3. Pour chaque type de pointe, récupérer la médiane et l'écart type pour la longueur/largeur/épaisseur. 
 
-# - Explorer le jeu de données
+

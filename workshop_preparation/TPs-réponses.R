@@ -18,10 +18,11 @@ nrow(DartPoints) # 91
 
 ### 2.
 summary(DartPoints) 
-class(DartPoints$Name) #character, numeric, factor : 3 
+class(DartPoints$Name) 
+class(DartPoints$Length) #character, numeric, factor : 3 
 
 
-# TP 2 : visualiser un jeu de données #### 
+# TP 2 : visualiser un jeu de donn?es #### 
 data("DartPoints")
 
 
