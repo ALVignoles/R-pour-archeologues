@@ -4,7 +4,7 @@ output: bookdown::html_document2
 ---
 
 # - Introduction
-Au cours de cette séance, nous allons continuer à nous familiariser avec les packages du `tidyverse` et `ggplot2` pour explorer des données spatiales à l'échelle d'un site. Nous utiliserons le même jeu de données que dans la séance 1.  
+Au cours de cette séance, nous allons continuer à nous familiariser avec les packages du `tidyverse` et `ggplot2` pour explorer des données spatiales à l'échelle d'un site. Nous utiliserons le même jeu de données que dans la séance 1 et 2.  
 Préparons un peu notre script en ouvrant des librairies 
 ```{r librairies, echo=F}
 library(dplyr)
@@ -21,7 +21,7 @@ Tout a l'air en ordre ! Nous pouvons donc commencer :)
 
 # - Créer un plan et un carroyage
 Dans un premier temps, nous allons essayer de reproduire un plan de répartition spatiale X, Y, déjà réalisé avec QGIS et Powerpoint. Vous pouvez consulter ce plan dans le dossier `figures` du projet, sous le nom de `plan_exemple.pdf`. L'objectif de cet exercice est de créer un code que vous pourrez ensuite adapter à d'autres données. Cela vous permettra:  
-1) de gagner un temps précieux, le code ne prenant que quelques sechondes pour générer une figure ;  
+1) de gagner un temps précieux, le code ne prenant que quelques secondes pour générer une figure ;  
 2) d'avoir une unité graphique dans votre document en utilisant toujours le même layout ;   
 3) d'organiser les différents éléments de vos figures toujours de la même façon.   
 
@@ -48,7 +48,7 @@ plan <- ggplot2::ggplot() +
         axis.text.y = element_blank(), 
         panel.grid.major = element_line(),
         panel.grid.minor = element_blank()) + 
-    # ici, on définit les dimensions des axes : de 0 à 4 cm, avec la même échelle en x et en y (ratio = 1)
+    # ici, on définit les dimensions des axes : de 0 à 400 cm, avec la même échelle en x et en y (ratio = 1)
   coord_fixed(ratio = 1, xlim = c(0, 400), ylim = c(0, 400)) +
     # les deux lignes suivantes permettent de subdiviser les axes tous les 1 m 
   scale_x_continuous(breaks = seq(0, 400, by = 100)) +
@@ -156,7 +156,7 @@ plan.modif +
                                        fill = silex, shape = type_fac, size = 1)) +
     # ici on va changer le titre des légendes 
   labs(color = "Matière première", shape = "Catégorie d'objet") +
-    # et là, nous pouvons supprimer les légendes que nous ne souhaitons pas voir apparaÃ®tre dans la figure finale. 
+    # et là, nous pouvons supprimer les légendes que nous ne souhaitons pas voir apparaître dans la figure finale. 
   guides(fill = "none", size = "none")
 ```
 
@@ -218,14 +218,14 @@ plan.modif +
 
 Les connecteurs logiques permettent de personnaliser vos sélections très facilement. Voici les différentes possibilités : 
 
-**<** : "strictement inférieur ?"  
-**<=** : "inférieur ou égal ?"  
-**>** : "strictement supérieur ?"  
-**>=** : "supérieur ou égal ?"    
+**<** : "strictement inférieur à"  
+**<=** : "inférieur ou égal à"  
+**>** : "strictement supérieur à"  
+**>=** : "supérieur ou égal à"    
 **&** : "et"           
 **|** : "ou"  
-**==** : "strictement égal ?"  
-**!=** : "non égal ?"  
+**==** : "strictement égal à"  
+**!=** : "non égal à"  
 **!x** : "différent de x"  
 **isTRUE(x)** : teste si x est TRUE  
 
@@ -319,7 +319,7 @@ Si vous consultez la console, vous remarquez que l'on a affiché la valeur `i` t
 Dans la mesure du possible, nous vous conseillons d'utiliser plutôt les boucles `for()`, car ce sont elles qui sont plus utilisée dans la communauté. `while()` est également très bien et vous pouvez arriver au même résultat qu'avec une boucle `for()`, mais l'utilisation de `for()` fait vraiment partie de la "culture R" en tant que culture de programmation ! 
 
 ## - Exemple sur le jeu de données du site de la Forêt
-Mettons en pratique ce concept sur le jeu de données du site de la Forêt. Nous allons créer plusieurs plans de Répartition en fonction de la dimensions des pièces. Tout d'abord, rafraÃ®chissons nous la mémoire sur les statistiques basiques du jeu de données.
+Mettons en pratique ce concept sur le jeu de données du site de la Forêt. Nous allons créer plusieurs plans de répartition en fonction de la dimensions des pièces. Tout d'abord, rafraîchissons nous la mémoire sur les statistiques basiques du jeu de données.
 ```{r summary 2, echo=T}
 summary(jdd)
 ```
@@ -345,7 +345,7 @@ for(i in 1:11) { # Cette boucle va s'exécuter tant que i sera compris entre 1 e
   ## Ensuite, je subset le jeux de données pour ne sélectionner que les pièces dont la longueur est comprise entre la borne min et la borne max de mon intervalle. 
   repart <- subset(jdd, longueur..cm. >= borne.min & longueur..cm. <= borne.max)
   
-  ## maintenant, on crée le plan de Répartition avec les données sélectionnées
+  ## maintenant, on crée le plan de répartition avec les données sélectionnées
   plan.modif +
     geom_point(data = repart, mapping = aes(x = x..cm., y = y..cm., color = silex, 
                                               fill = silex, shape = type_fac, size = 1)) +
