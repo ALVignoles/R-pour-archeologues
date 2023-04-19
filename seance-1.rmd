@@ -1,5 +1,5 @@
 ---
-title: "Séance 1 : Analyser et visualiser un jeu de données semi-quantitatif"
+title: "Séance 1 : Se familiariser avec R"
 output: bookdown::html_document2
 ---
 
@@ -152,8 +152,6 @@ Afin de ne pas encombrer la console, il est aussi possible de n'afficher que les
 ```{r dataset head, echo=T}
 head(jdd)
 ```
-
-# - Explorer un jeu de données
 
 Un data frame est un type d'objet R correspondant à un tableau. Il existe plusieurs classes que nous découvrirons au fur et à mesure.\
 On peut vérifier la classe d'objet de `jdd` avec la commande `class(jdd)`. `class()` est **une fonction**. C'est une opération qui sera appliquée à un objet. La fonction `class()` permet d'afficher la classe de l'objet auquel on applique cette fonction.
