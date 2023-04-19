@@ -1,5 +1,5 @@
 ---
-title: "Séance 2 : Créer des graphiques avec base R et ggplot"
+title: "Séance 2 : Créer un graphique avec Base R"
 output: bookdown::html_document2
 ---
 
