@@ -5,10 +5,12 @@ output: bookdown::html_document2
 
 # - Introduction
 Au cours de cette séance, nous allons continuer à nous familiariser avec les packages du `tidyverse` et `ggplot2` pour explorer des données spatiales à l'échelle d'un site. Nous utiliserons le même jeu de données que dans la séance 1 et 2.  
-Préparons un peu notre script en ouvrant des librairies 
-```{r librairies, echo=F}
+Préparons un peu notre script en ouvrant des bibliothèques 
+```{r library, echo=F}
 library(dplyr)
 library(ggplot2)
+# toutes les bibliothèques du tidyverse peuvent être chargée avec:
+library(tidyverse)
 ```
 
 A présent, ouvrons le jeu de données  
