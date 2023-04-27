@@ -1,5 +1,5 @@
 ---
-title: "Séance 3 : Sous-ensembles et visualisation sous tidyverse"
+title: "Séance 4 : Boucles de programmation"
 output: bookdown::html_document2
 ---
 
@@ -259,4 +259,111 @@ plan.modif +
   guides(fill = "none", size = "none")
 ```
 
-FELICITATIONS ! Vous avez fait votre premier plot sur ggplot !!
+
+# - Automatiser un code : le principe des boucles 
+
+Nous entrons à présent dans la dernière partie de ce TP, et peut-être la plus utile... l'automatisation d'un code ! Ce processus signifie que l'on va demander au code de réaliser plusieurs fois la même opération mais sur des données différentes. Pour cela, il existe deux fonctions permettant de répéter un bout de code tant qu'une certaine condition ne sera pas atteinte : `for()` et `while()`. Nous allons les découvrir ensemble sur des exemples très simples, puis nous verrons un exemple avec le jeux de données archéologique.  
+
+## - Boucles `for()`
+Une boucle `for()` permet de **répéter un bout de code tant qu'une certaine valeur (par convention, on l'appelle `i`) se situe dans un certain intervalle**.   
+
+Créons un objet `x` contenant la valeur "0". 
+```{r x, echo=T}
+x <- 0
+```
+
+Nous allons y ajouter des valeurs à l'aide d'une boucle : 
+```{r boucle, echo=T}
+i <- 1 # tout d'abord, on initialise la valeur i
+
+for(i in 1:5) # conditions de la boucle : tant que i se trouve dans ("in") l'intervalle 1 à 5 (défini par ":"), répéter le code suivant.
+  { # on ouvre la boucle 
+  x <- c(x, i) # on place la valeur i dans l'objet x. 
+  
+  i <- i + 1 # on incrémente i de 1
+}
+```
+Affichons le résultat :
+```{r afficher x, echo=T}
+x
+```
+Nous avons bien réussi à créer une suite de nombres ! Cet exemple est certes trivial, mais nous verrons un peu plus tard comment l'appliquer sur des données et avec des opérations plus complexes.   
+
+Petite note à ce stade : la dernière ligne de notre boucle, `i <- i + 1`, est facultative dans R. La fonction `for()` permet en effet d'incrémenter automatique la valeur `i` de 1 à chaque fin de boucle.  
+Voici la preuve : 
+```{r repet, echo=T}
+y <- 0
+
+for(i in 1:5) { 
+  y <- c(y, i) 
+}
+
+y # même résultat !
+```
+
+## - Boucles `while()`
+L'autre type de boucle est moins fréquemment utilisée, mais peut toujours être utile. Il s'agit d'une boucle `while()` : c'est à dire que l'on va **répéter le code tant qu'une certaine condition est remplie**. Une fois qu'elle ne l'est plus, la boucle est terminée.  
+
+Essayons avec un autre exemple simple : nous allons créer un code qui va afficher une valeur tant que celle-ci est inférieure à 5.
+```{r while, echo=T}
+i <- 1 # initialisation de la valeur
+
+while(i <= 5) # cette ligne de code se lit : tant que i est inférieur ou égal à 5, répéter le code suivant
+  { # début de la boucle 
+  print(i) # afficher "i" dans la console
+  
+  i <- i + 1 # incrémenter i de 1
+             # ATTENTION: l'incrémentation ne se fait pas automatiquement avec while() !!!
+} # fin de la boucle
+```
+
+Si vous consultez la console, vous remarquez que l'on a affiché la valeur `i` tant que celle-ci est inférieure à 5 !   
+
+Dans la mesure du possible, nous vous conseillons d'utiliser plutôt les boucles `for()`, car ce sont elles qui sont plus utilisée dans la communauté. `while()` est également très bien et vous pouvez arriver au même résultat qu'avec une boucle `for()`, mais l'utilisation de `for()` fait vraiment partie de la "culture R" en tant que culture de programmation ! 
+
+## - Exemple sur le jeu de données du site de la Forêt
+Mettons en pratique ce concept sur le jeu de données du site de la Forêt. Nous allons créer plusieurs plans de répartition en fonction de la dimensions des pièces. Tout d'abord, rafraîchissons nous la mémoire sur les statistiques basiques du jeu de données.
+```{r summary 2, echo=T}
+summary(jdd)
+```
+
+La longueur des pièces se situe entre 1.4 et 10.2 cm. Je vous propose donc de créer un plan pour des intervalles de longueurs tous les 2 cm. Nous allons donc devoir combiner les commandes de **subsetting** et le **loop `for()`**. 
+```{r init valeurs, echo=T}
+i <- 1
+pace <- 2 # ici il s'agit de la valeur d'intervalle ; dans ce cas concret, il est nécessaire de la spécifier étant donné qu'elle est différente de la valeur par défaut (1)
+```
+
+Je crée également un dossier afin de pouvoir sauvegarder les plots au fur et à mesure.
+```{r dir create, echo=T}
+dir.create("figures/plans_fct_longueur")
+```
+Démarrons la boucle !
+```{r boucle exemple, echo=T}
+for(i in 1:11) { # Cette boucle va s'exécuter tant que i sera compris entre 1 et 11
+  
+  ## Je commence par créer les bornes de l'intervalle i 
+  borne.min <- i # le minimum est i 
+  borne.max <- i + pace # et le maximum est i + pace, soit i + 2
+  
+  ## Ensuite, je subset le jeux de données pour ne sélectionner que les pièces dont la longueur est comprise entre la borne min et la borne max de mon intervalle. 
+  repart <- subset(jdd, longueur_cm >= borne.min & longueur_cm <= borne.max)
+  
+  ## maintenant, on crée le plan de répartition avec les données sélectionnées
+  plan.modif +
+    geom_point(data = repart, mapping = aes(x = x_cm, y = y_cm, color = silex, 
+                                              fill = silex, shape = type_fac, size = 1)) +
+    # titre et légende
+    labs(title = paste0("Répartition spatiale des pièces dont L est comprise entre ", borne.min,  " et ", borne.max, "cm"),
+         ### NB : ici, on va utiliser la fonction paste0() pour adapter le titre de la figure à chaque intervalle. 
+         ### Cette fonction est extrêmement utile, retenez la ! Elle permet de coller côte à côte des objets en les transformant en texte. 
+         color = "Matière première",
+         shape = "Catégorie d'objet") +
+    guides(fill = "none", size = "none")
+    
+  ## Enfin, on sauvegarde la figure dans le dossier "plans_fct_longueur" en adaptant son titre avec paste() - cette fonction est un peu différente de paste0() en cela qu'elle recquiert que l'on précise un séparateur à ajouter entre les blocs de texte. Ici ce sera "_" (argument "sep"). 
+  ggsave(paste("figures/plans_fct_longueur/repart_pieces_entre ", borne.min, "et", borne.max, ".png", sep = "_"), 
+         width = 6, height = 4)
+}
+```
+
+FELICITATIONS ! Vous avez fait votre première boucle sur R !!
