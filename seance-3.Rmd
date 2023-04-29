@@ -4,24 +4,60 @@ output: bookdown::html_document2
 ---
 
 # - Introduction
-Au cours de cette séance, nous allons continuer à nous familiariser avec les packages du `tidyverse` et `ggplot2` pour explorer des données spatiales à l'échelle d'un site. Nous utiliserons le même jeu de données que dans la séance 1 et 2.  
-Préparons un peu notre script en ouvrant des bibliothèques 
-```{r library, echo=F}
-library(dplyr)
-library(ggplot2)
+Au cours de cette séance, nous allons continuer à nous familiariser avec les packages du `tidyverse` et `ggplot2` pour explorer des données spatiales à l'échelle d'un site. Nous utiliserons le même jeu de données `jdd` que dans les séances 1 et 2.  
+
+```{r library, echo=F, include=F}
 # toutes les bibliothèques du tidyverse peuvent être chargée avec:
 library(tidyverse)
 ```
 
-A présent, ouvrons le jeu de données  
+Lors de la dernière séance, nous avons utilisé la fonction `plot()` native (ou plutôt générique) de R.
+Aujourd'hui nous allons utiliser la fonction `ggplot()`, issue de la bibliothèque du même nom
+dédiée à la visualisation dans R mais aussi dans d'autres languages de programmation comme Python.\
+La fonction `ggplot()` est relativement intuitive, car elle fonctionne comme un système
+de calques dans illustrator. Par exemple:
+```{r ggplot, echo=T}
+# utilisons le jeu de données d'exemple "iris"
+head(iris)
+
+plot <- ggplot(data=iris,            # d'abord spécifier le jeu de données 
+               aes(x=Petal.Width,    # puis les variables x
+                   y=Petal.Length,   # et y
+                   color=Species)) + # on peut faire varier les couleurs et 
+                                     # les formes des points selon des variables
+  geom_point() +                     # geom_point pour un nuage de point, 
+                                     # geom_bar pour des graph en barres,
+                                     # geom_boxplot pour boîtes à moustaches, etc.
+  theme_classic()                    # on peut aussi préciser un thème,
+                                     # et toutes sortes d'autres choses...
+
+plot   # on a fait un objet graphique, on peut le projetter en tapant son nom
+```
+
+Note: en utilisant d'autres bibliothèques on peut ajouter des outils. Par 
+exemple la bibliothèque `ggalt` a une fonction `geom_encircle()` que l'on 
+peut appliquer à un sous-ensemble du jeu de données:
+```{r ggalt, echo=F, include=F}
+require("ggalt")
+library(ggalt)
+```
+```{r ggplot-ggalt, echo=T}
+setosa <- iris %>% dplyr::filter(Species == "setosa")
+virginica <- iris %>% dplyr::filter(Species == "virginica")
+plot + 
+  geom_encircle(data = setosa, linetype = 1) +
+  geom_encircle(data = virginica, linetype = 1)
+```
+
+# - Créer un plan et un carroyage
+
+Avant toute chose, revenons à notre jeu de données de la dernière fois:
 ```{r data, echo=T}
 jdd <- as_tibble(read.csv("data/Data_exemple.csv", header = TRUE, sep = ","))
 head(jdd)
 ```
-
 Tout a l'air en ordre ! Nous pouvons donc commencer :)  
 
-# - Créer un plan et un carroyage
 Dans un premier temps, nous allons essayer de reproduire un plan de répartition spatiale X, Y, déjà réalisé avec QGIS et Powerpoint. Vous pouvez consulter ce plan dans le dossier `figures` du projet, sous le nom de `plan_exemple.pdf`. L'objectif de cet exercice est de créer un code que vous pourrez ensuite adapter à d'autres données. Cela vous permettra:  
 1) de gagner un temps précieux, le code ne prenant que quelques secondes pour générer une figure ;  
 2) d'avoir une unité graphique dans votre document en utilisant toujours le même layout ;   
@@ -171,8 +207,11 @@ Découvrons comment mettre en oeuvre cette opération. Dans les quelques lignes 
 
 Pour cela, nous allons créer un nouveau dataframe dans lequel nous allons "ranger" uniquement les lignes qui contiennent des données pour la variable `raccord`
 ```{r raccord, echo=T}
+# faisable avec la fonction is.na()
+rac <- jdd[rowSums(is.na(jdd)) == 0,]
+
+# aussi faisable avec la fonction complete.cases()
 rac <- jdd[complete.cases(jdd$raccord), ]
-# addddddddd is.na
 ```
 
 Les **crochets** permettent de dire à R que l'on va sélectionner des lignes (premier argument) ou des colonnes (deuxième argument) dans le data frame `jdd`. La fonction `complete.cases()` permet ensuite de repérer les cases qui ne sont pas vides. Cette ligne de code nous permet donc de sélectionner dans `jdd` les lignes pour lesquelles la valeur de raccord est renseignée.  
