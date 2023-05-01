@@ -20,7 +20,7 @@ de calques dans illustrator. Par exemple:
 # utilisons le jeu de données d'exemple "iris"
 head(iris)
 
-plot <- ggplot(data=iris,            # d'abord spécifier le jeu de données 
+p <- ggplot(data=iris,            # d'abord spécifier le jeu de données 
                aes(x=Petal.Width,    # puis les variables x
                    y=Petal.Length,   # et y
                    color=Species)) + # on peut faire varier les couleurs et 
@@ -28,10 +28,10 @@ plot <- ggplot(data=iris,            # d'abord spécifier le jeu de données
   geom_point() +                     # geom_point pour un nuage de point, 
                                      # geom_bar pour des graph en barres,
                                      # geom_boxplot pour boîtes à moustaches, etc.
-  theme_classic()                    # on peut aussi préciser un thème,
+  theme_linedraw()                   # on peut aussi préciser un thème,
                                      # et toutes sortes d'autres choses...
 
-plot   # on a fait un objet graphique, on peut le projetter en tapant son nom
+p   # on a fait un objet graphique, on peut le projetter en tapant son nom
 ```
 
 Note: en utilisant d'autres bibliothèques on peut ajouter des outils. Par 
@@ -44,7 +44,7 @@ library(ggalt)
 ```{r ggplot-ggalt, echo=T}
 setosa <- iris %>% dplyr::filter(Species == "setosa")
 virginica <- iris %>% dplyr::filter(Species == "virginica")
-plot + 
+p + 
   geom_encircle(data = setosa, linetype = 1) +
   geom_encircle(data = virginica, linetype = 1)
 ```
