@@ -1,27 +1,28 @@
 # TP 1 & 2 ####
+
 ## 1.
-### 1. 
+### 1.1.
 #install.packages("archdata")
 library(archdata)
 
-### 2. 
+### 1.2. 
 help(archdata)
 ?archdata
 
 data("DartPoints")
 
 ## 2.
-### 1. 
+### 2.1. 
 DartPoints
 ncol(DartPoints) # 17
 nrow(DartPoints) # 91
 
-### 2.
+### 2.2.
 summary(DartPoints) 
 class(DartPoints$Name) 
 class(DartPoints$Length) #character, numeric, factor : 3 
 
-### 3.
+### 2.3.
 Darl <- DartPoints[DartPoints$Name == "Darl",] # exemple avec le premier type 
 summary(Darl)
 
@@ -52,7 +53,7 @@ df #tableau de résultats
 
 
 ## 3.
-### 1.
+### 3.1.
 ?DartPoints #vérifier les levels 
 
 #test du plot
@@ -89,7 +90,7 @@ legend(40, 21.8,
 dev.off()
 
 
-### 2. 
+### 3.2. 
 #length
 jpeg("figures/boxplot_length.jpg",
      width = 550, height = 450)
@@ -117,13 +118,76 @@ boxplot(Thickness ~ Name, data = DartPoints,
         frame = FALSE)
 dev.off()
 
-# TP 3 : faire des boucles ####
-data("BarmoseI.pp")
-data(BarmoseI.grid)
-plot(BarmoseI.grid$East, BarmoseI.grid$North)
-points(BarmoseI.pp$East, BarmoseI.pp$North, col = BarmoseI.pp$Class)
 
-data("Snodgrass")
+
+# TP 3 : sous-ensembles et visualisation avec tidyverse ####
+## 1.
+jdd <- read.csv("data/Data_exemple.csv", header = TRUE, sep = ",")
+
+library(archdata)
+data("DartPoints")
+
+## 2.
+### 2.1. 
+jdd.silexBC <- subset(jdd, silex != "type A",)
+
+plan.modif +
+  geom_point(data = jdd.silexBC, 
+             mapping = aes(x = x_cm, y = y_cm, 
+                           color = silex, fill = silex,
+                           shape = type_fac, size = 1)) +
+  # titre et légende
+  labs(title = "Répartition spatiale des objets en silex autres que de type A", 
+       color = "Matière première", shape = "Catégorie d'objet") +
+  guides(fill = "none", size = "none")
+
+
+### 2.2.
+jdd.lamn <- subset(jdd, type == "eclat" | type == "lame" | 
+                     type == "nucleus a eclats laminaires",)
+plan.modif +
+  geom_point(data = jdd.lamn, 
+             mapping = aes(x = x_cm, y = y_cm, 
+                           color = silex, fill = silex, 
+                           shape = type_fac, size = 1)) +
+  # titre et légende
+  labs(title = "Répartition spatiale des pièces non retouchées pouvant
+       s'intégrer dans un schéma laminaire",
+       color = "Matière première", shape = "Catégorie d'objet") +
+  guides(fill = "none", size = "none")
+
+
+### 2.3.
+summary(DartPoints$Blade.Sh)
+
+### 2.4.
+d <- subset(DartPoints, Blade.Sh == "E" | Blade.Sh == "S")
+summary(d$H.Length)
+
+E <- subset(DartPoints, Blade.Sh == "E")
+ggplot(data = E, aes(x = Thickness, y = Length/Width, 
+                     color = H.Length)) +
+  geom_point() +
+  scale_x_continuous(limits=c(0, 15), expand=c(0, 0)) +
+  scale_y_continuous(limits=c(1.5, 4.5), expand=c(0, 0)) +
+  scale_color_distiller(direction = 1, limits=c(5,24)) +
+  theme_linedraw() +
+  labs(title = "Module d'allongement versus épaisseur pour les pointes de type E", 
+       color = "Longueur de l'emmanchement")
+
+S <- subset(DartPoints, Blade.Sh == "S",)
+ggplot(data = S, aes(x = Thickness, y = Length/Width, 
+                     color = H.Length)) +
+  geom_point() +
+  scale_x_continuous(limits=c(0, 15), expand=c(0, 0)) +
+  scale_y_continuous(limits=c(1.5, 4.5), expand=c(0, 0)) +
+  scale_color_distiller(direction = 1, limits=c(5,24)) +
+  theme_linedraw() +
+  labs(title = "Module d'allongement versus épaisseur pour les pointes de type S", 
+       color = "Longueur de l'emmanchement")
+
+
+
 
 # TP 4 : SIG avec R ####
 data("Acheulean")
