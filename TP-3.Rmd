@@ -1,0 +1,46 @@
+---
+title: "TP 3"
+output: html_document
+---
+
+Rappel:
+L'objectif des TPs que nous vous proposons est de vous entraîner à refaire les différentes opérations que vous avez apprises dans le cadre du workshop. Ces TPs consistent en des questions auxquelles nous vous proposons de répondre au fur et à mesure. N'hésitez pas à travailler à plusieurs !
+
+Les connecteurs logiques permettent de personnaliser vos sélections très facilement. Les voici : 
+
+**<** : "strictement inférieur à"  
+**<=** : "inférieur ou égal à"  
+**>** : "strictement supérieur à"  
+**>=** : "supérieur ou égal à"    
+**&** : "et"           
+**|** : "ou"  
+**==** : "strictement égal à"  
+**!=** : "non égal à"  
+**!x** : "différent de x"  
+**isTRUE(x)** : teste si x est vrai  
+
+
+**1. Préparation**
+
+Chargez les jeux de données `jdd` et `DartPoints`
+
+
+
+**2. Se familiariser avec ggplot** 
+
+2.1. En utilisant le fond créé ("plan.modif"), et pour les pièces qui ne sont 
+pas des silex de type A, créez à votre tour un plan avec 
+"x_cm" en abscisse et "y_cm" en ordonnée,
+des points dont la couleur et la forme correspondent respectivement au 
+type de silex et au type d'outil.
+
+2.2. Créer le même type de plan avec les mêmes types d'informations, toujours 
+avec le même fond, mais seulement pour les lames et éclats non retouchés ainsi 
+que les nucléus à éclats laminaires.
+
+2.3. Combien y a-t-il de pointes de type E ("Excurvate") et de pointes droites (S-"Straight")?
+
+2.4 Visualiser le rapport indice d'allongement (Longueur/largeur) versus épaisseur 
+pour ces deux types de pointes (E et S), tout en utilisant un code couleur qui
+corresponde à la longueur de la zone d'emmanchement (H.Length). Soignez les 
+titres des axes et la légende. 
