@@ -4,35 +4,37 @@ output: bookdown::html_document2
 ---
 
 # - Introduction
-Au cours de cette séance, nous allons continuer à nous familiariser avec les packages du `tidyverse` et `ggplot2` pour explorer des données spatiales à l'échelle d'un site. Nous utiliserons le même jeu de données que dans la séance 1 et 2.  
+Au cours de cette séance, nous allons continuer à nous familiariser avec les 
+bibliothèques du `tidyverse` et en particulier `ggplot2` pour explorer des 
+données spatiales à l'échelle d'un site. Nous utiliserons le même jeu de données 
+que dans les séances précédentes.  
 Préparons un peu notre script en ouvrant des bibliothèques 
 ```{r library, echo=F}
-library(dplyr)
-library(ggplot2)
-# toutes les bibliothèques du tidyverse peuvent être chargée avec:
+#library(dplyr)
+#library(ggplot2)
+# ou plus simplement avec la commande suivante, avec laquelle toutes les 
+# bibliothèques du tidyverse peuvent être chargées en une fois :
 library(tidyverse)
 ```
 
 A présent, ouvrons le jeu de données  
 ```{r data, echo=T}
-jdd <- as_tibble(read.csv("data/Data_exemple.csv", header = TRUE, sep = ","))
+jdd <- read.csv("data/Data_exemple.csv", header = TRUE, sep = ",")
 head(jdd)
 ```
-
-Tout a l'air en ordre ! Nous pouvons donc commencer :)  
 
 # - Créer un plan et un carroyage
 Dans un premier temps, nous allons essayer de reproduire un plan de répartition spatiale X, Y, déjà réalisé avec QGIS et Powerpoint. Vous pouvez consulter ce plan dans le dossier `figures` du projet, sous le nom de `plan_exemple.pdf`. L'objectif de cet exercice est de créer un code que vous pourrez ensuite adapter à d'autres données. Cela vous permettra:  
 1) de gagner un temps précieux, le code ne prenant que quelques secondes pour générer une figure ;  
-2) d'avoir une unité graphique dans votre document en utilisant toujours le même layout ;   
+2) d'avoir une unité graphique dans votre document en utilisant toujours le même "layout" (agencement de paramètres);   
 3) d'organiser les différents éléments de vos figures toujours de la même façon.   
 
 Nous allons commencer par créer le carroyage du plan. D'après `plan_exemple.pdf`, la zone d'étude s'étend sur 16 carrés de 1 m de côté, organisés en 4 colonnes et 4 rangées. Vérifions tout d'abord les unités pour les coordonnées des points. 
-```{r summary, echo=T}
-summary(jdd)
+```{r head, echo=T}
+head(jdd)
 ```
 
-Il semble que les coordonnées soient en cm. En x, elles se situent entre 10 et 290 cm, et en y, entre 50 et 390 cm. Avec un carroyage basé sur des carrés de 1 m de côtés, les noeuds auront pour coordonnées (0;0), (0;100), (0;200), etc. Allons-y avec `ggplot2` !  
+Les coordonnées sont en cm: en x elles se situent entre 10 et 290 cm, et en y entre 50 et 390 cm. Avec un carroyage basé sur des carrés de 1 m de côté, les noeuds auront pour coordonnées (0;0), (0;100), (0;200), etc. Allons-y avec `ggplot2` !  
 
 Tout d'abord, définissons les labels des axes :
 ```{r labels, echo=T}
@@ -50,50 +52,65 @@ plan <- ggplot2::ggplot() +
         axis.text.y = element_blank(), 
         panel.grid.major = element_line(),
         panel.grid.minor = element_blank()) + 
-    # ici, on définit les dimensions des axes : de 0 à 400 cm, avec la même échelle en x et en y (ratio = 1)
-  coord_fixed(ratio = 1, xlim = c(0, 400), ylim = c(0, 400)) +
-    # les deux lignes suivantes permettent de subdiviser les axes tous les 1 m 
-  scale_x_continuous(breaks = seq(0, 400, by = 100)) +
-  scale_y_continuous(breaks = seq(0, 400, by = 100)) +
-    # enfin, ici on définit les labels des axes 
-  ylab(element_blank()) +
+  # les deux lignes suivantes permettent de subdiviser les axes tous les 1 m,
+  # de 0 à 400 cm, puis en subdivisant les axes tous les 1 m 
+  scale_x_continuous(breaks = seq(0, 400, by = 100)) + 
+  scale_y_continuous(breaks = seq(0, 400, by = 100)) + 
+  coord_fixed(ratio = 1) + # même échelle en x et en y (ratio = 1), 
+  ylab(element_blank()) +  # enfin, ici on définit les labels des axes 
   xlab(element_blank()) +
-  annotate (geom = "text", x = c(seq(from = 50, to = 400, by = 100)), y = -10, label = carres.x) +
-  annotate (geom = "text", x = -10, y = c(seq(from = 50, to = 400, by = 100)), label = carres.y)
+  annotate (geom = "text", 
+            x = c(seq(from = 50, to = 400, by = 100)), 
+            y = -10, 
+            label = carres.x) +
+  annotate (geom = "text",
+            x = -10, 
+            y = c(seq(from = 50, to = 400, by = 100)), 
+            label = carres.y)
 plan  
 ```
 
 Nous pouvons à présent rajouter les points correspondant aux objets ainsi qu'un titre.
 ```{r plan points, echo=T}
 plan +
-  geom_point(data = jdd, mapping = aes(x = x_cm, y = y_cm)) +
-  labs(title = "Répartition spatiale des artéfacts - site de la Forêt")
+  geom_point(data = jdd, 
+             mapping = aes(x = x_cm, y = y_cm)) +
+  labs(title = "Répartition spatiale des artefacts - site de la Forêt")
 ```
 
-La figure s'affiche dans l'onglet `plot`, nous pouvons donc suivre son évolution au fur et à mesure des modifications que l'on souhaite y apporter par la suite !  
+La figure s'affiche dans l'onglet `plot`, nous pouvons donc suivre son évolution au fur et à mesure des modifications que l'on souhaite y apporter par la suite.  
 
 Ce plan reste toutefois peu informatif sur l'organisation des objets dans le site. Il est possible d'améliorer la figure en faisant varier la forme et la couleur des points en fonction des données qualitatives associées à chaque pièce. 
 ```{r plan shapes, echo=T}
 plan +
-  geom_point(data = jdd, mapping = aes(x = x_cm, y = y_cm, 
-                                       color = silex, shape = type, 
-                                       size = 1)) + # on augmente un peu la taille des points pour plus de lisibilité !
-  labs(title = "Répartition spatiale des artéfacts - site de la Forêt")
+  geom_point(data = jdd, 
+             mapping = aes(x = x_cm, y = y_cm, 
+                           color = silex, 
+                           shape = type, 
+                           size = 1)) + # on augmente un peu la taille des points 
+                                        # pour plus de lisibilité
+  labs(title = "Répartition spatiale des artefacts - site de la Forêt")
 ```
 
-Malheureusement... la palette automatique ne contient pas assez de formes ! Nous allons donc devoir les définir manuellement dans les esthétiques de la figure. Pour cela nous allons attribuer à chaque valeur de `type` une forme.  
+La palette automatique ne contient pas assez de formes (voir message d'erreur). 
+Nous allons donc devoir les définir manuellement dans les esthétiques de la figure. 
+Pour cela nous allons attribuer à chaque valeur de `type` une forme.  
 
 Affichons pour commencer les levels de `type` (après l'avoir converti en factor).
 ```{r type factor, echo=T}
-jdd$type_fac <- factor(jdd$type, 
-                        # Généralement, les levels sont dans l'ordre alphabétique ; il est possible de changer leur   ordre si vous le voulez !
-                       levels = c("nucleus a eclats laminaires", "burin du Raysse", 
-                                  "eclat", "lame", "chute de burin", "burin", 
-                                  "burin diedre", "percoir", "picardie", "gravette"))
+jdd$type_fac <- factor(
+  jdd$type, 
+  # les levels sont dans l'ordre alphabétique ; 
+  # il est possible de changer leur ordre si on le souhaite
+  levels = c("nucleus a eclats laminaires", "burin du Raysse", 
+             "eclat", "lame", "chute de burin", "burin", 
+             "burin diedre", "percoir", "picardie", "gravette")
+  )
 levels(jdd$type_fac)
 ```
 
-On créé ensuite manuellement la palette de formes avec `scale_shape_manual`
+On créé ensuite manuellement la palette de formes avec la fonction
+`scale_shape_manual()`
 ```{r plan shape scale, echo=T}
 plan +
   geom_point(data = jdd, mapping = aes(x = x_cm, y = y_cm, color = silex,
@@ -103,10 +120,23 @@ plan +
                                 "chute de burin" = 21, "burin" = 8, 
                                 "burin diedre" = 24, "percoir" = 10,
                                 "picardie" = 14, "gravette" = 3)) +
-  labs(title = "Répartition spatiale des artéfacts - site de la Forêt")
+  labs(title = "Répartition spatiale des artefacts - site de la Forêt")
 ```
 
-On peut aussi faire la même chose pour la palette de couleurs. Ici je vais utiliser les couleurs de la palette `viridis`. 
+On peut aussi faire la même chose pour la palette de couleurs. Utilisons ici les couleurs de la palette `viridis`. 
+
+```{r voir viridis, echo=T}
+#pour voir la palette on peut utiliser les bibliothèques `pals` et `scales`
+#install.packages("pals","scales")
+library(pals)
+library(scales)
+# et la fonction show_col()
+show_col(viridis(24))
+
+# la fonction viridis() permet d'afficher les codes HEX des couleurs qui
+#composent la palette
+viridis(n=24)
+```
 ```{r plan col manual, echo=T}
 # Ne pas oublier de convertir en factor !
 jdd$silex_fac <- as.factor(jdd$silex)
@@ -120,35 +150,44 @@ plan +
                                 "chute de burin" = 21, "burin" = 8, 
                                 "burin diedre" = 24, "percoir" = 10,
                                 "picardie" = 14, "gravette" = 3)) +
-  scale_color_manual(values = c("type A" = "#7AD151FF", "type B" = "#2A788EFF", 
-                                "type C" = "#440154FF")) +
-  scale_fill_manual(values = c("type A" = "#7AD151FF", "type B" = "#2A788EFF", 
-                               "type C" = "#440154FF")) +
-  labs(title = "Répartition spatiale des artéfacts - site de la Forêt")
+  scale_color_manual(values = c("type A"="#7AD151FF", 
+                                "type B"="#2A788EFF", 
+                                "type C"="#440154FF")) +
+  scale_fill_manual(values = c("type A"="#7AD151FF", 
+                               "type B"="#2A788EFF", 
+                               "type C"="#440154FF")) +
+  labs(title = "Répartition spatiale des artefacts - site de la Forêt")
 ```
 
 La figure est un peu plus facile à comprendre, mais le code pour la produire n'est pas très efficace... remarquez qu'il y a des répétitions (entre les l.178 et 180) et le fait de définir les palettes dans les fonctions complique la lecture.  
 
 Pour clarifier tout cela, nous pouvons créer des `objets` qui contiennent nos palettes. Nous n'aurons ensuite qu'à les appeler dans la fonction. 
 ```{r objets palettes, echo=T}
-shape.pal <- c("nucleus a eclats laminaires" = 7, "burin du Raysse" = 12, 
-               "eclat" = 22, "lame" = 23, "chute de burin" = 21, "burin" = 8, 
-               "burin diedre" = 24, "percoir" = 10, "picardie" = 14, 
-               "gravette" = 3)
-color.pal <- c("type A" = "#7AD151FF", "type B" = "#2A788EFF", "type C" = "#440154FF")
+# choisissez vos couleurs et créez votre palette personnalisée
+viridis(n=3)
+
+shape <- c("nucleus a eclats laminaires" = 7, "burin du Raysse" = 12, 
+           "eclat" = 22, "lame" = 23, "chute de burin" = 21, "burin" = 8, 
+           "burin diedre" = 24, "percoir" = 10, "picardie" = 14, 
+           "gravette" = 3)
+cols <- c("type A"="#7AD151FF", "type B"="#2A788EFF", "type C"="#440154FF")
 ```
 
-Pour alléger encore, on place les palettes et le titre dans l'objet `plan` de base. 
+Pour alléger encore, on place les palettes et le titre dans l'objet `plan.modif`. 
 ```{r plan modif, echo=T}
 plan.modif <- plan +
-  scale_shape_manual(values = shape.pal) +
-  scale_color_manual(values = color.pal) +
-  scale_fill_manual(values = color.pal) +
-  labs(title = "Répartition spatiale des artéfacts - site de la Forêt")
+  scale_shape_manual(values = shape) +
+  scale_color_manual(values = cols) +
+  scale_fill_manual(values = cols) +
+  labs(title = "Répartition spatiale des artefacts - site de la Forêt")
 
 plan.modif +
-geom_point(data = jdd, mapping = aes(x = x_cm, y = y_cm, color = silex,
-                                     fill = silex, shape = type_fac, size = 1)) # Même résultat !
+geom_point(data = jdd, 
+           mapping = aes(x = x_cm, y = y_cm, 
+                         color = silex,
+                         fill = silex, 
+                         shape = type_fac,
+                         size = 1)) # Même résultat !
 ```
 
 Modifions à présent la légende pour la rendre plus lisible 

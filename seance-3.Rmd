@@ -89,8 +89,8 @@ plan <- ggplot2::ggplot() +
   # ensuite, on définit les dimensions des axes : 
   # de 0 à 400 cm, avec la même échelle en x et en y (ratio = 1),
   # puis en subdivisant les axes tous les 1 m
-  scale_x_continuous(limits=c(0, 400), breaks = seq(0, 400, by = 100)) +
-  scale_y_continuous(limits=c(0, 400), breaks = seq(0, 400, by = 100)) +
+  #scale_x_continuous(limits=c(0, 400), breaks = seq(0, 400, by = 100)) +
+  #scale_y_continuous(limits=c(0, 400), breaks = seq(0, 400, by = 100)) +
   # enfin, ici on définit les labels des axes 
   ylab(element_blank()) +
   xlab(element_blank()) +
