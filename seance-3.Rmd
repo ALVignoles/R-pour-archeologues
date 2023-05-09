@@ -79,23 +79,23 @@ carres.y <- c("1", "2", "3", "4")
 Créons à présent un objet `ggplot` avec des lignes tous les 100 cm en x et en y. 
 ```{r plan, echo=T}
 plan <- ggplot2::ggplot() +
-    # ces deux premières lignes définissent le thème graphique de la figure
+  # ces deux premières lignes définissent le thème graphique de la figure
   theme_linedraw() +
   theme(axis.ticks = element_blank(), 
         axis.text.x = element_blank(), 
         axis.text.y = element_blank(), 
         panel.grid.major = element_line(),
         panel.grid.minor = element_blank()) + 
-  # ensuite, on définit les dimensions des axes : 
-  # de 0 à 400 cm, avec la même échelle en x et en y (ratio = 1),
-  # puis en subdivisant les axes tous les 1 m
-  #scale_x_continuous(limits=c(0, 400), breaks = seq(0, 400, by = 100)) +
-  #scale_y_continuous(limits=c(0, 400), breaks = seq(0, 400, by = 100)) +
+  # ici, on définit les dimensions des axes : de 0 à 400 cm, avec la même échelle en x et en y (ratio = 1)
+  coord_fixed(ratio = 1, xlim = c(0, 400), ylim = c(0, 400)) +
+  # les deux lignes suivantes permettent de subdiviser les axes tous les 1 m 
+  #scale_x_continuous(breaks = seq(0, 400, by = 100)) +
+  #scale_y_continuous(breaks = seq(0, 400, by = 100)) +
   # enfin, ici on définit les labels des axes 
   ylab(element_blank()) +
   xlab(element_blank()) +
-  annotate (geom = "text", x = c(seq(from = 50, to = 400, by = 100)), y = -10, label = carres.x) +
-  annotate (geom = "text", x = -10, y = c(seq(from = 50, to = 400, by = 100)), label = carres.y)
+  annotate(geom = "text", x = c(seq(from = 50, to = 400, by = 100)), y = -10, label = carres.x) +
+  annotate(geom = "text", x = -10, y = c(seq(from = 50, to = 400, by = 100)), label = carres.y)
 plan  
 ```
 
