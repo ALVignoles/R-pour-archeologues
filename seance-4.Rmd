@@ -150,6 +150,14 @@ A présent, ouvrons le jeu de données
 jdd <- as_tibble(read.csv("data/Data_exemple.csv", header = TRUE, sep = ","))
 head(jdd)
 ```
+```{r type factor, echo=T}
+jdd$type_fac <- factor(jdd$type, 
+                        # Généralement, les levels sont dans l'ordre alphabétique ; il est possible de changer leur   ordre si vous le voulez !
+                       levels = c("nucleus a eclats laminaires", "burin du Raysse", 
+                                  "eclat", "lame", "chute de burin", "burin", 
+                                  "burin diedre", "percoir", "picardie", "gravette"))
+levels(jdd$type_fac)
+```
 
 Tout a l'air en ordre ! Nous pouvons donc commencer :)  / 
 
