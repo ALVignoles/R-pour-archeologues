@@ -21,18 +21,16 @@ Les connecteurs logiques permettent de personnaliser vos sélections très facil
 
 
 **1. Préparation**
-
 Chargez les jeux de données `jdd` et `DartPoints`
 
-
+```{r data, echo=T}
+library(archdata)
+data(DartPoints)
+```
 
 **2. Se familiariser avec ggplot** 
 
-2.1. En utilisant le fond créé ("plan.modif"), et pour les pièces qui ne sont 
-pas des silex de type A, créez à votre tour un plan avec 
-"x_cm" en abscisse et "y_cm" en ordonnée,
-des points dont la couleur et la forme correspondent respectivement au 
-type de silex et au type d'outil.
+2.1. En utilisant le fond créé ("plan.modif"), et pour les pièces qui ne sont pas des silex de type A, créez à votre tour un plan avec "x_cm" en abscisse et "y_cm" en ordonnée, des points dont la couleur et la forme correspondent respectivement au type de silex et au type d'outil.
 
 2.2. Créer le même type de plan avec les mêmes types d'informations, toujours 
 avec le même fond, mais seulement pour les lames et éclats non retouchés ainsi 
