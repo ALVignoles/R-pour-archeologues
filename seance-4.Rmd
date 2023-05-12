@@ -21,9 +21,9 @@ x <- 0
 
 Nous allons y ajouter des valeurs à l'aide d'une boucle : 
 ```{r boucle, echo=T}
-i <- 1 # tout d'abord, on initialise la valeur i
+i <- 35 # tout d'abord, on initialise la valeur i
 
-for(i in 1:5) # conditions de la boucle : tant que i se trouve dans ("in") l'intervalle 1 à 5 (défini par ":"), répéter le code suivant.
+for(i in 35:100) # conditions de la boucle : tant que i se trouve dans ("in") l'intervalle 1 à 5 (défini par ":"), répéter le code suivant.
   { # on ouvre la boucle 
   x <- c(x, i) # on place la valeur i dans l'objet x. 
   
@@ -59,7 +59,7 @@ while(i <= 5) # cette ligne de code se lit : tant que i est inférieur ou égal 
   { # début de la boucle 
   print(i) # afficher "i" dans la console
   
-  i <- i + 1 # incrémenter i de 1
+  #i <- i + 1 # incrémenter i de 1
              # ATTENTION: l'incrémentation ne se fait pas automatiquement avec while() !!!
 } # fin de la boucle
 ```
