@@ -38,7 +38,7 @@ Note: en utilisant d'autres bibliothèques on peut ajouter des outils. Par
 exemple la bibliothèque `ggalt` a une fonction `geom_encircle()` que l'on 
 peut appliquer à un sous-ensemble du jeu de données:
 ```{r ggalt, echo=F, include=F}
-require("ggalt")
+#install.packages("ggalt")
 library(ggalt)
 ```
 ```{r ggplot-ggalt, echo=T}
