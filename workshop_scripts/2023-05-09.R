@@ -66,4 +66,27 @@ plan +
   scale_shape_manual(values = shape.palette) +
   scale_color_manual(values = shape.color) + 
   scale_fill_manual(values = shape.color)
-  
+
+head(jdd)
+
+raccord <- jdd[!is.na(jdd$raccord),]
+
+plan +
+  geom_point(data = jdd, mapping = aes(x = x_cm, y = y_cm,
+                                       color = silex, shape = type_factor, fill = silex, size = 1)) +
+  scale_shape_manual(values = shape.palette) +
+  scale_color_manual(values = shape.color) + 
+  scale_fill_manual(values = shape.color) +
+  geom_line(data = raccord, aes(x = x_cm, y = y_cm, group = raccord))
+
+D3 <- subset(jdd, x_cm > 200 & x_cm < 300 & y_cm > 300 & y_cm < 400)
+D3
+
+
+plan +
+  geom_point(data = D3, mapping = aes(x = x_cm, y = y_cm,
+                                       color = silex, shape = type_factor, fill = silex, size = 1)) +
+  scale_shape_manual(values = shape.palette) +
+  scale_color_manual(values = shape.color) + 
+  scale_fill_manual(values = shape.color) 
+
