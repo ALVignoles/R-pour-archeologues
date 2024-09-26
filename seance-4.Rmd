@@ -59,7 +59,7 @@ while(i <= 5) # cette ligne de code se lit : tant que i est inférieur ou égal 
   { # début de la boucle 
   print(i) # afficher "i" dans la console
   
-  #i <- i + 1 # incrémenter i de 1
+  i <- i + 1 # incrémenter i de 1
              # ATTENTION: l'incrémentation ne se fait pas automatiquement avec while() !!!
 } # fin de la boucle
 ```
@@ -147,7 +147,7 @@ library(tidyverse)
 
 A présent, ouvrons le jeu de données  
 ```{r data, echo=T}
-jdd <- as_tibble(read.csv("data/Data_exemple.csv", header = TRUE, sep = ","))
+jdd <- as_tibble(read.csv("data/data_exemple.csv", header = TRUE, sep = ","))
 head(jdd)
 ```
 ```{r type factor, echo=T}
@@ -161,12 +161,12 @@ levels(jdd$type_fac)
 
 Tout a l'air en ordre ! Nous pouvons donc commencer :)  / 
 
-Je copie-colle tout d'abord le code qui permet de créer notre fond de plan. 
+Je copie-colle tout d'abord le code qui permet de créer notre fond de plan. Un petit message d'erreur s'affiche, indiquant que les levels des valeurs ne correspondent pas aux échelles de couleur manuelles. C'est tout à fait normal car nous n'avons pas encore "nourrit" notre code avec les enregistrements ! Nous verrons plus tard comment les ajouter au moyen d'une boucle et de la fonctionnalité "+" de ggplot2
 
 ```{r plan, echo=T}
 carres.x <- c("A", "B", "C", "D")
 carres.y <- c("1", "2", "3", "4")
-shape.pal <- c("nucleus a lames" = 7, "burin du Raysse" = 12, 
+shape.pal <- c("nucleus a eclats laminaires" = 7, "burin du Raysse" = 12, 
                "eclat" = 22, "lame" = 23, "chute de burin" = 21, "burin" = 8, 
                "burin diedre" = 24, "percoir" = 10, "picardie" = 14, 
                "gravette" = 3)
@@ -185,8 +185,8 @@ plan <- ggplot2::ggplot() +
   
   ylab(element_blank()) +
   xlab(element_blank()) +
-  annotate (geom = "text", x = c(seq(from = 50, to = 400, by = 100)), y = -10, label = carres.x) +
-  annotate (geom = "text", x = -10, y = c(seq(from = 50, to = 400, by = 100)), label = carres.y) +
+  annotate(geom = "text", x = c(seq(from = 50, to = 400, by = 100)), y = 10, label = carres.x) +
+  annotate(geom = "text", x = 10, y = c(seq(from = 50, to = 400, by = 100)), label = carres.y) +
   
   scale_shape_manual(values = shape.pal) +
   scale_color_manual(values = color.pal) +
@@ -214,7 +214,7 @@ dir.create("figures/plans_fct_longueur")
 
 Démarrons la boucle !
 ```{r boucle exemple, echo=T}
-for(i in 1:11) { # Cette boucle va s'exécuter tant que i sera compris entre 1 et 11
+for(i in 1:10) { # Cette boucle va s'exécuter tant que i sera compris entre 1 et 10
   
   ## Je commence par créer les bornes de l'intervalle i 
   borne.min <- i # le minimum est i 
