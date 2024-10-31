@@ -22,9 +22,9 @@ install.packages("tidyverse")
 library(tidyverse)
 
 # L'objet de base dans R est le vecteur, aussi appelé une variable: une liste de valeurs
-# Créons une variable nommée 'var1' correspondant a une liste de A a E
+# Créons une variable nommée 'var1' correspondant a une liste de 1 a 5
 var1 <- c(1,2,3,4,5)
-# Creons une variable nommée 'var2' correspondant a une liste continue de 1 a 5
+# Creons une variable nommée 'var2' correspondant a une liste continue de A a E
 var2 <- c("A","B","C","D","E")  # notons que le contenu des variables de caractères
                                 # doivent être notés avec des ""
 # Avec ces variables on peut faire un tableau (data frame) - ici nommé 'd'

@@ -120,7 +120,7 @@ levels(jdd$type)
 #####
 # A présent, essayons de visualiser un graphique de la longueur vs la largeur 
 # des piéces. Dans le R de base, on utilise la fonction plot()
-plot(x = jdd$longueur, y = jdd$largeur)
+plot(x = jdd$longueur_cm, y = jdd$largeur_cm)
 
 ## ici, à l'intérieur de la fonction, on a précisé quels arguments étaient 
 ## concernés. Un argument est un objet que l'on passera à la fonction
@@ -135,7 +135,7 @@ plot(x = jdd$longueur, y = jdd$largeur)
 ## de préciser ou non dans le code quels objets vont dans quels arguments, mais
 ## ce n'est pas nécessaire. Ainsi, la commande suivante aura le méme résultat
 ## que précédemment 
-plot(jdd$longueur, jdd$largeur)
+plot(jdd$longueur_cm, jdd$largeur_cm)
 
 ## Notez ici l'importance de bien séparer chaque argument par une ',' pour ne 
 ## pas créer une erreur
@@ -145,7 +145,7 @@ plot(jdd$longueur, jdd$largeur)
 # pouvons lui transmettre d'autres arguments annexes permettant notamment
 # d'améliorer la qualité graphique. Par exemple, modifions un peu le titre des 
 # axes pour que ce soit plus clair
-plot(x = jdd$longueur, y = jdd$largeur,
+plot(x = jdd$longueur_cm, y = jdd$largeur_cm,
      xlab = "Longueur (cm)", ylab = "Largeur (cm)") # afin d'éclaircir le code, 
                                                     # il est possible de sauter 
                                                     # une ligne avant de fermer 
@@ -161,13 +161,13 @@ ylabel <- "Largeur (cm)"
 xlabel
 ylabel
 
-plot(x = jdd$longueur, y = jdd$largeur,
+plot(x = jdd$longueur_cm, y = jdd$largeur_cm,
      xlab = xlabel, ylab = ylabel)
 
 ## Ajoutons également un titre !
 title <- "Dimension des objets en silex"
 
-plot(x = jdd$longueur, y = jdd$largeur,
+plot(x = jdd$longueur_cm, y = jdd$largeur_cm,
      xlab = xlabel, ylab = ylabel, 
      main = title)
 
@@ -175,7 +175,7 @@ plot(x = jdd$longueur, y = jdd$largeur,
 # pour aller plus loin dans l'analyse, il est possible de colorer les points 
 # en fonction d'une catégorie. Voyons par exemple ce que cela donne avec la 
 # catégorie "type_fac"
-plot(x = jdd$longueur, y = jdd$largeur,
+plot(x = jdd$longueur_cm, y = jdd$largeur_cm,
      col = jdd$type_fac, 
      xlab = xlabel, ylab = ylabel,
      main = title)
@@ -186,7 +186,7 @@ plot(x = jdd$longueur, y = jdd$largeur,
 ## NB : N'oublions pas de convertir notre colonne silex en facteur !
 jdd$silex_fac <- as.factor(jdd$silex)
 
-plot(x = jdd$longueur, y = jdd$largeur,
+plot(x = jdd$longueur_cm, y = jdd$largeur_cm,
      col = jdd$type_fac, 
      pch = c(16, 17, 18)[as.numeric(jdd$silex_fac)], # ici, on assigne les formes
                                                      # 16, 17 et 18 aux levels 
@@ -197,7 +197,7 @@ plot(x = jdd$longueur, y = jdd$largeur,
 # Personnellement, je trouve que les points de ce graphe sont beaucoup trop petits
 # pour être bien visibles. Heureusement, R nous permet de modifier leur taille
 # au sein de la fonction plot(). 
-plot(x = jdd$longueur, y = jdd$largeur,
+plot(x = jdd$longueur_cm, y = jdd$largeur_cm,
      col = jdd$type_fac, 
      pch = c(16, 17, 18)[as.numeric(jdd$silex_fac)], 
      cex = 1.5,
@@ -224,7 +224,7 @@ pdf("E:/Enseignement/R pour archéologues/Séance 1/Figure1.pdf", # ici on écri
      width = 4.5, height = 4.5) # et ici les dimensions de la figure en cm. 
 
 ### On écrit la figure dans le pdf
-plot(x = jdd$longueur, y = jdd$largeur,
+plot(x = jdd$longueur_cm, y = jdd$largeur_cm,
      col = jdd$type_fac, 
      pch = c(16, 17, 18)[as.numeric(jdd$silex_fac)], 
      cex = 1.5,
