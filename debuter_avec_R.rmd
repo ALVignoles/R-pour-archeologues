@@ -19,7 +19,7 @@ Avant notre première session de travail, il faudrait installer les packages sui
 install.packages("tidyverse")
 install.packages("knitr")
 install.packages("rmarkdown")
-install.packages("bookdown") # notez les guillements avec la fonction install.packages
+install.packages("bookdown") # notez les guillemets avec la fonction install.packages()
 ```
 Pour cela, copiez ces commandes telles quelles dans la fenetre haut gauche de R studio et exécutez-les une par une en utilisant les touches suivantes :  
 **CTRL + Entrée** sur PC  
@@ -31,7 +31,7 @@ Pour les utiliser il faudra exécuter les lignes de code suivantes:
 library(tidyverse)
 library(knitr)
 library(rmarkdown)
-library(bookdown) # notez l'absence de guillement avec la fonction install.packages
+library(bookdown) # notez l'absence de guillemet avec la fonction library()
 ```
 Les packages devront être activés à chaque début de session R avec ces mêmes commandes.   
 
