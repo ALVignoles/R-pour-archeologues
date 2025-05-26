@@ -6,12 +6,12 @@ output: bookdown::html_document2
 
 # - R et RStudio
 Installation de :\
-[R pour Mac](https://external.ink?to=/cran.r-project.org/bin/macosx/) ou\
-[R pour Windows](https://external.ink?to=/cran.r-project.org/bin/windows/base/) ou \
-[R pour Linux](https://external.ink?to=/cran.r-project.org/bin/linux/).\
+[R pour Mac](https://cran.r-project.org/bin/macosx/) ou\
+[R pour Windows](https://cran.r-project.org/bin/windows/base/) ou \
+[R pour Linux](https://cran.r-project.org/bin/linux/).\
 \
 et de :\
-[RStudio](https://external.ink?to=/rstudio.com/products/rstudio/download/).\
+[RStudio](https://rstudio.com/products/rstudio/download/).\
 ou \
 utiliser [la version en ligne de R Studio à partir d'Huma-num](https://humanum.hypotheses.org/3088).\
 \
