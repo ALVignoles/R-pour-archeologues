@@ -3,9 +3,9 @@
 Ce dépôt est un recueil de matériel pédagogique à destination d'archéologues souhaitant se familiariser avec R. 
 
 ## Ressources diverses 
-Le dossier [cheatsheets](cheatsheets) contient divers documents avec des listes de fonctions ou grammaires pour R. Il s'agit de sortes d'aides mémoires.\   
+Le dossier [cheatsheets](cheatsheets) contient divers documents avec des listes de fonctions ou grammaires pour R. Il s'agit de sortes d'aides mémoires.  
 
-Le dossier [data](data) contient des données permettant de faire les TPs. \   
+Le dossier [data](data) contient des données permettant de faire les TPs.   
 
 Vous trouverez [ici](ressources-en-ligne.html) un recensement de ressources en ligne pour aller plus loin. Des entrepôts de données sont également listé  
 
