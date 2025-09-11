@@ -7,7 +7,7 @@ Le dossier [cheatsheets](cheatsheets) contient divers documents avec des listes 
 
 Le dossier [data](data) contient des données permettant de faire les TPs.   
 
-Vous trouverez [ici](ressources-en-ligne.html) un recensement de ressources en ligne pour aller plus loin. Des entrepôts de données sont également listé  
+Vous trouverez [ici](ressources-en-ligne.html) un recensement de ressources en ligne pour aller plus loin. Des entrepôts de données sont également listés.  
 
 
 ## Réunion annuelle du module archéologie et archéométrie de l'EDT 56 (Bruxelles, le 17 septembre 2025)
