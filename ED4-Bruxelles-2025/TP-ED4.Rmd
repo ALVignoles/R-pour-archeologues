@@ -27,7 +27,7 @@ un **commentaire**. 
 ```
 
 Ce sont des lignes qui ne seront pas exécutées par le code et qui nous
-permettrons de décrire les étapes du script. Bien commenter son code est
+permettront de décrire les étapes du script. Bien commenter son code est
 très important car cela nous permet de le comprendre facilement même
 après des mois et des années sans y avoir travaillé (en théorie !). Cela
 nous permet aussi de le partager avec d'autres personnes, pour qu'elles
@@ -182,21 +182,21 @@ ncol(jdd) # nb de colonnes
 
 Pour vérifier le type de variable dans un tableau (ce sera important car
 certaines fonctions nécessitent un type de variable particulier), on
-peut appliquer la fonction class() sur chaque variable séparément par
+peut appliquer la fonction `class()` sur chaque variable séparément par
 l'opérateur `$`. 
 
 ```{r class-var}
 
 class(jdd$type)
-class(jdd$longueur)
+class(jdd$longueur_cm)
 
 ```
 
 La variable "longueur" est de classe *numérique* tandis que la variable
 "type" est de classe *character*. Or, pour traiter des variables
 catégorielles avec R il vaut mieux utiliser le format *factor*. Nous
-allons donc convertir la variable "type" en facteur avec la fonction
-factor : 
+allons donc convertir la variable "type" en factor avec la fonction
+`factor()` : 
 
 ```{r factor}
 
@@ -234,18 +234,18 @@ levels(jdd$type)
 ```
 
 Ces quelques fonctions sont utiles pour explorer les données et se
-rendre d'erreurs à un stade préliminaire. 
+rendre compte d'erreurs à un stade préliminaire. 
 
 ## 4- Créer un graphique simple
 
 ### A- Premiers pas 
 
 A présent, essayons de visualiser un graphique de la longueur vs la
-largeur des pièces. Dans le R de base, on utilise la fonction `plot()`. 
+largeur des pièces. Dans R base, on utilise la fonction `plot()`. 
 
 ```{r plot}
 
-plot(x = jdd$longueur, y = jdd$largeur)
+plot(x = jdd$longueur_cm, y = jdd$largeur_cm)
 
 ```
 
@@ -271,7 +271,7 @@ suivante aura le même résultat que précédemment. 
 
 ```{r plot2}
 
-plot(jdd$longueur, jdd$largeur)
+plot(jdd$longueur_cm, jdd$largeur_cm)
 
 ```
 
@@ -287,13 +287,13 @@ peu le titre des axes pour que ce soit plus clair. 
 
 ```{r plot-axis}
 
-plot(x = jdd$longueur, y = jdd$largeur, 
+plot(x = jdd$longueur_cm, y = jdd$largeur_cm, 
      xlab = "Longueur (cm)", ylab = "Largeur (cm)") # afin d'éclaircir le code, il est possible de sauter une ligne avant de fermer la parenthèse !
 
 ```
 
 Précisons ici que les textes entre guillemets `""` seront
-automatiquement considérés comme des objets de type caractère. Il est
+automatiquement considérés comme des objets de type character. Il est
 d'ailleurs possible de les définir avant de les inclure dans la fonction
 : 
 
@@ -311,7 +311,7 @@ et de les afficher : 
 xlabel 
 ylabel
 
-plot(x = jdd$longueur, y = jdd$largeur, xlab = xlabel, ylab = ylabel)
+plot(x = jdd$longueur_cm, y = jdd$largeur_cm, xlab = xlabel, ylab = ylabel)
 
 ```
 
@@ -321,7 +321,7 @@ Ajoutons également un titre ! 
 
 title <- "Dimension des objets en silex"
 
-plot(x = jdd$longueur, y = jdd$largeur, 
+plot(x = jdd$longueur_cm, y = jdd$largeur_cm, 
      xlab = xlabel, ylab = ylabel, 
      main = title)
 
@@ -335,7 +335,7 @@ avec la catégorie "type_fac". 
 
 ```{r col}
 
-plot(x = jdd$longueur, y = jdd$largeur, 
+plot(x = jdd$longueur_cm, y = jdd$largeur_cm, 
      col = jdd$type_fac, 
      xlab = xlabel, ylab = ylabel, main = title)
 
@@ -344,10 +344,10 @@ plot(x = jdd$longueur, y = jdd$largeur,
 Il est possible de choisir d'autres couleurs que celles-ci, que
 personnellement je trouve assez criardes. Il existe tout un univers de
 palettes dans R, et vous pouvez explorer cela sur internet. Il y a
-notamment de nombreux packages qui codent des palettes prédéfinies,
+notamment de nombreuses librairies qui codent des palettes prédéfinies,
 comme `wesanderson`, ou `viridis` (ce sont mes préférées). Dans la suite
 de l'exercice, je vais présenter deux façons d'utiliser des couleurs
-personnalisées : la méthode "basique" dans R, et l'emploi d'un package
+personnalisées : la méthode "basique" dans R, et l'emploi d'une librairie
 déjà codé. 
 
 Pour avoir totalement la main sur vous couleurs, vous pouvez utiliser
@@ -367,7 +367,7 @@ head(colors()) # on emploie ici head() pour ne pas encombrer la console car il y
 ... dont vous pouvez voir les couleurs en suivant [ce
 lien](https://www.datanovia.com/en/fr/blog/liste-geniale-de-657-noms-de-couleur-dans-r/). 
 
-Tout d'abord, avec la fonction `length()`, je détermine le nombre de
+Tout d'abord, avec la fonction `length()`, je vérifie le nombre de
 valeurs dans la variable "type". Cela me permet de savoir combien de
 couleurs sont nécessaires dans ma palette. 
 
@@ -391,7 +391,7 @@ pal2 <- c("khaki4", "indianred1", "grey", "steelblue", "black") # deuxième list
 
 pal <- c(pal1, pal2) # Combinaison des deux listes
 
-plot(x = jdd$longueur, y = jdd$largeur, 
+plot(x = jdd$longueur_cm, y = jdd$largeur_cm, 
      col = pal[as.numeric(jdd$type_fac)], # petite subtilité ici : on indique à la fonction que les couleurs correspondent à des niveaux de "type_fac" en convertissant ces derniers en valeurs numériques avec as.numeric().
      xlab = xlabel, ylab = ylabel, main = title)
 
@@ -399,7 +399,7 @@ plot(x = jdd$longueur, y = jdd$largeur,
 
 Vous pouvez également installer des palettes de couleurs codées au sein
 de libraries. [Cette
-page]<https://www.datanovia.com/en/blog/top-r-color-palettes-to-know-for-great-data-visualization/>
+page](https://www.datanovia.com/en/blog/top-r-color-palettes-to-know-for-great-data-visualization/)
 recense de nombreuses palettes très jolies par exemple. 
 
 Petite démo avec ma palette préférée personnellement : `viridis` ! 
@@ -415,7 +415,7 @@ install.packages("viridis")
 
 library(viridis)
 
-plot(x = jdd$longueur, y = jdd$largeur, 
+plot(x = jdd$longueur_cm, y = jdd$largeur_cm, 
      col = viridis(10)[as.numeric(jdd$type_fac)], # on indique à viridis() le nombre de couleurs nécessaires
      xlab = xlabel, ylab = ylabel, main = title)
 
@@ -432,7 +432,7 @@ du type de silex. 
 
 jdd$silex_fac <- as.factor(jdd$silex)
 
-plot(x = jdd$longueur, y = jdd$largeur, 
+plot(x = jdd$longueur_cm, y = jdd$largeur_cm, 
      col = viridis(10)[as.numeric(jdd$type_fac)],
      pch = c(16, 17, 18)[as.numeric(jdd$silex_fac)], 
      xlab = xlabel, ylab = ylabel, main = title)
@@ -446,7 +446,7 @@ modifier leur taille au sein de la fonction `plot()`, avec l'argument
 
 ```{r cex}
 
-plot(x = jdd$longueur, y = jdd$largeur, 
+plot(x = jdd$longueur_cm, y = jdd$largeur_cm, 
      col = viridis(10)[as.numeric(jdd$type_fac)],
      pch = c(16, 17, 18)[as.numeric(jdd$silex_fac)],
      cex = 1.5,
@@ -460,7 +460,7 @@ Afin de rendre encore plus lisible votre figure, vous pouvez également ajouter 
 
 ```{r legend1}
 
-plot(x = jdd$longueur, y = jdd$largeur, 
+plot(x = jdd$longueur_cm, y = jdd$largeur_cm, 
      col = viridis(10)[as.numeric(jdd$type_fac)],
      pch = c(16, 17, 18)[as.numeric(jdd$silex_fac)],
      cex = 1.5,
@@ -473,10 +473,10 @@ legend("topleft", # ici préciser la position de la légende
        horiz = TRUE) # ici, on précise si l'on souhaite que la légende soit horizontale ou verticale
 ```
 
-Il est possible d'ajouter plusieurs légendes sur une même figure ! Il suffit d'ajouter une 
+Il est possible d'ajouter plusieurs légendes sur une même figure ! Il suffit de la mettre en suivant.
 
 ```{r legend2, echo=T}
-plot(x = jdd$longueur, y = jdd$largeur, 
+plot(x = jdd$longueur_cm, y = jdd$largeur_cm, 
      col = viridis(10)[as.numeric(jdd$type_fac)],
      pch = c(16, 17, 18)[as.numeric(jdd$silex_fac)],
      cex = 1.5,
@@ -492,7 +492,7 @@ legend("topleft",
 legend("bottomright",
        legend = levels(jdd$type_fac),
        fill = viridis(10), # l'argument "fill" permet de préciser les couleurs sous la forme de rectangles de légende 
-       cex = 0.5) 
+       cex = 0.75) 
 ```
 
 ## 5- Enregistrer une figure
@@ -507,24 +507,24 @@ figure, dont vous pouvez modifier les dimensions manuellement. 
 
 Toutefois, il est parfois utile de sauvegarder directement la figure
 avec une ligne de code, notamment dans le but de réaliser plusieurs
-figures similaires de la méme taille exactement ! Cette façon de faire
+figures similaires de la même taille exactement ! Cette façon de faire
 est plus reproductible et ne complique par le code outre mesure. 
 
-Enregistrons notre figure en format pdf. Il faut tout d'abord créer un
-fichier pdf vide de la taille voulue : 
+Enregistrons notre figure en format png. Il faut tout d'abord créer un
+fichier tiff vide de la taille voulue : 
 
-```{r pdf, eval=FALSE, echo=TRUE}
+```{r tiff, eval=FALSE, echo=TRUE}
 
-pdf("Figure1.pdf", # ici on écrit le chemin vers la figure 
-    width = 4.5, height = 4.5) # et là les dimensions de la figure en cm.
+tiff("Figure1.tiff", # ici on écrit le chemin vers la figure 
+    width = 450, height = 450) # et là les dimensions de la figure en cm.
 
 ```
 
-On écrit la figure dans le pdf... 
+On écrit la figure dans le tiff... 
 
-```{r pdf-plot}
+```{r tiff-plot}
 
-plot(x = jdd$longueur, y = jdd$largeur, 
+plot(x = jdd$longueur_cm, y = jdd$largeur_cm, 
      col = pal[as.numeric(jdd$type_fac)],
      pch = c(16, 17, 18)[as.numeric(jdd$silex_fac)],
      cex = 1.5,
@@ -536,11 +536,10 @@ legend("topleft",
        cex = 1, 
        horiz = TRUE)
 
-# Rajoutons la légende pour les types de pièces 
 legend("bottomright",
        legend = levels(jdd$type_fac),
        fill = pal, 
-       cex = 0.5) 
+       cex = 0.75) 
 
 ```
 
